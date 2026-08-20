@@ -1,0 +1,10 @@
+{
+  "name": "面試準備",
+  "short_name": "面試準備",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#173b57"
+}

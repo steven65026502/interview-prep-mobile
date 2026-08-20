@@ -1,0 +1,744 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive"><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#4d2730"><link rel="icon" href="data:,"><title>新竹馬偕智慧醫療中心 專案研究助理（程式設計師）｜筆試與面試｜謝向嶸面試準備</title><style>
+    :root {
+      --ink: #172321;
+      --muted: #5d6a67;
+      --paper: #f7f8f5;
+      --white: #ffffff;
+      --line: #d5ddd8;
+      --teal: #0b675e;
+      --teal-dark: #153c38;
+      --teal-soft: #e8f3ef;
+      --amber: #a74d10;
+      --amber-soft: #fff3e6;
+      --red: #a63c35;
+      --red-soft: #fcecea;
+      --blue: #285f8f;
+      --blue-soft: #edf4fa;
+      --shadow: 0 8px 24px rgba(23, 35, 33, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.68;
+      letter-spacing: 0;
+    }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: var(--teal); text-underline-offset: 3px; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 10px; font-size: 2rem; line-height: 1.22; }
+    h2 { margin-bottom: 12px; font-size: 1.34rem; line-height: 1.35; }
+    h3 { margin-bottom: 8px; font-size: 1.02rem; line-height: 1.45; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.25rem; }
+    li + li { margin-top: 6px; }
+    code {
+      padding: 1px 4px;
+      border-radius: 3px;
+      background: #eef1ee;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+
+    .shell { max-width: 820px; margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 8px max(12px, env(safe-area-inset-left));
+      background: rgba(247, 248, 245, 0.96);
+      border-bottom: 1px solid var(--line);
+      scrollbar-width: none;
+      backdrop-filter: blur(10px);
+    }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 28px 18px 20px;
+      color: var(--white);
+      background: var(--teal-dark);
+    }
+    .hero .eyebrow {
+      margin-bottom: 6px;
+      color: #bfe3d9;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .hero .role {
+      margin-bottom: 18px;
+      color: #e9f4f1;
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+    .event-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      overflow: hidden;
+      margin: 0 -18px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.16);
+    }
+    .event-item { padding: 12px 18px; background: var(--teal-dark); }
+    .event-item small { display: block; color: #bfe3d9; font-size: 0.75rem; }
+    .event-item strong { display: block; margin-top: 2px; font-size: 0.96rem; }
+    .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-primary { color: var(--teal-dark); background: #d8eee8; }
+    .btn-secondary { color: var(--white); border-color: rgba(255,255,255,0.4); background: transparent; }
+    .countdown {
+      margin-top: 12px;
+      color: #dcece8;
+      font-size: 0.84rem;
+      text-align: center;
+    }
+
+    .visual {
+      position: relative;
+      margin: 0;
+      background: #111;
+    }
+    .visual img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .visual figcaption {
+      padding: 10px 18px;
+      color: #e7ecea;
+      background: #23312f;
+      font-size: 0.82rem;
+    }
+
+    main { background: var(--paper); }
+    .section { padding: 28px 18px; scroll-margin-top: 62px; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .section-intro { margin-bottom: 18px; color: var(--muted); }
+    .kicker {
+      margin-bottom: 5px;
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .subtle { color: var(--muted); font-size: 0.9rem; }
+    .small { font-size: 0.82rem; }
+
+    .status-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 14px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    .tag.confirmed { color: #135941; background: #dff1e7; }
+    .tag.ask { color: #88420e; background: #ffead3; }
+    .tag.inference { color: #27587f; background: #e4eff8; }
+
+    .quick-route { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .quick-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .quick-step time { color: var(--teal); font-weight: 800; }
+    .quick-step strong { display: block; }
+    .quick-step span { color: var(--muted); font-size: 0.88rem; }
+
+    .fact-grid { display: grid; gap: 10px; }
+    .fact {
+      padding: 14px;
+      border-left: 4px solid var(--teal);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .fact.amber { border-left-color: var(--amber); }
+    .fact.blue { border-left-color: var(--blue); }
+    .fact p:last-child { margin-bottom: 0; }
+
+    .split-list { display: grid; gap: 10px; }
+    .split-item { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .split-item:first-child { border-top: 1px solid var(--line); }
+    .split-item strong { display: block; margin-bottom: 3px; }
+
+    .callout {
+      margin: 16px 0;
+      padding: 14px;
+      border: 1px solid #efd2b8;
+      border-radius: 6px;
+      background: var(--amber-soft);
+    }
+    .callout.info { border-color: #cbddea; background: var(--blue-soft); }
+    .callout.danger { border-color: #eccac7; background: var(--red-soft); }
+    .callout p:last-child { margin-bottom: 0; }
+
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary {
+      position: relative;
+      padding: 14px 34px 14px 0;
+      cursor: pointer;
+      font-weight: 800;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 4px;
+      top: 11px;
+      color: var(--teal);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    details[open] summary::after { content: "−"; }
+    .detail-body { padding: 0 0 16px; }
+
+    .segments {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      margin: 12px 0;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #e9eeea;
+    }
+    .segment {
+      min-height: 40px;
+      border: 0;
+      border-radius: 5px;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .segment.active { color: var(--white); background: var(--teal-dark); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .script {
+      position: relative;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .script p { margin-bottom: 12px; }
+    .script p:last-of-type { margin-bottom: 0; }
+    .copy-btn {
+      margin-top: 14px;
+      padding: 7px 10px;
+      border: 1px solid var(--teal);
+      border-radius: 5px;
+      color: var(--teal);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+    .copy-btn.copied { color: var(--white); background: var(--teal); }
+
+    .timer-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #f0f3f0;
+    }
+    .timer-display { font-family: Consolas, monospace; font-size: 1.45rem; font-weight: 800; }
+    .timer-actions { display: flex; gap: 6px; }
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .evidence-table { width: 100%; border-collapse: collapse; }
+    .evidence-table th, .evidence-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .evidence-table th { color: var(--muted); font-size: 0.78rem; }
+    .evidence-table td:first-child { width: 33%; font-weight: 800; }
+
+    .qa-answer { padding: 12px; border-left: 3px solid var(--teal); background: var(--white); }
+    .qa-answer p:last-child { margin-bottom: 0; }
+    .avoid { margin-top: 8px; color: var(--red); font-size: 0.82rem; }
+
+    .question-list { counter-reset: ask; padding: 0; list-style: none; }
+    .question-list li {
+      position: relative;
+      margin: 0;
+      padding: 12px 0 12px 42px;
+      border-bottom: 1px solid var(--line);
+    }
+    .question-list li::before {
+      counter-increment: ask;
+      content: counter(ask);
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .checklist { display: grid; gap: 4px; }
+    .check {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      align-items: start;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--teal); }
+    .check input:checked + span { color: var(--muted); text-decoration: line-through; }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      background: var(--white);
+      resize: vertical;
+    }
+
+    .score-row { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .score-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+    .score-head output { min-width: 22px; color: var(--teal); font-weight: 800; text-align: right; }
+    input[type="range"] { width: 100%; accent-color: var(--teal); }
+    .score-total { margin-top: 14px; padding: 14px; color: var(--white); background: var(--teal-dark); }
+    .score-total strong { font-size: 1.25rem; }
+
+    .source-list { padding-left: 1.15rem; }
+    .source-list li + li { margin-top: 9px; }
+    .source-list a { word-break: break-word; }
+
+    .footer {
+      padding: 24px 18px calc(24px + env(safe-area-inset-bottom));
+      color: #dbe8e4;
+      background: var(--teal-dark);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(18px + env(safe-area-inset-bottom));
+      z-index: 50;
+      max-width: calc(100vw - 32px);
+      padding: 10px 14px;
+      border-radius: 6px;
+      color: var(--white);
+      background: #111b19;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 10px);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (min-width: 700px) {
+      h1 { font-size: 2.45rem; }
+      .hero, .section { padding-left: 32px; padding-right: 32px; }
+      .event-grid { grid-template-columns: repeat(3, 1fr); margin-left: -32px; margin-right: -32px; }
+      .event-item { padding-left: 32px; padding-right: 20px; }
+      .fact-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-actions { max-width: 420px; }
+      .visual img { max-height: 390px; }
+    }
+
+    @media print {
+      .topbar, .hero-actions, .copy-btn, .timer-box, .toast { display: none !important; }
+      body { background: var(--white); font-size: 11pt; }
+      .shell { max-width: none; }
+      .hero { color: var(--ink); background: var(--white); border-bottom: 2px solid var(--ink); }
+      .hero .eyebrow, .hero .role, .countdown { color: var(--ink); }
+      .event-grid { background: var(--line); }
+      .event-item { color: var(--ink); background: var(--white); }
+      .event-item small { color: var(--muted); }
+      .visual { display: none; }
+      .section { break-inside: avoid; }
+      details > .detail-body { display: block; }
+      details summary::after { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+
+    .brand-visual {
+      min-height: 184px;
+      display: grid;
+      place-items: center;
+      padding: 28px 24px;
+      border-bottom: 1px solid var(--line);
+      background: var(--brand-surface, #ffffff);
+    }
+    .brand-visual img {
+      width: min(72%, 430px);
+      max-height: 132px;
+      object-fit: contain;
+    }
+    .brand-visual figcaption {
+      width: 100%;
+      margin-top: 18px;
+      padding: 0;
+      color: var(--muted);
+      background: transparent;
+      text-align: center;
+    }
+    .priority-line {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: 12px;
+      padding: 11px 0;
+      border-top: 1px solid var(--line);
+    }
+    .priority-line:first-child { border-top: 0; }
+    .priority-line b { color: var(--teal); }
+    .answer-frame {
+      margin-top: 14px;
+      padding-left: 14px;
+      border-left: 3px solid var(--teal);
+    }
+    .unknown {
+      color: var(--amber);
+      font-weight: 800;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .mini-grid > div {
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+    }
+    .phone-banner {
+      padding: 12px 18px;
+      color: var(--white);
+      background: #23312f;
+      text-align: center;
+      font-weight: 800;
+    }
+    @media (min-width: 680px) {
+      .mini-grid { grid-template-columns: 1fr 1fr; }
+      .brand-visual { min-height: 224px; }
+    }
+
+:root{--teal:#9b2f3f;--teal-dark:#4d2730;--teal-soft:#f7e9ec;--brand-surface:#ffffff;}</style></head><body><nav class="topbar" aria-label="面試準備導覽">
+    <a href="#quick">速讀</a><a href="#company">公司</a><a href="#role">職務</a>
+    <a href="#intro">自介</a><a href="#thesis">專案</a><a href="#technical">技術</a>
+    <a href="#qa">問答</a><a href="#ask">反問</a><a href="#day">當日</a>
+  </nav><div class="shell"><header class="hero" id="top">
+      <p class="eyebrow">謝向嶸｜2026-08-27 面試準備</p>
+      <h1>新竹馬偕智慧醫療中心</h1>
+      <p class="role">專案研究助理（程式設計師）｜筆試與面試</p>
+      <div class="event-grid" role="group" aria-label="面談資訊">
+        <div class="event-item"><small>時間</small><strong>8 月 27 日 13:10–15:10</strong></div>
+        <div class="event-item"><small>地點</small><strong>新竹馬偕平安樓 12 樓｜沙發區等候</strong></div>
+        <div class="event-item"><small>聯絡資訊</small><strong>請查看手機通訊錄</strong></div>
+      </div>
+      <div class="hero-actions"><a class="btn btn-primary" href="#quick">開始複習</a><a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E7%AB%B9%E9%A6%AC%E5%81%95%E7%B4%80%E5%BF%B5%E9%86%AB%E9%99%A2+%E5%85%89%E5%BE%A9%E8%B7%AF%E4%BA%8C%E6%AE%B5690%E8%99%9F" target="_blank" rel="noopener">開啟地圖</a></div>
+      <p class="countdown" id="countdown">正在計算距離面談時間</p>
+    </header><figure class="brand-visual">
+      <a href="https://www.hc.mmh.org.tw/departmain3.php?id=1266" target="_blank" rel="noopener">
+        <img src="https://www.hc.mmh.org.tw/common/img/logo.png" alt="新竹馬偕紀念醫院標誌">
+      </a>
+      <figcaption>智慧醫療中心公開定位是「負責任生成式 AI」的開發、驗證、治理與臨床部署全生命週期。</figcaption>
+    </figure><main>
+  <section class="section" id="quick"><p class="kicker">30 分鐘速讀</p><h2>面試前的準備順序</h2><div class="quick-route">
+    <div class="quick-step"><time>0–5</time><div><strong>文件先齊</strong><span>院方表格、履歷、畢業證書影本、專業證照影本、1 吋照片、筆。</span></div></div>
+    <div class="quick-step"><time>5–10</time><div><strong>公司與職缺</strong><span>負責任 AI、地端部署、生成式 AI 模組、後端、權限、日誌、跨院維運。</span></div></div>
+    <div class="quick-step"><time>10–18</time><div><strong>筆試</strong><span>Python、SQL、REST/HTTP、Linux、Docker、RAG/LLM 基礎與資訊安全。</span></div></div>
+    <div class="quick-step"><time>18–23</time><div><strong>自介與專案</strong><span>資料管線、PostgreSQL、Flask、驗證、外部比對，連到 AI 可靠性。</span></div></div>
+    <div class="quick-step"><time>23–27</time><div><strong>缺口答法</strong><span>沒做過正式微調與醫療部署，不裝熟；說明可先貢獻的資料與後端能力。</span></div></div>
+    <div class="quick-step"><time>27–30</time><div><strong>反問</strong><span>一年一聘、輪班、技術棧、資料權限、算力、code review、續聘。</span></div></div>
+  </div><div class="callout"><strong>這份職缺的真正價值：</strong><p>月薪公開為 63,000 元以上，工作內容接近你想走的 AI 應用／Agent 後端方向；但聘期只到 2026 年底且一年一聘，必須同時評估技術含量與穩定性。</p></div></section>
+
+  <section class="section" id="company"><p class="kicker">Company</p><h2>先理解「負責任 AI」</h2><div class="fact-grid">
+    <article class="fact"><h3>中心定位</h3><p>智慧醫療中心是全院 AI 應用的統籌與推動核心，強調臨床、研究、資訊和外部科技團隊跨域合作。</p></article>
+    <article class="fact blue"><h3>公開願景</h3><p>建立醫療場域專屬的生成式 AI 實作與驗證平台，涵蓋開發、驗證評估、治理到臨床部署的全生命週期。</p></article>
+    <article class="fact"><h3>治理要求</h3><p>官方強調透明性、安全、法規、資訊揭露、效能與穩定性持續監測，不是把一般聊天模型直接接進醫院。</p></article>
+    <article class="fact amber"><h3>職缺條件</h3><p>63,000 元以上；聘期至 2026-12-31，表現優良優先續聘、一年一聘；工作時段列有日、晚、假日班。</p></article>
+  </div><details open><summary>「你對智慧醫療中心了解多少」回答</summary><div class="detail-body"><div class="script" data-copy-block><p>我從新竹馬偕官方資料了解到，智慧醫療中心不是單純做聊天機器人，而是負責生成式 AI 從開發、驗證、治理到臨床部署的全生命週期，並強調透明、安全、法規遵循、權限與持續監測。職缺內容也包含模型模組、後端 API、資料流、權限、日誌、院內整合與跨院維運。我認為這和我的資料管線、PostgreSQL、Flask API、驗證與可追溯系統經驗有明確連結。</p><button class="copy-btn" type="button">複製回答</button></div></div></details></section>
+
+  <section class="section" id="role"><p class="kicker">Role</p><h2>這是 AI 後端加部署職，不只是研究助理</h2><div class="split-list">
+    <div class="split-item"><strong>AI 應用開發</strong><span class="subtle">生成式 AI 模組開發、測試、優化；可能包含 RAG、prompt、評測與應用流程。</span></div>
+    <div class="split-item"><strong>模型工程</strong><span class="subtle">LLM 微調、後訓練、推論部署。這是你的主要能力缺口，筆試與面試要誠實。</span></div>
+    <div class="split-item"><strong>後端與治理</strong><span class="subtle">API、資料流、權限、日誌、資料庫、穩定性與安全，和你現有經驗最接近。</span></div>
+    <div class="split-item"><strong>整合與維運</strong><span class="subtle">院內系統整合、合作子院安裝測試與維運，可能涉及晚班、假日或出差。</span></div>
+  </div><h3>你的適配證據</h3><table class="evidence-table"><thead><tr><th>職務需求</th><th>你的證據與邊界</th></tr></thead><tbody>
+    <tr><td>Python/資料流</td><td>批次解析多格式資料、例外處理、時空配對與可重現輸出。</td></tr><tr><td>PostgreSQL/API</td><td>設計資料表、唯讀 Flask API、查詢條件與固定回傳語意。</td></tr><tr><td>日誌與驗證</td><td>114 組一致性檢查、外部資料比對、結果追溯與限制說明。</td></tr><tr><td>AI 使用觀念</td><td>能說明 AI 輸出需由原始資料、固定測試與人工判讀驗證，不把生成內容直接當結論。</td></tr><tr><td>主要缺口</td><td>尚未正式做 LLM 微調、GPU 推論部署、醫療 HL7/FHIR 與臨床系統；需有學習與帶領機制。</td></tr>
+  </tbody></table></section>
+
+  <section class="section" id="intro">
+    <p class="kicker">Self introduction</p><h2>自我介紹</h2>
+    <p class="section-intro">記住背景、證據、職務連結三個節點。自然說完，不必逐字背誦。</p>
+    <div class="segments" role="tablist" aria-label="自介長度">
+      <button class="segment active" type="button" role="tab" aria-selected="true" data-tab="intro30">30 秒版</button>
+      <button class="segment" type="button" role="tab" aria-selected="false" data-tab="intro90">90 秒版</button>
+    </div>
+    <div class="tab-panel active" id="intro30" role="tabpanel"><div class="script" data-copy-block><p>您好，我是謝向嶸，今年取得海大通訊與導航工程碩士，大學就讀勤益資工。碩士研究使用 Python、PostgreSQL、Flask 與 QGIS 建立資料品質監測系統，我負責資料管線、API、權限較單純的唯讀查詢、日誌與驗證。這些經驗和職缺的 AI 後端、資料流、系統整合及持續監測有連結；生成式 AI 微調與醫療部署是我需要補強、也很希望投入的方向。</p><button class="copy-btn" type="button">複製自介</button></div></div>
+    <div class="tab-panel" id="intro90" role="tabpanel"><div class="script" data-copy-block><p>您好，我是謝向嶸，今年取得國立臺灣海洋大學通訊與導航工程碩士，大學就讀國立勤益科技大學資訊工程系。</p><p>碩士研究是建立 S-100 動態海洋資料的品質監測與展示系統。我使用 Python 處理多種資料格式，設計 PostgreSQL 資料表與 Flask 唯讀 API，並建立 QGIS 檢視及完整資料驗證。研究完成 114 組資料組合的一致性檢查，也用獨立浮標觀測做外部比對。這讓我熟悉資料流、API、可追溯結果、例外處理與系統不能只靠畫面判斷正確的觀念。</p><p>我了解智慧醫療中心要做的是生成式 AI 模組、後端服務、院內系統整合、權限、日誌與部署，不只是聊天介面。我的 Python、PostgreSQL、API 和驗證經驗可先投入資料與後端層；我尚未做過正式 LLM 微調、推論叢集和醫療資訊系統整合，會誠實說明，並希望在團隊帶領下補足 Linux、Docker、RAG 評測與醫療資料治理。</p><button class="copy-btn" type="button">複製自介</button></div></div>
+    <div class="timer-box" role="group" aria-label="自介練習計時器"><div><div class="small subtle">口說計時</div><div class="timer-display" id="timerDisplay">00:30</div></div><div class="timer-actions"><button class="icon-btn" type="button" id="timerStart">開始</button><button class="icon-btn" type="button" id="timerReset">重設</button></div></div>
+  </section>
+
+  <section class="section" id="thesis"><p class="kicker">Project story</p><h2>把海洋資料論文講成 AI 工程能力</h2><div class="script" data-copy-block><p>我的論文不是訓練生成式 AI，而是建立動態海洋資料的品質監測系統。真正可轉移的能力有四個：第一，將多來源資料清理並對齊時間、位置和語意；第二，以 PostgreSQL 與 API 保存及查詢結果；第三，用固定樣本和外部觀測驗證系統；第四，保留限制與有號差值，避免把畫面看起來合理當成結果正確。</p><p>這和醫療 AI 的連結是，模型輸出也需要資料來源、權限、日誌、測試集、人工覆核與持續監測。我的現階段強項是資料與後端可靠性；模型微調和推論部署則是我希望在職務中補強的部分。</p><button class="copy-btn" type="button">複製專案介紹</button></div>
+    <details open><summary>被問「論文是不是靠 AI 做的」</summary><div class="detail-body"><p>我有使用 AI 協助找方向、整理程式和檢查文字，但研究問題、資料來源、方法選擇、數值核對和最後判讀由我負責。AI 產出不會直接成為結論，我會回到官方規格、原始資料、程式測試和實際輸出驗證。這也是我認為醫療 AI 必須建立評測、引用、權限和人工覆核的原因。</p></div></details>
+    <details><summary>作品要展示哪五張</summary><div class="detail-body"><ol><li>研究問題：品質結果難保存、查詢與重現。</li><li>系統架構：Python → PostgreSQL → Flask API → QGIS。</li><li>資料庫/API：固定查詢與唯讀角色。</li><li>驗證：114 組一致性與 11 站外部比對。</li><li>限制：資料語意、觀測範圍與不能過度宣稱。</li></ol></div></details>
+  </section>
+
+  <section class="section" id="technical"><p class="kicker">Written test</p><h2>筆試與技術題準備</h2><p class="section-intro"><span class="unknown">院方未公開筆試題型</span>，以下依職缺要求排序，不宣稱一定會考。</p>
+    <details open><summary>Python 最低範圍</summary><div class="detail-body"><ul><li>list/dict/set、函式、class 基礎、例外處理。</li><li>解析 JSON、去重、分組、排序與檔案處理。</li><li>requests/API、timeout、retry、logging。</li><li>寫出可讀函式，說明時間複雜度的基本概念。</li><li>測試正常、空值、錯誤輸入與邊界案例。</li></ul></div></details>
+    <details open><summary>SQL 最低範圍</summary><div class="detail-body"><ul><li>SELECT、WHERE、JOIN、GROUP BY、HAVING。</li><li>CTE、ROW_NUMBER、每組最新一筆。</li><li>NULL、重複列、一對多造成筆數膨脹。</li><li>transaction、index、主鍵與外鍵的用途。</li><li>醫療資料查詢需最小權限和操作紀錄。</li></ul></div></details>
+    <details><summary>RAG、微調與 Agent</summary><div class="detail-body"><table class="evidence-table"><tbody><tr><td>RAG</td><td>在推論前檢索外部知識，適合更新知識、提供引用與權限過濾。</td></tr><tr><td>Fine-tuning</td><td>改變模型行為或任務能力，不等於把最新院內知識硬塞進模型。</td></tr><tr><td>Agent</td><td>讓模型選擇工具和步驟；醫療情境要限制權限、schema、timeout、retry 和人工核准。</td></tr><tr><td>評測</td><td>固定測試集、引用正確率、拒答、任務成功率、延遲、成本與安全事件。</td></tr></tbody></table></div></details>
+    <details><summary>Linux、Docker 與部署</summary><div class="detail-body"><ul><li>process、port、環境變數、檔案權限和 log。</li><li>image、container、volume、network、health check。</li><li>區分訓練與推論；知道 GPU/VRAM、batch、quantization 影響即可。</li><li>部署要有版本、回滾、監測與敏感資訊管理。</li></ul></div></details>
+    <details><summary>醫療 AI 可靠性</summary><div class="detail-body"><ul><li>病歷與個資不得任意送到外部服務，遵循最小權限與用途限制。</li><li>輸入去識別化、輸出保留來源與版本、所有操作可稽核。</li><li>高風險建議需人工覆核，不讓模型直接取代臨床決策。</li><li>測試不只看平均正確率，也看錯誤類型、族群差異與失敗時處置。</li><li>prompt injection、資料外洩、越權工具呼叫都要有防護。</li></ul></div></details>
+  </section>
+
+  <section class="section" id="qa"><p class="kicker">Interview Q&amp;A</p><h2>高機率問題與回答方向</h2>
+    <details open><summary>你沒有 LLM 微調經驗，為什麼適合</summary><div class="detail-body"><p>我不會把自己說成已能獨立負責模型後訓練。我的直接優勢是 Python、PostgreSQL、API、資料流、log 和驗證，這些正是 AI 模組落地不可缺的工程層。我會先能貢獻資料與後端整合，同時用固定小模型、RAG 範例和 Docker 補齊推論部署，再在團隊指導下進入微調。</p></div></details>
+    <details><summary>如何降低醫療 AI 幻覺</summary><div class="detail-body"><p>先限制任務與資料範圍，使用經核准知識庫和權限過濾；要求來源引用並驗證引用是否真的支持答案；資料不足時拒答或轉人工；建立固定測試集和回歸測試；高風險輸出由醫療人員覆核；保存模型、prompt、檢索內容與操作日誌。</p></div></details>
+    <details><summary>API 要如何設計得可靠</summary><div class="detail-body"><p>先定義 schema、驗證輸入、清楚使用 HTTP 狀態碼；設定 timeout、有限 retry、idempotency 與 rate limit；敏感操作需要認證授權；錯誤訊息不洩漏敏感資料；保存 correlation ID、模型版本與關鍵 log，並提供 health check 和回滾。</p></div></details>
+    <details><summary>你怎麼使用 AI 工具</summary><div class="detail-body"><p>我把 AI 當成加速器，不當成證據來源。工作流程是先定義問題與驗收條件，讓 AI 提供候選方案，再讀程式、跑測試、比對原始資料與官方文件。涉及敏感資料時不直接上傳；所有修改保留版本與可回復性。</p></div></details>
+    <details><summary>能否接受一年一聘與輪班</summary><div class="detail-body"><p>不要立刻承諾。可回答：「我願意了解專案聘用方式，也重視這份工作的技術內容。想先確認 2026 年底後的續聘預算、評估標準、過往續聘比例，以及晚班、假日班與跨院支援的實際頻率，再做完整判斷。」</p></div></details>
+    <details><summary>期望薪資</summary><div class="detail-body"><p>公開資訊為月薪 63,000 元以上。可回答希望依公告起薪、實際技術責任、輪班與聘期制度討論；不需要主動報低於公告的數字。進一步確認固定薪、加班、年終、績效與續聘後調薪。</p></div></details>
+  </section>
+
+  <section class="section" id="ask"><p class="kicker">Questions to ask</p><h2>你要反問的問題</h2><ol class="question-list"><li><strong>第一個專案：</strong>新人前三個月會負責模型、RAG、後端 API，還是跨院安裝維運？</li><li><strong>模型與算力：</strong>目前使用哪些開源或商用模型、GPU 環境與推論框架？</li><li><strong>技術流程：</strong>是否使用 Git、code review、自動測試、模型評測集和版本回滾？</li><li><strong>資料治理：</strong>院內資料如何去識別、授權、稽核與隔離開發環境？</li><li><strong>團隊：</strong>工程師、臨床、資訊課與合作廠商如何分工？誰負責技術帶領？</li><li><strong>微調內容：</strong>職缺寫的微調與後訓練目前做到哪個階段，新人需要從零建置嗎？</li><li><strong>聘期：</strong>為何聘期先到 2026-12-31、續聘預算與評估標準、過往續聘情況？</li><li><strong>工時：</strong>日班、晚班、假日班及合作子院維運的頻率、加班與補休。</li><li><strong>薪資：</strong>63,000 元以上的核薪方式、試用期、年終與續聘調薪。</li></ol><label for="interviewNotes"><strong>面談答案速記</strong></label><textarea id="interviewNotes" placeholder="職務比例、技術棧、主管帶領、聘用方式、薪資與下一步……"></textarea><p class="small subtle">內容會保存在這支裝置的瀏覽器中。</p></section>
+
+  <section class="section" id="day"><p class="kicker">Interview day</p><h2>文件、筆試與面試流程</h2><div class="checklist" data-checklist="documents"><label class="check"><input type="checkbox" value="form"><span>院方應徵表填妥，貼 1 吋照片</span></label><label class="check"><input type="checkbox" value="resume"><span>履歷 1 份，另備 1 份以防需要</span></label><label class="check"><input type="checkbox" value="diploma"><span>畢業證書影本</span></label><label class="check"><input type="checkbox" value="cert"><span>專業證照影本；日檢 N2 可一併整理</span></label><label class="check"><input type="checkbox" value="pen"><span>黑藍筆、身分證件、手機與充電設備</span></label><label class="check"><input type="checkbox" value="portfolio"><span>離線可開啟 5 張論文專案摘要，不依賴網路</span></label><label class="check"><input type="checkbox" value="route"><span>12:40 左右抵達院區，預留找平安樓與電梯時間</span></label></div>
+    <details open><summary>預估流程</summary><div class="detail-body"><ol><li>12:40 前抵達，新竹馬偕平安樓 12 樓沙發區等候。</li><li>13:10 報到，繳交或核對文件。</li><li>先筆試；題型未公開，放慢速度讀清楚輸入輸出與邊界。</li><li>正式面試使用 30/90 秒自介，再依追問說專案。</li><li>問清楚聘期、輪班、實際 AI 開發比例與下一步。</li></ol></div></details>
+    <details><summary>20 秒收尾</summary><div class="detail-body"><div class="script" data-copy-block><p>謝謝今天說明智慧醫療中心的工作。我對把生成式 AI 做成可控、可測、可追蹤的院內系統很有興趣。我的強項是 Python、資料庫、API、資料流與驗證；模型微調和醫療部署仍需補強，但我願意依團隊技術棧準備。如果有下一階段，也很願意補交作品或完成進一步測驗。</p><button class="copy-btn" type="button">複製收尾</button></div></div></details>
+  </section>
+
+  <section class="section" id="decision">
+    <p class="kicker">After interview</p><h2>面談後立即評估</h2>
+    <p class="section-intro">每項 1–5 分。分數不是替你決定，而是避免只因公司名稱或錄取消息忽略職務內容。</p>
+    <div class="score-row"><div class="score-head"><span>實際AI開發與後端比例</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div><div class="score-row"><div class="score-head"><span>技術主管、算力與工程流程</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div><div class="score-row"><div class="score-head"><span>一年一聘續約可接受度</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div><div class="score-row"><div class="score-head"><span>輪班、維運與跨院支援負擔</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div><div class="score-row"><div class="score-head"><span>薪資、學習及整體發展</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div>
+    <div class="score-total"><div>目前總分：<strong id="scoreTotal">15 / 25</strong></div><div id="scoreAdvice" class="small">資訊還不夠，先把面談答案補完整。</div></div>
+    <div class="callout danger"><strong>需特別留意</strong><ul><li>以 63K 吸引人，但實際大多是安裝、客服或臨時支援，缺少開發與 code review。</li><li>聘期至 2026-12-31，卻不說續聘標準、預算來源或歷年續聘情況。</li><li>要求晚班、假日班或跨院待命，但沒有輪班頻率、加班與補休制度。</li><li>直接讓新人接觸醫療敏感資料，卻沒有權限、去識別、稽核與資安流程。</li><li>宣稱做 AI，實際沒有測試集、模型監測、人工覆核或失敗處理。</li></ul></div>
+  </section>
+  <section class="section" id="sources"><p class="kicker">Evidence</p><h2>查核來源</h2><ol class="source-list"><li><a href="https://www.104.com.tw/job/8umk8" target="_blank" rel="noopener">104：智慧醫療中心專案研究助理（程式設計師）</a></li><li><a href="https://www.1111.com.tw/job/132155556/" target="_blank" rel="noopener">1111：職缺工作內容、薪資與聘期</a></li><li><a href="https://www.hc.mmh.org.tw/departmain3.php?id=1266" target="_blank" rel="noopener">新竹馬偕官方：智慧醫療中心</a></li><li><a href="https://www.hc.mmh.org.tw/child/news_view.php?id=824" target="_blank" rel="noopener">新竹馬偕官方：地端生成式 AI 系統</a></li></ol></section></main><footer class="footer"><strong>這場不是比誰最會講 AI 名詞，而是看你能否把 AI 做成可控、可測、可追蹤的醫療系統。</strong><br>誠實說明 LLM 微調缺口，讓 Python、資料庫、API、驗證與可靠性成為你的主證據。</footer></div><div class="toast" id="toast" role="status" aria-live="polite"></div><script>
+    (() => {
+      const toast = document.getElementById('toast');
+      let toastTimer;
+      const showToast = (message) => {
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+      };
+
+      const target = new Date('2026-08-27T13:10:00+08:00');
+      const countdown = document.getElementById('countdown');
+      const updateCountdown = () => {
+        const diff = target.getTime() - Date.now();
+        if (diff <= -60 * 60 * 1000) {
+          countdown.textContent = '本次面談時段已結束，記得完成面試後評估與感謝訊息。';
+          return;
+        }
+        if (diff <= 0) {
+          countdown.textContent = '面談進行中：放慢語速，先聽懂問題再回答。';
+          return;
+        }
+        const totalMinutes = Math.floor(diff / 60000);
+        const days = Math.floor(totalMinutes / 1440);
+        const hours = Math.floor((totalMinutes % 1440) / 60);
+        const minutes = totalMinutes % 60;
+        countdown.textContent = `距離面試還有 ${days ? days + ' 天 ' : ''}${hours} 小時 ${minutes} 分鐘`;
+      };
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+
+      document.querySelectorAll('.segment').forEach((button) => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.segment').forEach((item) => {
+            item.classList.remove('active');
+            item.setAttribute('aria-selected', 'false');
+          });
+          document.querySelectorAll('.tab-panel').forEach((panel) => panel.classList.remove('active'));
+          button.classList.add('active');
+          button.setAttribute('aria-selected', 'true');
+          document.getElementById(button.dataset.tab).classList.add('active');
+          resetTimer(button.dataset.tab === 'intro30' ? 30 : 90);
+        });
+      });
+
+      const fallbackCopy = (text) => {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      };
+
+      document.querySelectorAll('.copy-btn').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const block = button.closest('[data-copy-block]');
+          const text = Array.from(block.querySelectorAll('p')).map((p) => p.innerText).join('\n\n');
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(text);
+            } else {
+              fallbackCopy(text);
+            }
+            const old = button.textContent;
+            button.textContent = '已複製';
+            button.classList.add('copied');
+            showToast('內容已複製');
+            setTimeout(() => {
+              button.textContent = old;
+              button.classList.remove('copied');
+            }, 1400);
+          } catch {
+            showToast('瀏覽器未允許複製，請長按文字選取');
+          }
+        });
+      });
+
+      let timerSeconds = 30;
+      let timerInterval = null;
+      const timerDisplay = document.getElementById('timerDisplay');
+      const timerStart = document.getElementById('timerStart');
+      const renderTimer = () => {
+        const minutes = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+        const seconds = String(timerSeconds % 60).padStart(2, '0');
+        timerDisplay.textContent = `${minutes}:${seconds}`;
+      };
+      const resetTimer = (seconds = document.querySelector('.segment.active').dataset.tab === 'intro30' ? 30 : 90) => {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerSeconds = seconds;
+        timerStart.textContent = '開始';
+        renderTimer();
+      };
+      timerStart.addEventListener('click', () => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          timerStart.textContent = '繼續';
+          return;
+        }
+        if (timerSeconds <= 0) resetTimer();
+        timerStart.textContent = '暫停';
+        timerInterval = setInterval(() => {
+          timerSeconds -= 1;
+          renderTimer();
+          if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerStart.textContent = '重來';
+            showToast('時間到，檢查是否說到重點');
+          }
+        }, 1000);
+      });
+      document.getElementById('timerReset').addEventListener('click', () => resetTimer());
+      renderTimer();
+
+      document.querySelectorAll('[data-checklist]').forEach((list) => {
+        const key = `mackay-ai-${list.dataset.checklist}`;
+        const saved = JSON.parse(localStorage.getItem(key) || '{}');
+        list.querySelectorAll('input[type="checkbox"]').forEach((input) => {
+          input.checked = Boolean(saved[input.value]);
+          input.addEventListener('change', () => {
+            saved[input.value] = input.checked;
+            localStorage.setItem(key, JSON.stringify(saved));
+          });
+        });
+      });
+
+      const notes = document.getElementById('interviewNotes');
+      notes.value = localStorage.getItem('mackay-ai-interview-notes') || '';
+      notes.addEventListener('input', () => localStorage.setItem('mackay-ai-interview-notes', notes.value));
+
+      const scoreInputs = Array.from(document.querySelectorAll('[data-score]'));
+      const scoreTotal = document.getElementById('scoreTotal');
+      const scoreAdvice = document.getElementById('scoreAdvice');
+      const updateScore = () => {
+        let total = 0;
+        scoreInputs.forEach((input) => {
+          const value = Number(input.value);
+          total += value;
+          input.parentElement.querySelector('output').textContent = value;
+        });
+        scoreTotal.textContent = `${total} / 25`;
+        scoreAdvice.textContent = total >= 21
+          ? '整體條件強，可認真爭取並確認正式 offer。'
+          : total >= 17
+            ? '具發展可能，但先釐清低分項目再決定。'
+            : total >= 13
+              ? '條件目前普通，先把低分項目的資訊問清楚。'
+              : '風險偏高，別只因職稱或錄取就急著接受。';
+      };
+      scoreInputs.forEach((input) => input.addEventListener('input', updateScore));
+      updateScore();
+    })();
+  </script><script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js"));}</script></body></html>

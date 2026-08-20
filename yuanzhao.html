@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive"><link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#153c38">
+  <link rel="icon" href="data:,">
+  <title>元照智能面試準備｜謝向嶸</title>
+  <style>
+    :root {
+      --ink: #172321;
+      --muted: #5d6a67;
+      --paper: #f7f8f5;
+      --white: #ffffff;
+      --line: #d5ddd8;
+      --teal: #0b675e;
+      --teal-dark: #153c38;
+      --teal-soft: #e8f3ef;
+      --amber: #a74d10;
+      --amber-soft: #fff3e6;
+      --red: #a63c35;
+      --red-soft: #fcecea;
+      --blue: #285f8f;
+      --blue-soft: #edf4fa;
+      --shadow: 0 8px 24px rgba(23, 35, 33, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.68;
+      letter-spacing: 0;
+    }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: var(--teal); text-underline-offset: 3px; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 10px; font-size: 2rem; line-height: 1.22; }
+    h2 { margin-bottom: 12px; font-size: 1.34rem; line-height: 1.35; }
+    h3 { margin-bottom: 8px; font-size: 1.02rem; line-height: 1.45; }
+    ul, ol { margin: 8px 0 0; padding-left: 1.25rem; }
+    li + li { margin-top: 6px; }
+    code {
+      padding: 1px 4px;
+      border-radius: 3px;
+      background: #eef1ee;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+
+    .shell { max-width: 820px; margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 8px max(12px, env(safe-area-inset-left));
+      background: rgba(247, 248, 245, 0.96);
+      border-bottom: 1px solid var(--line);
+      scrollbar-width: none;
+      backdrop-filter: blur(10px);
+    }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 28px 18px 20px;
+      color: var(--white);
+      background: var(--teal-dark);
+    }
+    .hero .eyebrow {
+      margin-bottom: 6px;
+      color: #bfe3d9;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .hero .role {
+      margin-bottom: 18px;
+      color: #e9f4f1;
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+    .event-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      overflow: hidden;
+      margin: 0 -18px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.16);
+    }
+    .event-item { padding: 12px 18px; background: var(--teal-dark); }
+    .event-item small { display: block; color: #bfe3d9; font-size: 0.75rem; }
+    .event-item strong { display: block; margin-top: 2px; font-size: 0.96rem; }
+    .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-primary { color: var(--teal-dark); background: #d8eee8; }
+    .btn-secondary { color: var(--white); border-color: rgba(255,255,255,0.4); background: transparent; }
+    .countdown {
+      margin-top: 12px;
+      color: #dcece8;
+      font-size: 0.84rem;
+      text-align: center;
+    }
+
+    .visual {
+      position: relative;
+      margin: 0;
+      background: #111;
+    }
+    .visual img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .visual figcaption {
+      padding: 10px 18px;
+      color: #e7ecea;
+      background: #23312f;
+      font-size: 0.82rem;
+    }
+
+    main { background: var(--paper); }
+    .section { padding: 28px 18px; scroll-margin-top: 62px; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .section-intro { margin-bottom: 18px; color: var(--muted); }
+    .kicker {
+      margin-bottom: 5px;
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .subtle { color: var(--muted); font-size: 0.9rem; }
+    .small { font-size: 0.82rem; }
+
+    .status-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 14px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    .tag.confirmed { color: #135941; background: #dff1e7; }
+    .tag.ask { color: #88420e; background: #ffead3; }
+    .tag.inference { color: #27587f; background: #e4eff8; }
+
+    .quick-route { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .quick-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .quick-step time { color: var(--teal); font-weight: 800; }
+    .quick-step strong { display: block; }
+    .quick-step span { color: var(--muted); font-size: 0.88rem; }
+
+    .fact-grid { display: grid; gap: 10px; }
+    .fact {
+      padding: 14px;
+      border-left: 4px solid var(--teal);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .fact.amber { border-left-color: var(--amber); }
+    .fact.blue { border-left-color: var(--blue); }
+    .fact p:last-child { margin-bottom: 0; }
+
+    .split-list { display: grid; gap: 10px; }
+    .split-item { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .split-item:first-child { border-top: 1px solid var(--line); }
+    .split-item strong { display: block; margin-bottom: 3px; }
+
+    .callout {
+      margin: 16px 0;
+      padding: 14px;
+      border: 1px solid #efd2b8;
+      border-radius: 6px;
+      background: var(--amber-soft);
+    }
+    .callout.info { border-color: #cbddea; background: var(--blue-soft); }
+    .callout.danger { border-color: #eccac7; background: var(--red-soft); }
+    .callout p:last-child { margin-bottom: 0; }
+
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary {
+      position: relative;
+      padding: 14px 34px 14px 0;
+      cursor: pointer;
+      font-weight: 800;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 4px;
+      top: 11px;
+      color: var(--teal);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    details[open] summary::after { content: "−"; }
+    .detail-body { padding: 0 0 16px; }
+
+    .segments {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      margin: 12px 0;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #e9eeea;
+    }
+    .segment {
+      min-height: 40px;
+      border: 0;
+      border-radius: 5px;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .segment.active { color: var(--white); background: var(--teal-dark); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .script {
+      position: relative;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .script p { margin-bottom: 12px; }
+    .script p:last-of-type { margin-bottom: 0; }
+    .copy-btn {
+      margin-top: 14px;
+      padding: 7px 10px;
+      border: 1px solid var(--teal);
+      border-radius: 5px;
+      color: var(--teal);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+    .copy-btn.copied { color: var(--white); background: var(--teal); }
+
+    .timer-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #f0f3f0;
+    }
+    .timer-display { font-family: Consolas, monospace; font-size: 1.45rem; font-weight: 800; }
+    .timer-actions { display: flex; gap: 6px; }
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .evidence-table { width: 100%; border-collapse: collapse; }
+    .evidence-table th, .evidence-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .evidence-table th { color: var(--muted); font-size: 0.78rem; }
+    .evidence-table td:first-child { width: 33%; font-weight: 800; }
+
+    .qa-answer { padding: 12px; border-left: 3px solid var(--teal); background: var(--white); }
+    .qa-answer p:last-child { margin-bottom: 0; }
+    .avoid { margin-top: 8px; color: var(--red); font-size: 0.82rem; }
+
+    .question-list { counter-reset: ask; padding: 0; list-style: none; }
+    .question-list li {
+      position: relative;
+      margin: 0;
+      padding: 12px 0 12px 42px;
+      border-bottom: 1px solid var(--line);
+    }
+    .question-list li::before {
+      counter-increment: ask;
+      content: counter(ask);
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .checklist { display: grid; gap: 4px; }
+    .check {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      align-items: start;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--teal); }
+    .check input:checked + span { color: var(--muted); text-decoration: line-through; }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      background: var(--white);
+      resize: vertical;
+    }
+
+    .score-row { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .score-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+    .score-head output { min-width: 22px; color: var(--teal); font-weight: 800; text-align: right; }
+    input[type="range"] { width: 100%; accent-color: var(--teal); }
+    .score-total { margin-top: 14px; padding: 14px; color: var(--white); background: var(--teal-dark); }
+    .score-total strong { font-size: 1.25rem; }
+
+    .source-list { padding-left: 1.15rem; }
+    .source-list li + li { margin-top: 9px; }
+    .source-list a { word-break: break-word; }
+
+    .footer {
+      padding: 24px 18px calc(24px + env(safe-area-inset-bottom));
+      color: #dbe8e4;
+      background: var(--teal-dark);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(18px + env(safe-area-inset-bottom));
+      z-index: 50;
+      max-width: calc(100vw - 32px);
+      padding: 10px 14px;
+      border-radius: 6px;
+      color: var(--white);
+      background: #111b19;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 10px);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (min-width: 700px) {
+      h1 { font-size: 2.45rem; }
+      .hero, .section { padding-left: 32px; padding-right: 32px; }
+      .event-grid { grid-template-columns: repeat(3, 1fr); margin-left: -32px; margin-right: -32px; }
+      .event-item { padding-left: 32px; padding-right: 20px; }
+      .fact-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-actions { max-width: 420px; }
+      .visual img { max-height: 390px; }
+    }
+
+    @media print {
+      .topbar, .hero-actions, .copy-btn, .timer-box, .toast { display: none !important; }
+      body { background: var(--white); font-size: 11pt; }
+      .shell { max-width: none; }
+      .hero { color: var(--ink); background: var(--white); border-bottom: 2px solid var(--ink); }
+      .hero .eyebrow, .hero .role, .countdown { color: var(--ink); }
+      .event-grid { background: var(--line); }
+      .event-item { color: var(--ink); background: var(--white); }
+      .event-item small { color: var(--muted); }
+      .visual { display: none; }
+      .section { break-inside: avoid; }
+      details > .detail-body { display: block; }
+      details summary::after { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="面試準備導覽">
+    <a href="#quick">速讀</a>
+    <a href="#company">公司</a>
+    <a href="#role">職務</a>
+    <a href="#intro">自介</a>
+    <a href="#thesis">論文</a>
+    <a href="#technical">技術</a>
+    <a href="#qa">問答</a>
+    <a href="#ask">反問</a>
+    <a href="#day">明日</a>
+  </nav>
+
+  <div class="shell">
+    <header class="hero" id="top">
+      <p class="eyebrow">謝向嶸｜2026-08-21 面試準備</p>
+      <h1>元照智能</h1>
+      <p class="role">機器人軟硬體工程師</p>
+
+      <div class="event-grid" aria-label="面試資訊">
+        <div class="event-item">
+          <small>時間</small>
+          <strong>8 月 21 日 14:00–15:00</strong>
+        </div>
+        <div class="event-item">
+          <small>地點</small>
+          <strong>台北市中山區松江路 42 號 5 樓 503 室</strong>
+        </div>
+        <div class="event-item">
+          <small>聯絡資訊</small>
+          <strong>請查看手機通訊錄</strong>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#quick">開始複習</a>
+        <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=%E5%8F%B0%E5%8C%97%E5%B8%82%E4%B8%AD%E5%B1%B1%E5%8D%80%E6%9D%BE%E6%B1%9F%E8%B7%AF42%E8%99%9F" target="_blank" rel="noopener">開啟地圖</a>
+      </div>
+      <p class="countdown" id="countdown">正在計算距離面試時間</p>
+    </header>
+
+    <figure class="visual">
+      <a href="https://youtu.be/yM8qDEQ5gak" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/yM8qDEQ5gak/hqdefault.jpg" alt="ANYmal 在電力與公用設施進行自主巡檢的影片畫面">
+      </a>
+      <figcaption>公司面試前指定觀看：ANYmal 在電力與公用設施的自主巡檢應用</figcaption>
+    </figure>
+
+    <main>
+      <section class="section" id="quick">
+        <p class="kicker">20 分鐘速讀</p>
+        <h2>明天出門前只看這裡</h2>
+        <div class="quick-route">
+          <div class="quick-step"><time>0–3</time><div><strong>公司在做什麼</strong><span>醫療 IoMT、即時資料整合、機器人 RaaS 與場域導入。</span></div></div>
+          <div class="quick-step"><time>3–6</time><div><strong>職務真正範圍</strong><span>開發、整合、AI、客戶諮詢、現場安裝維護的混合職務。</span></div></div>
+          <div class="quick-step"><time>6–10</time><div><strong>自我介紹</strong><span>練 30 秒與 90 秒版本，各說兩次，不背每個字。</span></div></div>
+          <div class="quick-step"><time>10–14</time><div><strong>論文與專案</strong><span>問題、你的工作、量化結果、與機器人職務的連結。</span></div></div>
+          <div class="quick-step"><time>14–18</time><div><strong>常見問答</strong><span>為何轉機器人、缺乏硬體經驗、AI 使用、客戶問題處理。</span></div></div>
+          <div class="quick-step"><time>18–20</time><div><strong>反問與物品</strong><span>確認工作比例與產品線，檢查履歷、簡報、交通與電量。</span></div></div>
+        </div>
+        <div class="callout">
+          <strong>今晚最重要的一句：</strong>
+          <p>我不是把自己包裝成已經會 ANYmal、ROS2 或 DDS 的機器人工程師，而是能把資料、軟體、API、資料庫與檢視端串起來，並願意把這套整合與除錯能力延伸到實體設備場域的人。</p>
+        </div>
+      </section>
+
+      <section class="section" id="company">
+        <p class="kicker">Company</p>
+        <h2>先把公司講對</h2>
+        <p class="section-intro">回答「你對我們公司了解多少」時，先說已確認的事，再說你想了解的部分。</p>
+
+        <div class="status-row">
+          <span class="tag confirmed">已確認</span>
+          <span class="tag inference">合理推測</span>
+          <span class="tag ask">面試確認</span>
+        </div>
+
+        <div class="fact-grid">
+          <article class="fact">
+            <h3>公司定位</h3>
+            <p>元照智能是一家系統整合公司，官方網站以醫療物聯網 IoMT 與機器人即服務 RaaS 為兩個主要方向。</p>
+          </article>
+          <article class="fact blue">
+            <h3>資料與通訊</h3>
+            <p>醫療平台強調設備資料收集、即時交換、服務叢集與 DDS；機器人方案則提到 API、SDK 與邊緣雲端協作。</p>
+          </article>
+          <article class="fact">
+            <h3>團隊規模</h3>
+            <p>104 公司頁標示約 10 人。小型團隊通常意味著工作範圍較廣，也更需要確認帶領方式與職責邊界。</p>
+          </article>
+          <article class="fact amber">
+            <h3>這次可能的產品線</h3>
+            <p>邀請方特別傳送 ANYmal 工業巡檢影片，推測本職缺可能涉及機器人導入；但是否也支援醫療 IoMT，必須當面確認。</p>
+          </article>
+        </div>
+
+        <details open>
+          <summary>公司指定影片，你要看懂什麼</summary>
+          <div class="detail-body">
+            <ul>
+              <li>ANYmal 的重點不是展示動作，而是自動執行例行巡檢。</li>
+              <li>使用情境是電力、公用設施與其他危險或不易進入的區域。</li>
+              <li>可搭配熱影像、視覺檢查、氣體偵測與 3D 資料收集。</li>
+              <li>應用價值是提高設備可用時間、降低人員暴露風險，並保存可追蹤的巡檢結果。</li>
+            </ul>
+            <div class="script" data-copy-block>
+              <h3>面試時可以這樣說</h3>
+              <p>我看完影片後，注意到 ANYmal 的價值不只是自主移動，而是把例行巡檢、感測器資料與後續判讀整合成一套可持續運作的流程。像熱影像、氣體或 3D 資料，最後都需要可靠地傳送、保存、查詢與追蹤。這和我過去做資料處理、API、資料庫與品質驗證的經驗有連結。我也想進一步了解，這個職務目前主要負責 ANYmal 的哪些整合工作。</p>
+              <button class="copy-btn" type="button">複製這段</button>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>「你對元照智能了解多少」完整回答</summary>
+          <div class="detail-body">
+            <div class="script" data-copy-block>
+              <p>我從貴公司網站與職缺資訊了解到，元照智能主要投入醫療 IoMT 與機器人 RaaS，核心不只是銷售單一設備，而是把設備、即時資料交換、邊緣端與應用服務整合到實際場域。醫療端提到 RTI Connext DDS 與病床旁資料整合，機器人端則包含 ANYmal、API、SDK 與巡檢應用。您傳給我的影片也顯示，機器人的使用價值在於自動執行例行巡檢、降低人員進入危險區域的需求，並將感測資料轉成可追蹤的檢查結果。我目前想進一步確認的是，這個職務主要服務機器人產品線、醫療 IoMT，還是兩邊都會接觸。</p>
+              <button class="copy-btn" type="button">複製這段</button>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="role">
+        <p class="kicker">Role</p>
+        <h2>這份工作不是純軟體職</h2>
+        <p class="section-intro">104 已列出的內容可分成四條工作線。面試的核心任務，是確認四者的實際比例。</p>
+
+        <div class="split-list">
+          <div class="split-item"><strong>1. 軟硬體整合開發</strong><span class="subtle">機器人、感測器、通訊、應用程式與後端服務之間的整合。</span></div>
+          <div class="split-item"><strong>2. 機器人 AI 加值</strong><span class="subtle">可能包含資料判讀、任務流程或 AI 服務串接，但職缺未寫明模型與工具。</span></div>
+          <div class="split-item"><strong>3. 客戶技術諮詢</strong><span class="subtle">說明產品、釐清需求、回覆應用問題與處理客訴。</span></div>
+          <div class="split-item"><strong>4. 現場安裝與售後</strong><span class="subtle">必要時到客戶端安裝、檢修設備、例行拜訪與追蹤產品狀態。</span></div>
+        </div>
+
+        <div class="callout danger">
+          <strong>明天一定要確認</strong>
+          <p>職稱雖是工程師，但工作可能從開發到售後都包含。不要只問「會不會寫程式」，要問一個月內開發、測試、現場服務與客戶溝通各占多少時間。</p>
+        </div>
+
+        <h3>你的適配證據</h3>
+        <table class="evidence-table">
+          <thead><tr><th>職務需求</th><th>你可以提出的證據</th></tr></thead>
+          <tbody>
+            <tr><td>系統整合</td><td>將 NetCDF、HDF5、PostgreSQL、REST API 與 QGIS 串成可回查的品質監測流程。</td></tr>
+            <tr><td>資料與 AI</td><td>做過 399,930 筆交通資料分析，模型 MAE 6.81 km/h、R² 0.725；知道模型之外仍需資料清理與驗證。</td></tr>
+            <tr><td>除錯驗證</td><td>處理時間、空間、格式與單位一致性，並以 114 組資料組合及外部浮標資料驗證。</td></tr>
+            <tr><td>技術溝通</td><td>能將複雜資料流程整理成論文、圖表與 QGIS 圖層，說明問題、證據及限制。</td></tr>
+            <tr><td>現階段缺口</td><td>尚無 ANYmal、ROS2、DDS 與實體設備導入經驗，需確認公司是否提供訓練與技術帶領。</td></tr>
+          </tbody>
+        </table>
+
+        <details>
+          <summary>如何自然地詢問職務範圍</summary>
+          <div class="detail-body">
+            <div class="script" data-copy-block>
+              <p>我從職缺內容理解，這個角色同時包含機器人軟硬體整合、AI 加值、客戶技術諮詢及現場安裝維護。想請教以目前團隊的實際安排來看，這四部分大約各占多少時間？新進人員前三個月通常會先從哪一部分開始？</p>
+              <button class="copy-btn" type="button">複製問題</button>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="intro">
+        <p class="kicker">Self introduction</p>
+        <h2>自我介紹</h2>
+        <p class="section-intro">記住四個節點：學歷背景、做過什麼、你擅長什麼、為何來這裡。不要逐字硬背。</p>
+
+        <div class="segments" role="tablist" aria-label="自介長度">
+          <button class="segment active" type="button" role="tab" aria-selected="true" data-tab="intro30">30 秒版</button>
+          <button class="segment" type="button" role="tab" aria-selected="false" data-tab="intro90">90 秒版</button>
+        </div>
+
+        <div class="tab-panel active" id="intro30" role="tabpanel">
+          <div class="script" data-copy-block>
+            <p>您好，我是謝向嶸，今年六月取得海大通訊與導航工程碩士，大學就讀勤益資工。碩士研究中，我使用 Python、PostgreSQL、Flask 與 QGIS 建立海洋資料品質監測系統，完成資料處理、資料庫、API 與地圖整合。我的強項是把不同資料與系統串起來，並用測試定位問題。我希望把這些能力延伸到機器人整合與實際場域應用。</p>
+            <button class="copy-btn" type="button">複製自介</button>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="intro90" role="tabpanel">
+          <div class="script" data-copy-block>
+            <p>您好，我是謝向嶸，今年六月取得國立臺灣海洋大學通訊與導航工程碩士學位，大學就讀國立勤益科技大學資訊工程系。</p>
+            <p>碩士研究是建立 S-100 動態海洋資料的品質監測與展示系統。我使用 Python 處理 NetCDF、HDF5 與 GeoJSON，並以 PostgreSQL 保存結果、Flask 提供唯讀 API，再透過 QGIS 顯示空間分布。研究期間完成 114 組日期與預報時距的一致性檢查，也使用 11 個氣象署浮標站進行外部比對。這個過程讓我累積跨格式資料處理、系統整合、除錯與驗證的經驗。</p>
+            <p>我看到這份職務同時包含機器人軟硬體整合、AI 加值與客戶場域問題處理，和我想發展的系統整合方向很接近。目前我還沒有 ANYmal、ROS2 或 DDS 的實務導入經驗，但我已先了解基本架構，也願意從產品、通訊與現場測試開始補足，希望能把既有的軟體與資料能力延伸到實體機器人系統。</p>
+            <button class="copy-btn" type="button">複製自介</button>
+          </div>
+        </div>
+
+        <div class="timer-box" aria-label="自介練習計時器">
+          <div>
+            <div class="small subtle">口說計時</div>
+            <div class="timer-display" id="timerDisplay">00:30</div>
+          </div>
+          <div class="timer-actions">
+            <button class="icon-btn" type="button" id="timerStart" title="開始或暫停">開始</button>
+            <button class="icon-btn" type="button" id="timerReset" title="重設">重設</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="thesis">
+        <p class="kicker">Project story</p>
+        <h2>論文怎麼講才像工程能力</h2>
+        <p class="section-intro">不要從 S-100 規格歷史講起。先講問題，再講你做的系統、結果與職務連結。</p>
+
+        <div class="script" data-copy-block>
+          <h3>60 秒論文版</h3>
+          <p>我的碩士研究處理的是 S-111 海流與 S-104 水位這類動態海洋資料。原本不同日期、時間、預報時距與位置的品質結果不容易保存和回查，因此我建立一套從資料轉換、時空配對、誤差計算到資料庫、API 與 QGIS 展示的流程。</p>
+          <p>我主要負責 Python 資料處理、PostgreSQL 資料設計、Flask 唯讀 API、QGIS 圖層呈現，以及數值與資料完整性驗證。最後完成 42 個目標日、114 組日期與預報時距的一致性檢查，並用 11 個氣象署浮標站做有限外部比對。</p>
+          <p>這個研究和機器人工作的連結，是我已經有把多種資料來源、後端服務與檢視端串成完整流程的經驗，也知道如何用紀錄、測試和外部資料確認系統不是只有表面上能跑。</p>
+          <button class="copy-btn" type="button">複製論文介紹</button>
+        </div>
+
+        <details open>
+          <summary>被追問「你本人到底做了什麼」</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>我負責把研究需求轉成資料流程，包括來源資料解析、時間與空間配對、誤差計算、資料庫欄位、API 查詢和 QGIS 圖層呈現，也反覆核對輸出數值與原始資料。遇到格式、單位或基準不一致時，我會先找來源定義，再用小樣本實算與全資料檢查確認。</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>被追問「最難的問題是什麼」</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>最難的不是單一公式，而是確保不同檔案代表同一有效時間、同一位置與同一物理意義。我的做法是先建立明確索引與資料字典，再用已知樣本逐筆重算，最後做完整資料集的一致性檢查。這讓我學會先確認資料語意，再處理程式結果。</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>被問到「論文是不是靠 AI 做的」</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>我有使用 AI 協助查找方向、整理程式與檢查文字，但研究問題、資料來源、方法選擇、數值核對與最後判讀由我負責。AI 產出的內容不會直接當成結論，我會回到原始資料、官方規格、程式測試與實際輸出驗證。我也能說明每一個模組的輸入、輸出、限制和曾經修正的問題。</p>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="technical">
+        <p class="kicker">Technical essentials</p>
+        <h2>今晚技術補強重點</h2>
+        <p class="section-intro">目標是能說清楚基本概念與除錯流程，不是假裝已有產品實戰經驗。</p>
+
+        <details open>
+          <summary>DDS 是什麼</summary>
+          <div class="detail-body">
+            <ul>
+              <li>Data Distribution Service，是即時系統常用的資料中心式發布／訂閱通訊標準。</li>
+              <li>發布者送出資料，訂閱者依主題接收，不必彼此緊密綁定。</li>
+              <li>QoS 可控制可靠度、期限、歷史資料、持久性等傳輸行為。</li>
+              <li>適合多設備、多節點、低延遲且需要可靠交換狀態資料的系統。</li>
+            </ul>
+            <p class="subtle">安全答法：我目前理解概念與使用情境，尚未在實際設備上部署 RTI Connext DDS。</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>ROS 2 與 DDS 的關係</summary>
+          <div class="detail-body">
+            <ul>
+              <li>ROS 2 以 node 組成系統，常透過 topic 傳送持續資料，service 處理短請求，action 處理較長任務。</li>
+              <li>ROS 2 的底層通訊通常使用 DDS 實作，但 ROS 2 提供更貼近機器人開發的抽象。</li>
+              <li>面試不需要假裝熟練，只要能說明你會從 topic、訊息格式、QoS、log 與節點連線開始查問題。</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>DDS 和 REST API 有何不同</summary>
+          <div class="detail-body">
+            <table class="evidence-table">
+              <tbody>
+                <tr><td>REST</td><td>常見為請求／回應，適合查詢、管理與一般 Web 服務。</td></tr>
+                <tr><td>DDS</td><td>發布／訂閱、即時資料流、多節點自動探索與細緻 QoS。</td></tr>
+                <tr><td>你的連結</td><td>你已有 REST 與資料庫經驗，可說明會把即時設備資料層與查詢服務層分開理解。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <details>
+          <summary>現場設備故障時的處理順序</summary>
+          <div class="detail-body">
+            <ol>
+              <li>先確認人員安全、設備風險、影響範圍與是否需要停止操作。</li>
+              <li>取得時間、環境、操作步驟、錯誤訊息與是否可穩定重現。</li>
+              <li>檢查電源、線材、網路、IP、連線狀態與必要的服務程序。</li>
+              <li>查看裝置、應用程式與後端 log，區分硬體、網路、驅動或軟體層。</li>
+              <li>建立最小測試，替換單一元件或關閉非必要模組，逐層隔離問題。</li>
+              <li>提出可回復的暫時方案，完整記錄修改，必要時升級給原廠或資深工程師。</li>
+              <li>結案後補上根因、處置與預防方式，讓同一問題可以被快速回查。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>可能被確認的基礎能力</summary>
+          <div class="detail-body">
+            <ul>
+              <li>Python：JSON、API、例外處理、logging、資料處理。</li>
+              <li>C/C++：如實說明目前程度，不把課程經驗說成產品開發經驗。</li>
+              <li>Linux：檔案、程序、網路、權限與 log 的基本查找方式。</li>
+              <li>網路：IP、port、TCP/UDP、ping、連線測試與防火牆概念。</li>
+              <li>Git：版本、分支、commit、diff 與回溯修改。</li>
+              <li>Docker：容器、映像檔、port、volume 與 log 的基本概念。</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="qa">
+        <p class="kicker">Interview Q&amp;A</p>
+        <h2>高機率問題與回答方向</h2>
+
+        <details open>
+          <summary>為什麼想應徵元照智能與機器人職務</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>我想發展的不是單一資料分析，而是把設備資料、後端服務、API 與使用介面整合成真正能在場域運作的系統。元照的 IoMT 與機器人 RaaS 都需要跨設備、通訊、資料與應用整合，和我碩士研究累積的能力有延續性。機器人部分是新的領域，但正好能讓我把軟體與資料能力延伸到實體系統。</p>
+              <p class="avoid">避免只說：因為 AI 和機器人很有前景。</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>你沒有機器人或硬體經驗，為什麼我們要用你</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>我會誠實說，目前沒有 ANYmal、ROS2 或 DDS 的場域導入經驗。但我具備資工基礎，也做過 Python、資料庫、API、空間資料與系統整合，習慣從規格、log、資料流與最小可重現案例定位問題。這些是進入機器人整合時可直接轉移的能力。如果加入，我會優先補齊產品架構、Linux 與網路、DDS/ROS2 資料流和現場操作規範，並透過實際任務與 code review 加速上手。</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>你願意做客戶服務與現場安裝嗎</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>我可以接受與客戶釐清問題及必要的現場支援，因為系統整合很多問題只有在真實環境才能確認。我會先了解安全要求、保留修改紀錄，並把現場現象轉成可重現的技術資訊。不過我也希望確認職務中開發、現場服務與客戶支援的比例，以及出勤與加班安排，確保彼此對角色期待一致。</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>客戶很急、又無法重現問題，你會怎麼做</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>我會先確認是否有人員或設備安全風險，再用時間、設備版本、網路環境、操作步驟與錯誤訊息縮小範圍。如果暫時無法重現，我會先提供不破壞資料且可回復的處置，說明目前已知與未知，並收集 log 或監測資料。後續建立最小案例、逐層隔離，最後回覆根因、修正方式與預防措施，不會在資訊不足時隨意承諾。</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>你最大的弱點是什麼</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>我目前最大的缺口是實體設備與機器人中介軟體經驗不足，尤其是 C/C++、ROS2 與 DDS 的產品實戰。因此我不會把自己定位成能立即獨立負責整台機器人的人。不過我已經有軟體整合、資料處理、API 與驗證能力，會用明確的學習順序補足：先了解公司產品資料流與操作規範，再完成小型整合任務，透過測試與 code review 修正。</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>期望薪資</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>我想先了解這個職務實際的開發比例、現場支援頻率與公司的薪資區間。如果需要我先提供期待，考量台北地點、碩士背景，以及職務同時包含整合開發與現場技術服務，我期望月薪約 48,000 至 55,000 元，仍可依工作內容、培訓、獎金與整體福利討論。</p>
+              <p class="subtle">104 僅標示經常性薪資達 4 萬元以上，這不是公司公開的實際薪資範圍。</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>未來三年的方向</summary>
+          <div class="detail-body">
+            <div class="qa-answer">
+              <p>第一年希望先能獨立完成產品安裝、基本故障定位與小型軟體整合；之後把 Python、Linux、網路、DDS/ROS2 與測試能力補完整，能負責一段端到端資料或任務流程。長期希望成為能理解設備、後端與客戶場域的系統整合工程師，而不是只停留在單一工具操作。</p>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="ask">
+        <p class="kicker">Questions to ask</p>
+        <h2>你要反問公司的問題</h2>
+        <p class="section-intro">前五題優先。這些答案會直接決定職務是否符合你想累積的技術方向。</p>
+
+        <ol class="question-list">
+          <li><strong>產品線：</strong>這個職務目前主要服務 ANYmal 工業巡檢、醫療 IoMT，還是兩邊都會接觸？</li>
+          <li><strong>工作比例：</strong>軟體開發、硬體整合測試、現場安裝維護與客戶溝通，大約各占多少時間？</li>
+          <li><strong>前三個月：</strong>新進人員通常先負責哪些任務？是否有產品訓練、文件或資深工程師帶領？</li>
+          <li><strong>技術棧：</strong>目前主要使用哪些語言、作業系統與中介軟體？C/C++、Python、ROS2、RTI Connext DDS、Docker 各用在哪裡？</li>
+          <li><strong>團隊合作：</strong>這個職務和哪些人合作？程式修改是否有 code review，現場問題由誰協助判斷與升級？</li>
+          <li><strong>現場服務：</strong>平均每月到客戶現場幾次、主要區域在哪裡，是否有臨時待命、交通補助或加班安排？</li>
+          <li><strong>成功標準：</strong>公司會如何評估這個角色前三個月與第一年的表現？</li>
+          <li><strong>職缺原因：</strong>這是新增職位還是人員補替？目前團隊最希望新人先解決什麼問題？</li>
+          <li><strong>待遇：</strong>確認實際薪資區間、試用期、年終或獎金、加班與出差制度。</li>
+        </ol>
+
+        <label for="interviewNotes"><strong>面試答案速記</strong></label>
+        <textarea id="interviewNotes" placeholder="產品線、開發比例、技術主管、現場頻率、薪資與下一步……"></textarea>
+        <p class="small subtle">內容會保存在這支裝置的瀏覽器中。</p>
+      </section>
+
+      <section class="section" id="day">
+        <p class="kicker">Interview day</p>
+        <h2>明日完整流程</h2>
+
+        <details open>
+          <summary>出門前</summary>
+          <div class="detail-body checklist" data-checklist="morning">
+            <label class="check"><input type="checkbox" value="resume"><span>履歷至少 2 份，內容與 104 一致</span></label>
+            <label class="check"><input type="checkbox" value="slides"><span>論文面試簡報與離線 PDF，確認手機或筆電可開啟</span></label>
+            <label class="check"><input type="checkbox" value="project"><span>專案材料：架構圖、系統截圖、GitHub 或可離線展示內容</span></label>
+            <label class="check"><input type="checkbox" value="device"><span>手機與筆電充飽，帶充電器或行動電源</span></label>
+            <label class="check"><input type="checkbox" value="route"><span>確認松江南京站出口與步行路線，預留延誤時間</span></label>
+            <label class="check"><input type="checkbox" value="contact"><span>確認面試聯絡資訊已存入手機通訊錄</span></label>
+          </div>
+        </details>
+
+        <details open>
+          <summary>抵達與開場</summary>
+          <div class="detail-body">
+            <ul>
+              <li>目標 13:35–13:40 抵達大樓附近，13:45 左右報到。</li>
+              <li>若預計遲到，提早打電話，不要等超過 14:00 才通知。</li>
+              <li>報到說法：「您好，我是今天下午兩點應徵機器人軟硬體工程師的謝向嶸，和紀先生有約。」</li>
+              <li>坐下後先把手機靜音，履歷與簡報放在容易拿取的位置。</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>面試進行順序</summary>
+          <div class="detail-body">
+            <ol>
+              <li>問候，等待對方開場。</li>
+              <li>30 或 90 秒自我介紹。</li>
+              <li>聽公司與職缺說明，記下產品線、工作比例與技術棧。</li>
+              <li>用 60 秒說論文，再依追問展示架構圖或成果。</li>
+              <li>回答技術、除錯、客戶與職涯問題。</li>
+              <li>提出前五項反問，再談現場安排與薪資。</li>
+              <li>結尾確認下一階段與預計通知時間。</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>最後 20 秒怎麼收尾</summary>
+          <div class="detail-body">
+            <div class="script" data-copy-block>
+              <p>謝謝您今天說明公司的產品與工作內容。這次談完後，我對這個角色需要同時理解軟體、設備與客戶場域有更清楚的認識，也仍然有興趣。我知道自己在 ROS2、DDS 與實體設備上還有需要補強的地方，但我能帶入資料、API、資料庫、系統整合與驗證經驗。如果有下一階段，我很願意依公司需求準備技術測驗或補充作品。</p>
+              <button class="copy-btn" type="button">複製收尾</button>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="decision">
+        <p class="kicker">After interview</p>
+        <h2>面試後別只看有沒有錄取</h2>
+        <p class="section-intro">每項 1–5 分。總分只是提醒，關鍵仍是工作內容是否真的能累積技術。</p>
+
+        <div class="score-row"><div class="score-head"><span>開發與整合工作的比例</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div>
+        <div class="score-row"><div class="score-head"><span>主管帶領與 code review</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div>
+        <div class="score-row"><div class="score-head"><span>技術棧與未來轉職價值</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div>
+        <div class="score-row"><div class="score-head"><span>現場、待命與工時可接受度</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div>
+        <div class="score-row"><div class="score-head"><span>薪資、福利與通勤整體條件</span><output>3</output></div><input type="range" min="1" max="5" value="3" data-score></div>
+
+        <div class="score-total">
+          <div>目前總分：<strong id="scoreTotal">15 / 25</strong></div>
+          <div id="scoreAdvice" class="small">資訊還不夠，先把面試答案補完整。</div>
+        </div>
+
+        <div class="callout danger">
+          <strong>需要特別小心的訊號</strong>
+          <ul>
+            <li>始終不願說明開發、售後與現場工作的實際比例。</li>
+            <li>新人需獨自負責安裝、客訴與故障，但沒有技術主管或升級機制。</li>
+            <li>以「責任制」模糊待命、加班、出差與補休。</li>
+            <li>職務說是 AI 或開發，實際主要工作是銷售、客服或例行設備維護。</li>
+            <li>只談未來可能性，不願說明試用期、薪資與正式工作內容。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="sources">
+        <p class="kicker">Evidence</p>
+        <h2>查核來源</h2>
+        <ol class="source-list">
+          <li><a href="https://www.104.com.tw/job/8r9t7" target="_blank" rel="noopener">104：機器人軟硬體工程師職缺</a></li>
+          <li><a href="https://www.104.com.tw/company/1a2x6bmj1v" target="_blank" rel="noopener">104：元照智能公司頁</a></li>
+          <li><a href="https://metacares.net/" target="_blank" rel="noopener">元照智能官方網站：IoMT、RaaS 與技術架構</a></li>
+          <li><a href="https://findbiz.nat.gov.tw/fts/company/90606562" target="_blank" rel="noopener">經濟部商工登記公示資料：公司登記資訊</a></li>
+          <li><a href="https://youtu.be/yM8qDEQ5gak" target="_blank" rel="noopener">公司指定影片：ANYmal 電力與公用設施自主巡檢</a></li>
+          <li><a href="https://www.anybotics.com/robotics/anymal/" target="_blank" rel="noopener">ANYbotics 官方：ANYmal 產品資訊</a></li>
+          <li><a href="https://www.rti.com/products/dds-standard" target="_blank" rel="noopener">RTI 官方：DDS 標準與功能</a></li>
+          <li><a href="https://incu.ntut.edu.tw/p/406-1038-126841%2Cr2004.php?Lang=zh-tw" target="_blank" rel="noopener">北科大育成中心 2023 年歷史徵才：僅供過往技術方向參考</a></li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <strong>明天的目標不是證明自己什麼都會。</strong><br>
+      讓對方看見你能誠實說明能力邊界、快速理解系統，並以可驗證的方法處理問題。
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const toast = document.getElementById('toast');
+      let toastTimer;
+      const showToast = (message) => {
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+      };
+
+      const target = new Date('2026-08-21T14:00:00+08:00');
+      const countdown = document.getElementById('countdown');
+      const updateCountdown = () => {
+        const diff = target.getTime() - Date.now();
+        if (diff <= -60 * 60 * 1000) {
+          countdown.textContent = '面試時段已結束，記得完成面試後評估與感謝訊息。';
+          return;
+        }
+        if (diff <= 0) {
+          countdown.textContent = '面試進行中：放慢語速，先聽懂問題再回答。';
+          return;
+        }
+        const totalMinutes = Math.floor(diff / 60000);
+        const days = Math.floor(totalMinutes / 1440);
+        const hours = Math.floor((totalMinutes % 1440) / 60);
+        const minutes = totalMinutes % 60;
+        countdown.textContent = `距離面試還有 ${days ? days + ' 天 ' : ''}${hours} 小時 ${minutes} 分鐘`;
+      };
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+
+      document.querySelectorAll('.segment').forEach((button) => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.segment').forEach((item) => {
+            item.classList.remove('active');
+            item.setAttribute('aria-selected', 'false');
+          });
+          document.querySelectorAll('.tab-panel').forEach((panel) => panel.classList.remove('active'));
+          button.classList.add('active');
+          button.setAttribute('aria-selected', 'true');
+          document.getElementById(button.dataset.tab).classList.add('active');
+          resetTimer(button.dataset.tab === 'intro30' ? 30 : 90);
+        });
+      });
+
+      const fallbackCopy = (text) => {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      };
+
+      document.querySelectorAll('.copy-btn').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const block = button.closest('[data-copy-block]');
+          const text = Array.from(block.querySelectorAll('p')).map((p) => p.innerText).join('\n\n');
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(text);
+            } else {
+              fallbackCopy(text);
+            }
+            const old = button.textContent;
+            button.textContent = '已複製';
+            button.classList.add('copied');
+            showToast('內容已複製');
+            setTimeout(() => {
+              button.textContent = old;
+              button.classList.remove('copied');
+            }, 1400);
+          } catch {
+            showToast('瀏覽器未允許複製，請長按文字選取');
+          }
+        });
+      });
+
+      let timerSeconds = 30;
+      let timerInterval = null;
+      const timerDisplay = document.getElementById('timerDisplay');
+      const timerStart = document.getElementById('timerStart');
+      const renderTimer = () => {
+        const minutes = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+        const seconds = String(timerSeconds % 60).padStart(2, '0');
+        timerDisplay.textContent = `${minutes}:${seconds}`;
+      };
+      const resetTimer = (seconds = document.querySelector('.segment.active').dataset.tab === 'intro30' ? 30 : 90) => {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerSeconds = seconds;
+        timerStart.textContent = '開始';
+        renderTimer();
+      };
+      timerStart.addEventListener('click', () => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          timerStart.textContent = '繼續';
+          return;
+        }
+        if (timerSeconds <= 0) resetTimer();
+        timerStart.textContent = '暫停';
+        timerInterval = setInterval(() => {
+          timerSeconds -= 1;
+          renderTimer();
+          if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerStart.textContent = '重來';
+            showToast('時間到，檢查是否說到重點');
+          }
+        }, 1000);
+      });
+      document.getElementById('timerReset').addEventListener('click', () => resetTimer());
+      renderTimer();
+
+      document.querySelectorAll('[data-checklist]').forEach((list) => {
+        const key = `yuanzhao-${list.dataset.checklist}`;
+        const saved = JSON.parse(localStorage.getItem(key) || '{}');
+        list.querySelectorAll('input[type="checkbox"]').forEach((input) => {
+          input.checked = Boolean(saved[input.value]);
+          input.addEventListener('change', () => {
+            saved[input.value] = input.checked;
+            localStorage.setItem(key, JSON.stringify(saved));
+          });
+        });
+      });
+
+      const notes = document.getElementById('interviewNotes');
+      notes.value = localStorage.getItem('yuanzhao-interview-notes') || '';
+      notes.addEventListener('input', () => localStorage.setItem('yuanzhao-interview-notes', notes.value));
+
+      const scoreInputs = Array.from(document.querySelectorAll('[data-score]'));
+      const scoreTotal = document.getElementById('scoreTotal');
+      const scoreAdvice = document.getElementById('scoreAdvice');
+      const updateScore = () => {
+        let total = 0;
+        scoreInputs.forEach((input) => {
+          const value = Number(input.value);
+          total += value;
+          input.parentElement.querySelector('output').textContent = value;
+        });
+        scoreTotal.textContent = `${total} / 25`;
+        scoreAdvice.textContent = total >= 21
+          ? '整體條件強，可認真爭取並確認正式 offer。'
+          : total >= 17
+            ? '具發展可能，但先釐清低分項目再決定。'
+            : total >= 13
+              ? '條件目前普通，先把低分項目的資訊問清楚。'
+              : '風險偏高，別只因職稱或錄取就急著接受。';
+      };
+      scoreInputs.forEach((input) => input.addEventListener('input', updateScore));
+      updateScore();
+    })();
+  </script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js"));}</script></body>
+</html>
