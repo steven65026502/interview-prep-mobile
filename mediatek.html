@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#153b5c">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="data:,">
+  <title>聯發科派遣 CPU 軟體工程師｜Webex 面談準備</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #64717d;
+      --line: #d6dde4;
+      --paper: #f5f7f8;
+      --white: #fff;
+      --navy: #153b5c;
+      --navy-2: #0d2a43;
+      --blue-soft: #e8f0f6;
+      --orange: #b65718;
+      --orange-soft: #fff0e4;
+      --green: #236a55;
+      --green-soft: #e5f2ed;
+      --red: #9d3e38;
+      --red-soft: #f9e9e7;
+      --shadow: 0 8px 22px rgba(18, 37, 52, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+    button, textarea { font: inherit; }
+    a { color: inherit; text-underline-offset: 3px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: 1.78rem; line-height: 1.28; }
+    h2 { margin-bottom: 10px; font-size: 1.28rem; line-height: 1.35; }
+    h3 { margin-bottom: 6px; font-size: 1rem; }
+    ul { margin: 7px 0 0; padding-left: 1.25rem; }
+    li + li { margin-top: 5px; }
+    code { font-family: Consolas, "Courier New", monospace; }
+
+    .shell { width: min(820px, 100%); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: calc(8px + env(safe-area-inset-top)) 12px 8px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(245, 247, 248, .96);
+      backdrop-filter: blur(10px);
+      scrollbar-width: none;
+    }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a {
+      flex: 0 0 auto;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: .82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .hero {
+      padding: 28px 18px 22px;
+      color: var(--white);
+      background: var(--navy-2);
+    }
+    .eyebrow { margin-bottom: 4px; color: #aed0e7; font-size: .82rem; font-weight: 800; }
+    .role { margin-bottom: 18px; color: #e7f1f7; font-weight: 700; }
+    .event {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 0 -18px;
+      border-top: 1px solid rgba(255,255,255,.2);
+      border-bottom: 1px solid rgba(255,255,255,.2);
+    }
+    .event > div { padding: 12px 18px; }
+    .event > div + div { border-left: 1px solid rgba(255,255,255,.2); }
+    .event small { display: block; color: #aed0e7; font-size: .74rem; }
+    .event strong { display: block; margin-top: 2px; font-size: .94rem; }
+    .countdown { margin: 13px 0 0; color: #d2e6f3; font-size: .84rem; text-align: center; }
+
+    main { background: var(--paper); }
+    .section { padding: 26px 18px; scroll-margin-top: 58px; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .intro { margin-bottom: 15px; color: var(--muted); }
+    .kicker { margin-bottom: 4px; color: var(--orange); font-size: .76rem; font-weight: 800; }
+    .status {
+      margin: 0 0 16px;
+      padding: 12px 13px;
+      border-left: 4px solid var(--green);
+      background: var(--green-soft);
+      color: #245544;
+      font-size: .9rem;
+    }
+    .route { border-top: 1px solid var(--line); }
+    .route-row {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .route-row time { color: var(--navy); font-weight: 800; }
+    .route-row strong { display: block; }
+    .route-row span { display: block; color: var(--muted); font-size: .86rem; }
+    .script {
+      padding: 15px;
+      border-left: 4px solid var(--navy);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .script p:last-child { margin-bottom: 0; }
+    .copy-btn {
+      min-height: 40px;
+      margin-top: 12px;
+      padding: 7px 10px;
+      border: 1px solid var(--navy);
+      border-radius: 5px;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .copy-btn.done { color: var(--white); background: var(--navy); }
+    .facts { border-top: 1px solid var(--line); }
+    .fact { padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .fact strong { display: block; margin-bottom: 3px; color: var(--navy); }
+    .fact p { margin-bottom: 0; color: var(--muted); }
+    .callout {
+      margin: 15px 0 0;
+      padding: 13px;
+      border: 1px solid #e8c8ae;
+      background: var(--orange-soft);
+    }
+    .callout.danger { border-color: #e2bfbb; background: var(--red-soft); }
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary {
+      position: relative;
+      padding: 14px 34px 14px 0;
+      cursor: pointer;
+      font-weight: 800;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 4px; top: 11px; color: var(--orange); font-size: 1.35rem; }
+    details[open] summary::after { content: "−"; }
+    .detail { padding: 0 0 16px; color: var(--muted); }
+    .answer { margin-top: 9px; padding: 12px; border-left: 3px solid var(--navy); background: var(--blue-soft); color: var(--ink); }
+    .checklist { border-top: 1px solid var(--line); }
+    .check {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr);
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--green); }
+    textarea {
+      width: 100%;
+      min-height: 170px;
+      padding: 12px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.55;
+    }
+    .note-state { margin-top: 7px; color: var(--muted); font-size: .78rem; }
+    footer { padding: 20px 18px calc(28px + env(safe-area-inset-bottom)); color: var(--muted); font-size: .78rem; text-align: center; }
+    @media (min-width: 640px) {
+      h1 { font-size: 2.12rem; }
+      .hero, .section { padding-right: 28px; padding-left: 28px; }
+      .event { margin-right: -28px; margin-left: -28px; }
+      .event > div { padding-right: 28px; padding-left: 28px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="topbar" aria-label="頁面導覽">
+      <a href="./index.html">面試清單</a>
+      <a href="#route">今晚流程</a>
+      <a href="#intro">自我介紹</a>
+      <a href="#qa">問答</a>
+      <a href="#ask">反問</a>
+      <a href="#check">檢查</a>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">MediaTek team conversation</p>
+      <h1>聯發科派遣 CPU 軟體工程師</h1>
+      <p class="role">Webex 職務面談準備</p>
+      <div class="event">
+        <div><small>時間</small><strong>8/26 19:30–20:00</strong></div>
+        <div><small>形式</small><strong>Webex 線上面談</strong></div>
+      </div>
+      <p class="countdown" id="countdown">正在計算距離面談時間…</p>
+    </header>
+
+    <main>
+      <section class="section" id="route">
+        <p class="kicker">Tonight</p>
+        <h2>30 分鐘面談節奏</h2>
+        <p class="status">這場先確認工作內容與雙方適配，不需要主動播放論文簡報，也不要把它說成聯發科正職。</p>
+        <div class="route">
+          <div class="route-row"><time>0–3 分</time><div><strong>簡短自介</strong><span>學歷、Python 系統專案、希望往系統軟體發展。</span></div></div>
+          <div class="route-row"><time>3–10 分</time><div><strong>經歷與程式能力</strong><span>論文系統、資料處理、除錯方式，以及 C／Python 的真實程度。</span></div></div>
+          <div class="route-row"><time>10–20 分</time><div><strong>了解職務</strong><span>確認核心開發、測試自動化、Linux 與 CPU 團隊合作比例。</span></div></div>
+          <div class="route-row"><time>20–27 分</time><div><strong>條件與合作方式</strong><span>派遣雇主、合約、薪資福利、加班、帶領與 code review。</span></div></div>
+          <div class="route-row"><time>27–30 分</time><div><strong>後續流程</strong><span>程式測驗內容、完成期限、下一階段及回覆時間。</span></div></div>
+        </div>
+      </section>
+
+      <section class="section" id="intro">
+        <p class="kicker">Opening</p>
+        <h2>60 秒自我介紹</h2>
+        <div class="script" data-copy-target>
+          <p>您好，我是謝向嶸，大學畢業於勤益科大資訊工程系，碩士畢業於臺灣海洋大學通訊與導航工程學系。碩士研究中，我使用 Python、PostgreSQL、Flask API 與 QGIS 建立海洋資料品質監測系統，負責異質資料解析、時空配對、資料庫查詢、API 串接與結果驗證。</p>
+          <p>我目前最熟悉的是 Python，C 語言具備大學課程與基礎程式能力，系統軟體與 CPU 領域則正在補強。我對這個職缺有興趣，是因為它能讓我把既有的程式除錯與資料處理經驗，延伸到 Linux、CPU 與更底層的軟體開發。我也希望先了解實際工作中開發、測試與維護的比例。</p>
+          <button class="copy-btn" type="button">複製自介</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="kicker">Evidence</p>
+        <h2>能拿出來說的工程證據</h2>
+        <div class="facts">
+          <div class="fact"><strong>Python 資料管線</strong><p>解析 NetCDF／HDF5，依時間與空間條件配對資料，處理例外並重建結果。</p></div>
+          <div class="fact"><strong>PostgreSQL 與 API</strong><p>設計保存與查詢流程，透過 Flask REST API 回傳 JSON／GeoJSON。</p></div>
+          <div class="fact"><strong>驗證與問題追查</strong><p>針對 114 組資料重新計算並核對資料庫結果，保留可回查的輸入、條件與輸出。</p></div>
+          <div class="fact"><strong>AI 工具使用方式</strong><p>用 AI 協助理解程式、拆解需求與追查錯誤，但會檢查 diff、實際執行測試並核對輸出。</p></div>
+        </div>
+        <div class="callout danger"><strong>不要講太滿：</strong>不要自稱熟悉 CPU 架構、Linux kernel、C/C++ 系統開發或聯發科內部流程；可說具備基礎並願意依工作需求補強。</div>
+      </section>
+
+      <section class="section" id="qa">
+        <p class="kicker">Questions</p>
+        <h2>可能追問與回答方向</h2>
+        <details open>
+          <summary>為什麼想做這份工作？</summary>
+          <div class="detail"><div class="answer">我想從既有的 Python、資料處理與除錯能力，延伸到 Linux 與 CPU 系統軟體。這份職務若包含實際 C／Python 開發、問題定位及與 CPU 團隊合作，會是我建立底層工程能力的好起點。</div></div>
+        </details>
+        <details>
+          <summary>你的 C 與 Python 程度如何？</summary>
+          <div class="detail"><div class="answer">Python 是目前最熟悉的語言，能完成資料處理、API、資料庫與自動化腳本。C 有課程與基礎程式經驗，但尚未累積大型系統專案；我會誠實說明，並以實作題與工作訓練補足。</div></div>
+        </details>
+        <details>
+          <summary>論文專案和 CPU 軟體有什麼關係？</summary>
+          <div class="detail"><div class="answer">領域不同，但共通能力是讀取既有程式、釐清資料定義、建立可重現流程、追查錯誤與驗證修改。這些能力能移轉到測試自動化、工具開發與系統問題定位。</div></div>
+        </details>
+        <details>
+          <summary>你怎麼使用 Claude Code 或 Codex？</summary>
+          <div class="detail"><div class="answer">我會先界定任務與驗證條件，再讓工具協助搜尋、修改或產生測試；每次都檢查程式差異、執行測試並核對輸出。AI 是加速理解與實作的工具，結果責任仍由我承擔。</div></div>
+        </details>
+        <details>
+          <summary>遇到程式錯誤怎麼處理？</summary>
+          <div class="detail"><div class="answer">先縮小可重現案例，確認輸入、預期輸出與錯誤邊界，再看 log、逐層排除資料、環境與程式邏輯問題；修改後會重跑原案例與相關回歸測試。</div></div>
+        </details>
+      </section>
+
+      <section class="section">
+        <p class="kicker">Technical refresh</p>
+        <h2>面談前快速複習</h2>
+        <div class="facts">
+          <div class="fact"><strong>Python</strong><p>函式、list／dict、迴圈、例外處理、檔案與 JSON、基本時間複雜度。</p></div>
+          <div class="fact"><strong>C</strong><p>指標與陣列、字串、struct、stack／heap、記憶體生命週期、位元運算。</p></div>
+          <div class="fact"><strong>Linux／系統</strong><p>process 與 thread 的差異、基本 shell、編譯執行、log 與權限概念。</p></div>
+          <div class="fact"><strong>程式題說明</strong><p>不要只給答案；說明變數代表什麼、每輪如何更新、邊界條件與資料型別是否溢位。</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="ask">
+        <p class="kicker">Your questions</p>
+        <h2>一定要確認的職務條件</h2>
+        <ul>
+          <li>實際工作中 C、Python、測試執行與文件維護各占多少比例？</li>
+          <li>主要接觸哪一類 CPU 軟體、Linux 工具或自動化流程？</li>
+          <li>是否有聯發科工程師帶領、code review 與技術訓練？</li>
+          <li>法律上的派遣雇主是誰？合約期限、續約與離職條件為何？</li>
+          <li>月薪、年終、加班費、休假、勞健保及其他福利如何計算？</li>
+          <li>希望任職二至三年是否只是期待，還是涉及綁約或違約金？</li>
+          <li>程式測驗的語言、題型、作答時間與繳交方式是什麼？</li>
+        </ul>
+        <div class="callout"><strong>判斷重點：</strong>若工作主要是 C／Python 開發、Linux 問題定位與自動化，而且有人帶領，值得繼續；若主要只是重複執行測試、整理報表，職涯價值就較低。</div>
+      </section>
+
+      <section class="section" id="check">
+        <p class="kicker">Before joining</p>
+        <h2>19:20 前檢查</h2>
+        <div class="checklist" id="checklist">
+          <label class="check"><input type="checkbox"><span>Webex、耳機、麥克風與網路測試完成</span></label>
+          <label class="check"><input type="checkbox"><span>履歷、職缺內容與程式題畫面已開啟</span></label>
+          <label class="check"><input type="checkbox"><span>60 秒自介至少口頭講過兩次</span></label>
+          <label class="check"><input type="checkbox"><span>桌面通知關閉，手機調成靜音</span></label>
+          <label class="check"><input type="checkbox"><span>準備紙筆，記錄工作內容、待遇與後續流程</span></label>
+          <label class="check"><input type="checkbox"><span>19:20 提前進入 Webex 等候</span></label>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="kicker">Notes</p>
+        <h2>面談速記</h2>
+        <textarea id="notes" placeholder="記錄：實際工作、團隊、C/Python 比例、薪資福利、合約、程式測驗、下一步…"></textarea>
+        <p class="note-state" id="noteState">內容只保存在目前瀏覽器。</p>
+      </section>
+    </main>
+
+    <footer>最後更新：2026-08-26｜公開頁不含私人 Webex 連結</footer>
+  </div>
+
+  <script>
+    const eventTime = new Date("2026-08-26T19:30:00+08:00");
+    const countdown = document.getElementById("countdown");
+    function renderCountdown() {
+      const diff = eventTime - new Date();
+      if (diff <= 0) {
+        countdown.textContent = "面談時間已到，請從 Google 行事曆開啟 Webex。";
+        return;
+      }
+      const minutes = Math.floor(diff / 60000);
+      const hours = Math.floor(minutes / 60);
+      const mins = minutes % 60;
+      countdown.textContent = `距離面談約 ${hours ? `${hours} 小時 ` : ""}${mins} 分鐘`;
+    }
+    renderCountdown();
+    setInterval(renderCountdown, 30000);
+
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const box = button.closest("[data-copy-target]");
+        const text = [...box.querySelectorAll("p")].map((p) => p.textContent.trim()).join("\n\n");
+        await navigator.clipboard.writeText(text);
+        button.textContent = "已複製";
+        button.classList.add("done");
+        setTimeout(() => { button.textContent = "複製自介"; button.classList.remove("done"); }, 1600);
+      });
+    });
+
+    const checks = [...document.querySelectorAll("#checklist input")];
+    checks.forEach((input, index) => {
+      input.checked = localStorage.getItem(`mediatek-check-${index}`) === "1";
+      input.addEventListener("change", () => localStorage.setItem(`mediatek-check-${index}`, input.checked ? "1" : "0"));
+    });
+
+    const notes = document.getElementById("notes");
+    const noteState = document.getElementById("noteState");
+    notes.value = localStorage.getItem("mediatek-notes") || "";
+    let noteTimer;
+    notes.addEventListener("input", () => {
+      clearTimeout(noteTimer);
+      noteState.textContent = "儲存中…";
+      noteTimer = setTimeout(() => {
+        localStorage.setItem("mediatek-notes", notes.value);
+        noteState.textContent = "已儲存在目前瀏覽器。";
+      }, 300);
+    });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+    }
+  </script>
+</body>
+</html>
