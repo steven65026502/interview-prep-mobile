@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#5b1f2a">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="data:,">
+  <title>台灣村田機械 軟體技術支援助理工程師｜面試準備</title>
+  <style>
+    :root {
+      --ink: #202327;
+      --muted: #676e76;
+      --paper: #f6f6f5;
+      --white: #fff;
+      --line: #d9d9d5;
+      --wine: #5b1f2a;
+      --wine-dark: #38151c;
+      --wine-soft: #f5e9eb;
+      --gold: #a66420;
+      --gold-soft: #fff2e1;
+      --green: #276653;
+      --green-soft: #e6f1ed;
+      --blue: #315e80;
+      --blue-soft: #eaf1f6;
+      --shadow: 0 8px 22px rgba(48, 31, 34, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+    button, textarea { font: inherit; }
+    a { color: inherit; text-underline-offset: 3px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: 1.78rem; line-height: 1.28; }
+    h2 { margin-bottom: 10px; font-size: 1.28rem; line-height: 1.35; }
+    h3 { margin-bottom: 6px; font-size: 1rem; }
+    ul, ol { margin: 7px 0 0; padding-left: 1.25rem; }
+    li + li { margin-top: 5px; }
+    .shell { width: min(820px, 100%); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: calc(8px + env(safe-area-inset-top)) 12px 8px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 246, 245, .96);
+      backdrop-filter: blur(10px);
+      scrollbar-width: none;
+    }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a {
+      flex: 0 0 auto;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--white);
+      font-size: .82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .hero { padding: 28px 18px 22px; color: var(--white); background: var(--wine-dark); }
+    .eyebrow { margin-bottom: 4px; color: #e3bfc5; font-size: .82rem; font-weight: 800; }
+    .role { margin-bottom: 18px; color: #f7ebed; font-weight: 700; }
+    .event {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin: 0 -18px;
+      border-top: 1px solid rgba(255,255,255,.2);
+      border-bottom: 1px solid rgba(255,255,255,.2);
+    }
+    .event > div { padding: 12px 18px; }
+    .event > div + div { border-left: 1px solid rgba(255,255,255,.2); }
+    .event small { display: block; color: #e3bfc5; font-size: .74rem; }
+    .event strong { display: block; margin-top: 2px; font-size: .93rem; }
+    .countdown { margin: 13px 0 0; color: #efd9dd; font-size: .84rem; text-align: center; }
+    .section { padding: 26px 18px; scroll-margin-top: 58px; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .intro { margin-bottom: 15px; color: var(--muted); }
+    .kicker { margin-bottom: 4px; color: var(--gold); font-size: .76rem; font-weight: 800; }
+    .status { margin: 0 0 16px; padding: 12px 13px; border-left: 4px solid var(--green); background: var(--green-soft); color: #245544; font-size: .9rem; }
+    .route { border-top: 1px solid var(--line); }
+    .route-row { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .route-row time { color: var(--wine); font-weight: 800; }
+    .route-row strong { display: block; }
+    .route-row span { display: block; color: var(--muted); font-size: .86rem; }
+    .facts { border-top: 1px solid var(--line); }
+    .fact { padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .fact strong { display: block; margin-bottom: 3px; color: var(--wine); }
+    .fact p { margin-bottom: 0; color: var(--muted); }
+    .script { padding: 15px; border-left: 4px solid var(--wine); background: var(--white); box-shadow: var(--shadow); }
+    .script p:last-child { margin-bottom: 0; }
+    .copy-btn { min-height: 40px; margin-top: 12px; padding: 7px 10px; border: 1px solid var(--wine); border-radius: 5px; color: var(--wine); background: var(--white); cursor: pointer; font-weight: 800; }
+    .copy-btn.done { color: var(--white); background: var(--wine); }
+    .callout { margin: 15px 0 0; padding: 13px; border: 1px solid #e4cba7; background: var(--gold-soft); }
+    .callout.info { border-color: #c8dbe7; background: var(--blue-soft); }
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { position: relative; padding: 14px 34px 14px 0; cursor: pointer; font-weight: 800; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 4px; top: 11px; color: var(--gold); font-size: 1.35rem; }
+    details[open] summary::after { content: "−"; }
+    .detail { padding: 0 0 16px; color: var(--muted); }
+    .answer { margin-top: 9px; padding: 12px; border-left: 3px solid var(--wine); background: var(--wine-soft); color: var(--ink); }
+    .checklist { border-top: 1px solid var(--line); }
+    .check { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+    .check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--green); }
+    textarea { width: 100%; min-height: 170px; padding: 12px; resize: vertical; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--white); line-height: 1.55; }
+    .note-state { margin-top: 7px; color: var(--muted); font-size: .78rem; }
+    .sources { color: var(--muted); font-size: .83rem; }
+    .sources a { color: var(--blue); }
+    footer { padding: 20px 18px calc(28px + env(safe-area-inset-bottom)); color: var(--muted); font-size: .78rem; text-align: center; }
+    @media (min-width: 640px) {
+      h1 { font-size: 2.12rem; }
+      .hero, .section { padding-right: 28px; padding-left: 28px; }
+      .event { margin-right: -28px; margin-left: -28px; }
+      .event > div { padding-right: 28px; padding-left: 28px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="topbar" aria-label="頁面導覽">
+      <a href="./index.html">面試清單</a><a href="#route">流程</a><a href="#company">公司</a><a href="#intro">自介</a><a href="#qa">問答</a><a href="#ask">反問</a><a href="#check">檢查</a>
+    </nav>
+    <header class="hero">
+      <p class="eyebrow">MURATEC Taiwan</p>
+      <h1>台灣村田機械</h1>
+      <p class="role">無塵室自動化事業部｜軟體技術支援助理工程師</p>
+      <div class="event">
+        <div><small>面試時間</small><strong>9/3（四）14:00–16:00</strong></div>
+        <div><small>地點</small><strong>台北承德路一段 17 號 18 樓</strong></div>
+      </div>
+      <p class="countdown" id="countdown">正在計算距離面試時間…</p>
+    </header>
+
+    <main>
+      <section class="section" id="route">
+        <p class="kicker">Interview plan</p><h2>兩小時面試的主線</h2>
+        <p class="status">這不是純後端開發職缺。你要同時評估「軟體／系統問題處理」與「客戶現場、無塵室及日文溝通」的比例。</p>
+        <div class="route">
+          <div class="route-row"><time>報到</time><div><strong>文件與基本資料</strong><span>履歷、最高學歷、N2 與其他證明；提早 20 分鐘抵達。</span></div></div>
+          <div class="route-row"><time>前段</time><div><strong>自介與應徵動機</strong><span>資工＋通訊、Python／SQL、系統除錯、日文 N2。</span></div></div>
+          <div class="route-row"><time>中段</time><div><strong>職務與案例問答</strong><span>故障原因釐清、設定測試、客戶支援與跨部門溝通。</span></div></div>
+          <div class="route-row"><time>後段</time><div><strong>條件確認</strong><span>技術棧、出差／無塵室、on-call、日文使用、薪資與培訓。</span></div></div>
+        </div>
+      </section>
+
+      <section class="section" id="company">
+        <p class="kicker">Company &amp; role</p><h2>先理解這份工作</h2>
+        <div class="facts">
+          <div class="fact"><strong>公司定位</strong><p>日本村田機械集團在台公司，提供自動化設備與系統方案；無塵室自動化事業支援半導體工廠的 24 小時無人搬送環境。</p></div>
+          <div class="fact"><strong>目前職缺內容</strong><p>自動搬送設備之軟體與系統規劃、客戶操作與運行支援、故障原因調查、環境設定測試及無塵室建置。</p></div>
+          <div class="fact"><strong>你的直接優勢</strong><p>Python、PostgreSQL、API、系統驗證、問題追查、文件整理，以及 JLPT N2。</p></div>
+          <div class="fact"><strong>需要確認</strong><p>現行技術棧未完整公開；面試要問 VB.NET／C#、SQL／Oracle、Linux 或其他平台的實際使用比例。</p></div>
+        </div>
+        <div class="callout"><strong>職涯判斷：</strong>若能實際參與系統設定、SQL、程式修改與問題分析，並使用日文和日方工程團隊協作，值得爭取；若大多是排班客服、搬運與現場例行作業，成長性會較低。</div>
+      </section>
+
+      <section class="section" id="intro">
+        <p class="kicker">Opening</p><h2>60 秒自我介紹</h2>
+        <div class="script" data-copy-target>
+          <p>您好，我是謝向嶸，大學畢業於勤益科大資訊工程系，碩士畢業於臺灣海洋大學通訊與導航工程學系。我在碩士研究中使用 Python、PostgreSQL、Flask API 與 QGIS 建立海洋資料品質監測系統，負責資料解析、系統串接、資料庫查詢、測試驗證與問題追查。</p>
+          <p>我對這份職務有興趣，是因為它結合軟體系統、設備運行與客戶問題處理。我有 JLPT N2，能閱讀日文資料並持續補強口語溝通；雖然尚未接觸貴公司的自動搬送系統，但我習慣先釐清輸入、環境、log 與錯誤邊界，再以可重現方式驗證修正，希望能把這套方法用在半導體自動化現場。</p>
+          <button class="copy-btn" type="button">複製自介</button>
+        </div>
+        <details><summary>15 秒日文開場</summary><div class="detail"><div class="answer" lang="ja">本日は面接の機会をいただき、ありがとうございます。謝向嶸と申します。大学では情報工学、大学院では通信・ナビゲーション工学を専攻しました。本日はよろしくお願いいたします。</div></div></details>
+      </section>
+
+      <section class="section" id="qa">
+        <p class="kicker">Likely questions</p><h2>高機率問題與回答方向</h2>
+        <details open><summary>為什麼應徵技術支援，而不是純軟體開發？</summary><div class="detail"><div class="answer">我喜歡把問題從現象追到資料、系統與程式原因，不只寫完功能。這份工作若能結合系統設定、故障分析、SQL／程式修改與客戶溝通，會符合我的問題解決方式；我也會在面試確認各部分的實際比例。</div></div></details>
+        <details><summary>你如何處理客戶回報的系統異常？</summary><div class="detail"><div class="answer">先確認影響範圍、時間、環境與最近變更，保存 log 並建立可重現案例；再區分設備、網路、資料庫、應用程式與操作流程，逐層排除。修正後以原案例及相關功能回歸測試，並留下處理紀錄。</div></div></details>
+        <details><summary>沒有自動搬送設備經驗怎麼辦？</summary><div class="detail"><div class="answer">我不會把海洋資料經驗直接說成設備經驗，但資料流、時間同步、狀態紀錄、API／資料庫與問題追查方法可以移轉。入職後會先熟悉系統架構、訊息流程、標準操作與既有故障案例，再從可驗證的小任務開始。</div></div></details>
+        <details><summary>日文能用到什麼程度？</summary><div class="detail"><div class="answer">我具 JLPT N2，可閱讀一般技術文件與電子郵件；口語反應仍需透過實務持續加強。我可以先以準確書面溝通、術語整理與會前準備確保資訊不失真，不會宣稱已達商務口譯程度。</div></div></details>
+        <details><summary>能接受無塵室與現場支援嗎？</summary><div class="detail"><div class="answer">可以配合事先安排的現場作業，但希望先了解頻率、單次時數、輪值／on-call、加班補休與安全訓練。確認制度後，我能依團隊流程配合。</div></div></details>
+      </section>
+
+      <section class="section">
+        <p class="kicker">Technical refresh</p><h2>面試前複習</h2>
+        <div class="facts">
+          <div class="fact"><strong>SQL</strong><p>JOIN、GROUP BY、子查詢、交易與鎖定、如何從 log 與資料表追查異常狀態。</p></div>
+          <div class="fact"><strong>Windows／網路</strong><p>服務、process、port、IP、基本 TCP/IP、權限、事件紀錄與設定檔。</p></div>
+          <div class="fact"><strong>程式除錯</strong><p>重現條件、log、錯誤邊界、版本差異、rollback 與 regression test。</p></div>
+          <div class="fact"><strong>自動化概念</strong><p>搬送任務、設備狀態、主機與控制端訊息、告警、復歸與 24 小時可用性。</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="ask">
+        <p class="kicker">Questions to ask</p><h2>一定要反問</h2>
+        <ol>
+          <li>日常工作中系統規劃、程式／SQL、測試、文件與客戶現場各占多少？</li>
+          <li>目前主要技術棧、資料庫及版本管理工具是什麼？新人會修改程式碼嗎？</li>
+          <li>故障發生時由誰第一線接手？是否需要夜間、假日或輪值 on-call？</li>
+          <li>無塵室與國內客戶現場的頻率、單次天數、工時及補休如何安排？</li>
+          <li>日文主要用於郵件、會議或赴日訓練？公司是否提供語言與產品訓練？</li>
+          <li>新人前三個月的訓練、mentor、文件與實作任務如何安排？</li>
+          <li>核薪區間、試用期、年終、加班費、出差津貼與調薪制度為何？</li>
+        </ol>
+      </section>
+
+      <section class="section" id="check">
+        <p class="kicker">Interview day</p><h2>出發前檢查</h2>
+        <div class="checklist" id="checklist">
+          <label class="check"><input type="checkbox"><span>紙本履歷、畢業證書影本、N2 與其他證明</span></label>
+          <label class="check"><input type="checkbox"><span>再次確認 14:00、承德路一段 17 號 18 樓及聯絡窗口</span></label>
+          <label class="check"><input type="checkbox"><span>60 秒中文自介與 15 秒日文開場各練兩次</span></label>
+          <label class="check"><input type="checkbox"><span>複習論文系統架構及一個實際除錯案例</span></label>
+          <label class="check"><input type="checkbox"><span>圈出最重要的五個反問，提早 20 分鐘抵達</span></label>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="kicker">Notes</p><h2>面試速記</h2>
+        <textarea id="notes" placeholder="記錄：工作比例、技術棧、現場/on-call、日文使用、培訓、薪資與後續…"></textarea>
+        <p class="note-state" id="noteState">內容只保存在目前瀏覽器。</p>
+      </section>
+
+      <section class="section sources">
+        <p class="kicker">Sources</p><h2>查核來源</h2>
+        <ol>
+          <li><a href="https://www.104.com.tw/company/azqc4bc" target="_blank" rel="noopener">104 台灣村田機械公司與職缺頁</a></li>
+          <li><a href="https://logistics.muratec.net/tw/elogics/support/" target="_blank" rel="noopener">Muratec 官方支援系統介紹</a></li>
+        </ol>
+        <p>職缺內容可能更新；面試時間與地點以公司正式通知為準。</p>
+      </section>
+    </main>
+    <footer>最後更新：2026-08-26｜手機勾選與速記保存在目前瀏覽器</footer>
+  </div>
+  <script>
+    const eventTime = new Date("2026-09-03T14:00:00+08:00");
+    const countdown = document.getElementById("countdown");
+    function renderCountdown() {
+      const diff = eventTime - new Date();
+      if (diff <= 0) { countdown.textContent = "面試時間已到，請以公司通知為準。"; return; }
+      const minutes = Math.floor(diff / 60000);
+      const days = Math.floor(minutes / 1440);
+      const hours = Math.floor((minutes % 1440) / 60);
+      countdown.textContent = `距離面試約 ${days} 天 ${hours} 小時`;
+    }
+    renderCountdown();
+    setInterval(renderCountdown, 60000);
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const box = button.closest("[data-copy-target]");
+        const text = [...box.querySelectorAll("p")].map((p) => p.textContent.trim()).join("\n\n");
+        await navigator.clipboard.writeText(text);
+        button.textContent = "已複製";
+        button.classList.add("done");
+        setTimeout(() => { button.textContent = "複製自介"; button.classList.remove("done"); }, 1600);
+      });
+    });
+    [...document.querySelectorAll("#checklist input")].forEach((input, index) => {
+      input.checked = localStorage.getItem(`muratec-check-${index}`) === "1";
+      input.addEventListener("change", () => localStorage.setItem(`muratec-check-${index}`, input.checked ? "1" : "0"));
+    });
+    const notes = document.getElementById("notes");
+    const noteState = document.getElementById("noteState");
+    notes.value = localStorage.getItem("muratec-notes") || "";
+    let noteTimer;
+    notes.addEventListener("input", () => {
+      clearTimeout(noteTimer);
+      noteState.textContent = "儲存中…";
+      noteTimer = setTimeout(() => {
+        localStorage.setItem("muratec-notes", notes.value);
+        noteState.textContent = "已儲存在目前瀏覽器。";
+      }, 300);
+    });
+    if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+  </script>
+</body>
+</html>
