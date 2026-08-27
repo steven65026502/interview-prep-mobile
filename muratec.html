@@ -136,7 +136,7 @@
 <body>
   <div class="shell">
     <nav class="topbar" aria-label="頁面導覽">
-      <a href="./index.html">面試清單</a><a href="#route">流程</a><a href="#company">公司</a><a href="#intro">自介</a><a href="#qa">問答</a><a href="#ask">反問</a><a href="#check">檢查</a>
+      <a href="./index.html">面試清單</a><a href="#route">流程</a><a href="#company">公司</a><a href="#intro">自介</a><a href="#qa">問答</a><a href="#system">架構題</a><a href="#ask">反問</a><a href="#check">檢查</a>
     </nav>
     <header class="hero">
       <p class="eyebrow">MURATEC Taiwan</p>
@@ -191,7 +191,7 @@
         <details><summary>能接受無塵室與現場支援嗎？</summary><div class="detail"><div class="answer">可以配合事先安排的現場作業，但希望先了解頻率、單次時數、輪值／on-call、加班補休與安全訓練。確認制度後，我能依團隊流程配合。</div></div></details>
       </section>
 
-      <section class="section">
+      <section class="section" id="system">
         <p class="kicker">Technical refresh</p><h2>面試前複習</h2>
         <div class="facts">
           <div class="fact"><strong>SQL</strong><p>JOIN、GROUP BY、子查詢、交易與鎖定、如何從 log 與資料表追查異常狀態。</p></div>
@@ -199,6 +199,10 @@
           <div class="fact"><strong>程式除錯</strong><p>重現條件、log、錯誤邊界、版本差異、rollback 與 regression test。</p></div>
           <div class="fact"><strong>自動化概念</strong><p>搬送任務、設備狀態、主機與控制端訊息、告警、復歸與 24 小時可用性。</p></div>
         </div>
+        <div class="callout"><strong>今天新增的答題規則：</strong>遇到架構或效能題，先確認規模與要求，再依「資料流 → 失敗處理 → 量測 → 驗證」回答。<a href="./system-design.html#framework">開啟共用兩分鐘訓練</a></div>
+        <details open><summary>情境題：搬送任務偶爾延遲，怎麼查？</summary><div class="detail"><div class="answer">我會先確認影響設備、任務 ID、開始時間、頻率與最近變更，再把上位系統送單、任務 queue、資料庫狀態、網路訊息及設備回報串成同一條時間線。接著比較正常與異常 log，量測每一段 latency，不先認定是資料庫或設備。若影響生產，先依 SOP 降級或人工復歸；找到原因後重跑原案例、尖峰負載與告警測試，並補上 correlation ID 與分段監控。</div></div></details>
+        <details><summary>情境題：如何設計 24 小時設備告警流程？</summary><div class="detail"><div class="answer">設備事件先帶時間、設備 ID、錯誤碼與任務 ID 進入事件處理層，完成格式驗證、去重與嚴重度判斷，再寫入狀態與歷史紀錄；需要處置的事件才通知值班或觸發既定復歸流程。重複事件以唯一鍵或 idempotency key 避免重複執行；外部通知設定 timeout 與有限 retry。監控至少包含告警量、處理延遲、失敗率與未結案數。</div></div></details>
+        <details><summary>效能題：畫面慢，但平均 API 只要 200 ms</summary><div class="detail"><div class="answer">平均值可能掩蓋少數慢請求。我會看 p50、p95、p99、錯誤率與尖峰同時請求，再用 request ID 拆分應用程式、資料庫、外部設備與網路耗時。只有確認瓶頸後才做索引、批次、快取或非同步，最後用相同負載比較改善前後。</div></div></details>
       </section>
 
       <section class="section" id="ask">
@@ -240,7 +244,7 @@
         <p>職缺內容可能更新；面試時間與地點以公司正式通知為準。</p>
       </section>
     </main>
-    <footer>最後更新：2026-08-26｜手機勾選與速記保存在目前瀏覽器</footer>
+    <footer>最後更新：2026-08-27｜手機勾選與速記保存在目前瀏覽器</footer>
   </div>
   <script>
     const eventTime = new Date("2026-09-03T14:00:00+08:00");

@@ -1,7 +1,8 @@
-const CACHE_NAME = "interview-prep-v7";
+const CACHE_NAME = "interview-prep-v8";
 const FILES = [
   "./",
   "./index.html",
+  "./system-design.html",
   "./mediatek.html",
   "./muratec.html",
   "./yuanzhao.html",

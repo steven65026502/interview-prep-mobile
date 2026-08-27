@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173b57">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="data:,">
+  <title>系統架構、工程邏輯與效能｜面試訓練</title>
+  <style>
+    :root {
+      --ink: #18222c;
+      --muted: #63707c;
+      --line: #d6dde3;
+      --paper: #f3f5f6;
+      --white: #ffffff;
+      --navy: #173b57;
+      --navy-soft: #e8eef3;
+      --green: #24705a;
+      --green-soft: #e8f2ee;
+      --orange: #b55418;
+      --orange-soft: #f7ece5;
+      --red: #9a3f36;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+    button, textarea { font: inherit; }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: calc(10px + env(safe-area-inset-top)) 16px 10px;
+      color: #e9f1f6;
+      background: var(--navy);
+      scrollbar-width: none;
+    }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a { flex: 0 0 auto; font-size: .84rem; font-weight: 700; text-decoration: none; }
+    .hero {
+      color: var(--white);
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.16);
+    }
+    .hero-inner, main, footer { width: min(820px, 100%); margin: 0 auto; }
+    .hero-inner { padding: 26px 18px 30px; }
+    .eyebrow { margin: 0 0 8px; color: #9fc8b8; font-size: .78rem; font-weight: 800; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(1.8rem, 7vw, 2.75rem); line-height: 1.2; }
+    .hero p:last-child { max-width: 680px; margin: 13px 0 0; color: #d8e3eb; }
+    main { padding: 0 16px 40px; background: var(--white); }
+    .section { padding: 30px 0; border-top: 1px solid var(--line); scroll-margin-top: 50px; }
+    .section:first-child { border-top: 0; }
+    .kicker { margin: 0 0 4px; color: var(--orange); font-size: .76rem; font-weight: 800; text-transform: uppercase; }
+    h2 { margin: 0 0 14px; color: var(--navy); font-size: 1.4rem; line-height: 1.3; }
+    h3 { margin: 0 0 5px; font-size: 1rem; }
+    p { margin: 0 0 12px; }
+    .lead { color: var(--muted); }
+    .callout { margin: 16px 0; padding: 13px 15px; border-left: 4px solid var(--green); background: var(--green-soft); }
+    .callout.warn { border-left-color: var(--orange); background: var(--orange-soft); }
+    .steps { margin: 20px 0 0; border-top: 1px solid var(--line); }
+    .step {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 13px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .step-num {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      color: var(--white);
+      background: var(--navy);
+      font-weight: 800;
+    }
+    .step p { margin: 3px 0 0; color: var(--muted); font-size: .93rem; }
+    .script { margin: 18px 0; padding: 15px; border: 1px solid #b8c8d5; background: var(--navy-soft); }
+    .script p { margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 12px; }
+    .btn {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--navy);
+      border-radius: 4px;
+      color: var(--navy);
+      background: transparent;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn.primary { color: var(--white); background: var(--navy); }
+    .btn:focus-visible, summary:focus-visible, textarea:focus-visible { outline: 3px solid #efad74; outline-offset: 2px; }
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { padding: 14px 2px; color: var(--navy); font-weight: 800; cursor: pointer; }
+    .detail { padding: 0 2px 16px; color: #394550; }
+    .detail ul, .detail ol { margin: 8px 0; padding-left: 23px; }
+    .matrix { width: 100%; border-collapse: collapse; font-size: .91rem; }
+    .matrix th, .matrix td { padding: 9px 8px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .matrix th { color: var(--navy); background: var(--navy-soft); }
+    .practice {
+      padding: 18px;
+      border: 1px solid #bdc8d1;
+      background: #fafbfc;
+    }
+    .practice-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .timer { min-width: 82px; color: var(--orange); font: 800 1.45rem/1.1 Consolas, monospace; text-align: right; }
+    .prompt { min-height: 88px; margin: 18px 0 12px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 1.05rem; font-weight: 800; }
+    textarea { width: 100%; min-height: 160px; padding: 12px; border: 1px solid #aebbc5; border-radius: 3px; resize: vertical; }
+    .checklist { display: grid; gap: 10px; }
+    .check { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 9px; align-items: start; }
+    .check input { width: 18px; height: 18px; margin: 4px 0 0; accent-color: var(--green); }
+    .two-col { display: grid; gap: 20px; }
+    .mini { color: var(--muted); font-size: .84rem; }
+    footer { padding: 22px 16px calc(28px + env(safe-area-inset-bottom)); color: var(--muted); text-align: center; font-size: .8rem; }
+    @media (min-width: 720px) {
+      .hero-inner { padding: 38px 28px 42px; }
+      main { padding-right: 28px; padding-left: 28px; }
+      .two-col { grid-template-columns: 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="訓練導覽">
+    <a href="./index.html">面試清單</a><a href="#framework">答題順序</a><a href="#logic">工程邏輯</a><a href="#performance">效能</a><a href="#practice">模擬</a><a href="#companies">公司題</a>
+  </nav>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Interview recovery</p>
+      <h1>系統架構、工程邏輯與效能</h1>
+      <p>今天卡住的不是「完全沒有能力」，而是還沒有固定的答題骨架。先把需求講清楚，再談資料流、失敗處理與量測；不要一開始就堆技術名詞。</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="framework">
+      <p class="kicker">Answer framework</p><h2>任何架構題都照六步回答</h2>
+      <div class="callout"><strong>先停三秒再回答。</strong>開口先說「我先確認需求與規模」，通常比立刻畫資料庫更像工程師。</div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div><h3>確認需求與限制</h3><p>誰使用、核心功能、資料量、同時使用人數、可接受延遲、正確性與權限要求。</p></div></div>
+        <div class="step"><span class="step-num">2</span><div><h3>畫出主資料流</h3><p>輸入 → 驗證 → 處理 → 儲存 → API／畫面。先講正常流程，再談例外。</p></div></div>
+        <div class="step"><span class="step-num">3</span><div><h3>定義資料與介面</h3><p>關鍵欄位、唯一鍵、API 輸入輸出、資料庫或檔案各保存什麼。</p></div></div>
+        <div class="step"><span class="step-num">4</span><div><h3>處理失敗情境</h3><p>缺值、重複請求、逾時、服務中斷、權限不足；說明 retry、idempotency、fallback 與稽核。</p></div></div>
+        <div class="step"><span class="step-num">5</span><div><h3>量測與改善效能</h3><p>先量 p50／p95 延遲、吞吐量、CPU、記憶體與查詢時間，再決定索引、批次、快取或非同步。</p></div></div>
+        <div class="step"><span class="step-num">6</span><div><h3>驗證與取捨</h3><p>單元、整合、回歸與壓力測試；最後說明為何目前規模先採這個方案，以及何時才升級。</p></div></div>
+      </div>
+      <div class="script" data-copy="framework">
+        <p>我會先確認使用情境、資料量、同時使用人數與可接受延遲。假設目前是中小規模，我會先採用清楚可維護的單體服務：資料進來後先驗證與正規化，再進入核心處理，結果寫入資料庫，透過 API 提供查詢。資料層會設計唯一鍵與索引，避免重複寫入；外部服務則設定 timeout、有限次 retry 與失敗紀錄。效能部分先量測 API、資料庫與外部服務各段耗時，再針對瓶頸做索引、批次或快取，最後以整合測試及壓力測試確認改善。</p>
+        <div class="actions"><button class="btn" type="button" data-copy-btn="framework">複製 60 秒骨架</button></div>
+      </div>
+    </section>
+
+    <section class="section" id="logic">
+      <p class="kicker">Engineering logic</p><h2>除錯不是猜答案，是逐層縮小範圍</h2>
+      <p class="lead">面試官常在看你會不會保留證據、改一個變因、驗證修正，而不是期待你立刻猜中 root cause。</p>
+      <details open><summary>客戶說「系統變慢／設備不動」時</summary><div class="detail"><ol><li>確認影響範圍、開始時間、頻率與最近變更。</li><li>保留 request ID、log、錯誤碼、設備狀態與時間戳。</li><li>建立最小可重現案例，區分前端、網路、應用、資料庫、外部設備。</li><li>一次驗證一個假設，避免同時改多項設定。</li><li>先恢復服務：rollback、重啟單一服務或人工 fallback。</li><li>修正後重跑原案例與相關回歸測試，留下原因及預防措施。</li></ol></div></details>
+      <details><summary>如何避免重複寫入或重複執行</summary><div class="detail"><p>請求帶 idempotency key；資料庫建立唯一限制；關鍵寫入使用 transaction；成功後記錄狀態。若 retry 發生，同一 key 直接回傳原結果，而不是再執行一次。</p></div></details>
+      <details><summary>不知道答案時怎麼說</summary><div class="detail"><p>「這部分我沒有在正式環境實作過，所以不會直接斷定。我會先確認資料量與失敗條件，量測目前瓶頸；初步可考慮 X，但要用 Y 指標驗證，若 Z 條件成立再改用另一方案。」這比硬猜更可靠。</p></div></details>
+    </section>
+
+    <section class="section" id="performance">
+      <p class="kicker">Performance</p><h2>效能題的關鍵：先量，再改</h2>
+      <table class="matrix">
+        <thead><tr><th>層級</th><th>先看什麼</th><th>常見改善</th></tr></thead>
+        <tbody>
+          <tr><td>應用程式</td><td>函式耗時、CPU、記憶體、重複計算</td><td>演算法、批次處理、預先計算、非同步工作</td></tr>
+          <tr><td>資料庫</td><td>慢查詢、執行計畫、回傳列數、鎖</td><td>複合索引、限縮欄位、分頁、交易縮短</td></tr>
+          <tr><td>API</td><td>p50／p95／p99、QPS、序列化大小</td><td>回傳上限、壓縮、快取、背景任務</td></tr>
+          <tr><td>外部服務</td><td>網路、timeout、失敗率、限流</td><td>有限 retry、退避、circuit breaker、fallback</td></tr>
+        </tbody>
+      </table>
+      <div class="two-col">
+        <div>
+          <h3>資料量增加 10 倍</h3>
+          <p>先估算讀寫比例與瓶頸。你的 S-100 系統可先按日期／預報時距批次處理，完整格網留成果包，查詢所需摘要與關注點位進 PostgreSQL；常用條件建立複合索引，API 設分頁與上限。</p>
+        </div>
+        <div>
+          <h3>RAG 回答太慢</h3>
+          <p>將文件切塊與向量預先建立；模型在服務啟動時載入而非每次請求重載；記錄檢索、rerank、生成各段耗時；再依證據考慮快取與 top-k。</p>
+        </div>
+      </div>
+      <details><summary>複雜度最低限度要會</summary><div class="detail"><ul><li>掃過一次資料：O(n)</li><li>排序：通常 O(n log n)</li><li>雙層逐筆比對：常見 O(n²)</li><li>dict／hash 查找：平均 O(1)</li></ul><p>回答時要接回資料規模；O(n²) 對 100 筆可能沒事，對百萬筆就要改資料結構或索引。</p></div></details>
+    </section>
+
+    <section class="section" id="practice">
+      <p class="kicker">Two-minute drill</p><h2>隨機抽題，先說骨架再補細節</h2>
+      <div class="practice">
+        <div class="practice-head"><strong>限時兩分鐘</strong><span class="timer" id="timer">02:00</span></div>
+        <div class="prompt" id="prompt">設計一個可引用官方文件、能拒絕高風險問題的醫療 RAG 問答服務。</div>
+        <textarea id="answerNotes" aria-label="作答速記" placeholder="先寫：需求／資料流／資料與介面／失敗處理／效能／驗證…"></textarea>
+        <div class="actions">
+          <button class="btn primary" id="startTimer" type="button">開始</button>
+          <button class="btn" id="nextPrompt" type="button">換一題</button>
+          <button class="btn" id="resetTimer" type="button">重設</button>
+        </div>
+        <details id="modelAnswer"><summary>看回答要點</summary><div class="detail" id="modelText"></div></details>
+      </div>
+    </section>
+
+    <section class="section" id="companies">
+      <p class="kicker">Upcoming interviews</p><h2>下一場要練的情境</h2>
+      <details open id="muratec"><summary>9/3 台灣村田機械：設備與系統故障</summary><div class="detail"><p><strong>題目：</strong>自動搬送任務延遲，但不是每次發生，你會怎麼查？</p><p><strong>答法：</strong>先問影響設備、任務 ID、時間與最近變更；建立端到端時間線，依序看上位系統送單、queue、資料庫狀態、網路訊息、設備回報與 timeout。先用同一任務重現，再比較正常與異常 log。效能要量每一段 latency，不先認定是資料庫；修正後驗證原案例、尖峰負載與告警。</p></div></details>
+      <details open id="ship"><summary>9/10 船舶中心：海洋資料服務擴充</summary><div class="detail"><p><strong>題目：</strong>格網資料增加 10 倍，如何讓查詢仍可用？</p><p><strong>答法：</strong>先確認使用者查的是完整格網還是摘要。完整來源檔保留在成果包，資料庫只存常查詢的統計與關注點位；按日期、時距與位置設計索引，API 必須分頁及限制範圍。批次計算與線上查詢分離，再量 DB、序列化與網路耗時，必要時才加快取或空間資料庫索引。</p></div></details>
+      <div class="callout warn"><strong>還未確認時間的公司先不做成正式面試。</strong>博鉅產品 PM、向雲 AI 應用與聚騰軟體目前只看到聯繫或排程討論，等日期、形式與 JD 確認後再建立公司專頁。</div>
+    </section>
+
+    <section class="section" id="review">
+      <p class="kicker">Post-interview review</p><h2>趁今天還記得，留下題目</h2>
+      <p class="lead">把題目原句、你的回答、卡住點與更好答案寫下來。內容只保存在目前瀏覽器。</p>
+      <textarea id="reviewNotes" aria-label="面試復盤" placeholder="題目原句：&#10;我當時怎麼答：&#10;卡在哪裡：&#10;下次的六步答案："></textarea>
+      <p class="mini" id="saveState">尚未輸入。</p>
+    </section>
+  </main>
+
+  <footer>更新日期：2026-08-27｜先把答案講完整，再追求講得漂亮</footer>
+  <script>
+    const prompts = [
+      {
+        q: "設計一個可引用官方文件、能拒絕高風險問題的醫療 RAG 問答服務。",
+        a: "先確認使用者、文件量與延遲。流程為問題分類與權限檢查 → BM25／向量檢索 → 融合排序 → 證據門檻 → 有來源回答或拒答 → 稽核。文件與向量離線建立；服務啟動時載入模型。記錄檢索、生成延遲與引用正確率，外部模型逾時時降級為只顯示證據。"
+      },
+      {
+        q: "客戶反映無塵室搬送任務偶爾延遲，你會如何定位問題並提出系統改善？",
+        a: "先取得任務 ID、設備、時間、頻率與最近變更，建立上位系統、queue、DB、網路與設備回報的端到端時間線。比較正常／異常 log，量每段 latency。先恢復服務並保存證據，再處理根因；加上 correlation ID、分段監控、timeout 與可重入的 retry，最後做尖峰與故障回歸測試。"
+      },
+      {
+        q: "海洋格網資料增加 10 倍，原本的 API 查詢開始變慢，你會怎麼處理？",
+        a: "先量 API、DB、序列化與傳輸各段耗時，並確認查詢是否真的需要完整格網。完整資料留物件／成果檔，DB 保存常查摘要；依日期、時距、位置建立索引，限制欄位、範圍與分頁。批次與線上查詢分開，測 p95 與 QPS；仍不足再考慮分區、預計算或快取。"
+      },
+      {
+        q: "使用者重複按送出，系統不可以建立兩次任務，你怎麼設計？",
+        a: "由客戶端或伺服器產生 idempotency key；資料庫建立唯一限制，寫入放在 transaction 中。第一次成功後保存狀態與回應；相同 key 再來時回傳既有結果。外部工具呼叫也要保存狀態，避免 DB 成功但設備命令重複。"
+      },
+      {
+        q: "某 API 平均 200 ms，但使用者仍抱怨偶爾很慢，你接下來看什麼？",
+        a: "平均值會掩蓋長尾。我會看 p50、p95、p99、錯誤率與同時請求量，再用 tracing 拆成應用、DB、外部服務與網路。對照慢請求的 query plan、payload、cache miss、GC 或鎖等待；只改有證據的瓶頸，壓測後比較前後。"
+      }
+    ];
+    let promptIndex = 0;
+    let remaining = 120;
+    let timerId = null;
+    const timer = document.getElementById("timer");
+    const prompt = document.getElementById("prompt");
+    const modelText = document.getElementById("modelText");
+    function renderPrompt() {
+      prompt.textContent = prompts[promptIndex].q;
+      modelText.textContent = prompts[promptIndex].a;
+      document.getElementById("modelAnswer").open = false;
+    }
+    function renderTimer() {
+      const minutes = String(Math.floor(remaining / 60)).padStart(2, "0");
+      const seconds = String(remaining % 60).padStart(2, "0");
+      timer.textContent = `${minutes}:${seconds}`;
+    }
+    document.getElementById("startTimer").addEventListener("click", () => {
+      if (timerId) return;
+      timerId = setInterval(() => {
+        remaining -= 1;
+        renderTimer();
+        if (remaining <= 0) {
+          clearInterval(timerId);
+          timerId = null;
+          timer.textContent = "時間到";
+        }
+      }, 1000);
+    });
+    document.getElementById("resetTimer").addEventListener("click", () => {
+      clearInterval(timerId);
+      timerId = null;
+      remaining = 120;
+      renderTimer();
+    });
+    document.getElementById("nextPrompt").addEventListener("click", () => {
+      promptIndex = (promptIndex + 1) % prompts.length;
+      renderPrompt();
+      clearInterval(timerId);
+      timerId = null;
+      remaining = 120;
+      renderTimer();
+      document.getElementById("answerNotes").value = "";
+    });
+    document.querySelectorAll("[data-copy-btn]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = document.querySelector(`[data-copy="${button.dataset.copyBtn}"] p`);
+        await navigator.clipboard.writeText(target.textContent.trim());
+        const old = button.textContent;
+        button.textContent = "已複製";
+        setTimeout(() => { button.textContent = old; }, 1400);
+      });
+    });
+    const reviewNotes = document.getElementById("reviewNotes");
+    const saveState = document.getElementById("saveState");
+    reviewNotes.value = localStorage.getItem("system-design-review-20260827") || "";
+    if (reviewNotes.value) saveState.textContent = "已載入先前速記。";
+    let saveTimer;
+    reviewNotes.addEventListener("input", () => {
+      saveState.textContent = "儲存中…";
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => {
+        localStorage.setItem("system-design-review-20260827", reviewNotes.value);
+        saveState.textContent = "已保存在目前瀏覽器。";
+      }, 350);
+    });
+    renderPrompt();
+    renderTimer();
+    if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+  </script>
+</body>
+</html>

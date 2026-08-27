@@ -491,7 +491,7 @@
 
 :root{--teal:#176b87;--teal-dark:#12334a;--teal-soft:#e6f1f5;--brand-surface:#12334a;}</style></head><body><nav class="topbar" aria-label="面試準備導覽">
     <a href="#script">小抄</a><a href="#company">公司</a><a href="#role">職務</a>
-    <a href="#intro">自介</a><a href="#thesis">專案</a><a href="#technical">技術</a>
+    <a href="#intro">自介</a><a href="#thesis">專案</a><a href="#technical">技術</a><a href="#architecture">架構題</a>
     <a href="#qa">問答</a><a href="#ask">反問</a><a href="#day">當日</a>
   </nav><div class="shell"><header class="hero" id="top">
       <p class="eyebrow">謝向嶸｜正式面試階段</p>
@@ -577,6 +577,14 @@
     <details><summary>GeoJSON、Shapefile 與 HDF5 怎麼區分</summary><div class="detail-body"><ul><li>GeoJSON：JSON 型向量資料，容易與 Web/API 交換，但大型資料效率有限。</li><li>Shapefile：傳統 GIS 向量格式，由多個檔案構成，欄位與編碼限制較多。</li><li>HDF5：階層式二進位容器，適合格網與大量數值資料，可保存 group、dataset 和 attribute。</li></ul></div></details>
     <details><summary>現場測試問題怎麼回答</summary><div class="detail-body"><p>先確認安全、設備版本、時間與測試條件；再區分資料來源、通訊、解析、演算法和顯示層。保留原始 log 與輸出，使用最小案例逐層隔離。若需修改，確保可回復並記錄版本，測試後用固定案例做回歸確認。</p></div></details>
     <details><summary>最低限度複習</summary><div class="detail-body"><ul><li>Python：檔案解析、JSON、例外處理、logging。</li><li>GIS：vector/raster、CRS、GeoJSON、空間範圍。</li><li>網路：TCP/UDP、Ethernet、port；知道 Modbus/CAN bus 用途即可，不假裝實作熟練。</li><li>Linux：檔案、process、權限、log、基本網路查找。</li><li>Git：branch、commit、diff、回溯。</li></ul></div></details>
+  </section>
+
+  <section class="section" id="architecture"><p class="kicker">Architecture &amp; performance</p><h2>系統架構與效能題</h2>
+    <div class="callout"><strong>固定答題順序：</strong><p>需求與規模 → 主資料流 → 資料與介面 → 失敗處理 → 效能量測 → 測試與取捨。<a href="./system-design.html#framework">開啟共用兩分鐘訓練</a></p></div>
+    <details open><summary>格網資料增加 10 倍，API 查詢變慢</summary><div class="detail-body"><p>我會先確認使用者查的是完整格網、空間範圍，還是每日摘要，並量測資料庫、序列化與網路各段耗時。完整來源格網留在成果包，資料庫保存常查的統計摘要與品質關注點位；依日期、預報時距與位置建立索引，API 限制欄位、範圍與分頁。批次計算和線上查詢分離，仍不足時再評估空間索引、分區或快取。</p></div></details>
+    <details><summary>如何設計可追溯的海洋資料處理服務</summary><div class="detail-body"><p>來源檔進站後先保存檔案識別、版本、雜湊與時間範圍，再做格式、座標、單位與缺值驗證。計算工作以日期與預報時距作唯一批次鍵，輸出完整成果包與可查詢摘要；資料庫寫入使用 transaction 及唯一限制，避免重跑造成重複。每批保留程式版本、參數、輸入與錯誤 log，API 只讀取已完成批次。</p></div></details>
+    <details><summary>API 平均很快，為什麼使用者仍說卡？</summary><div class="detail-body"><p>平均值可能掩蓋長尾，我會查看 p50、p95、p99、錯誤率、同時請求與回傳大小，再以 request ID 拆分應用程式、資料庫及網路耗時。對慢查詢看執行計畫與掃描列數；只針對已確認的瓶頸做索引、預計算或快取，最後以相同負載比較前後結果。</p></div></details>
+    <details><summary>筆試卡住時如何呈現工程邏輯</summary><div class="detail-body"><p>先寫清楚輸入、輸出與假設，再給最直接可讀的解法，標示時間與空間複雜度；若想到優化，再說明資料量到什麼程度才需要。測試至少包含正常值、空值、邊界、重複資料與錯誤格式。即使沒有完成全部程式，也讓閱卷者看得到推理與驗證方式。</p></div></details>
   </section>
 
   <section class="section" id="qa"><p class="kicker">Interview Q&amp;A</p><h2>高機率面試問題</h2>
