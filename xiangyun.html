@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f4f">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="data:,">
+  <title>向雲科技 AI 應用工程師｜面試準備</title>
+  <style>
+    :root {
+      --ink: #1b252b;
+      --muted: #647078;
+      --paper: #f4f6f5;
+      --white: #ffffff;
+      --line: #d5ddda;
+      --deep: #102e3a;
+      --teal: #176b6a;
+      --teal-soft: #e6f2ef;
+      --amber: #b65b1d;
+      --amber-soft: #fff0e4;
+      --red: #9b3b31;
+      --red-soft: #f9eae7;
+      --blue: #275f8b;
+      --blue-soft: #e9f1f7;
+      --shadow: 0 10px 28px rgba(19, 45, 54, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.64;
+      letter-spacing: 0;
+    }
+    button, textarea, input { font: inherit; }
+    a { color: inherit; text-underline-offset: 3px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: 1.86rem; line-height: 1.22; }
+    h2 { margin-bottom: 10px; font-size: 1.3rem; line-height: 1.35; }
+    h3 { margin-bottom: 5px; font-size: 1rem; }
+    ul, ol { margin: 7px 0 0; padding-left: 1.25rem; }
+    li + li { margin-top: 5px; }
+    code { font-family: Consolas, "SFMono-Regular", monospace; font-size: .9em; }
+    pre {
+      max-width: 100%;
+      margin: 10px 0 0;
+      padding: 13px;
+      overflow-x: auto;
+      border: 1px solid #cbd7d4;
+      border-radius: 5px;
+      color: #dcece8;
+      background: #132a33;
+      font-size: .82rem;
+      line-height: 1.52;
+    }
+    .shell { width: min(860px, 100%); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: calc(8px + env(safe-area-inset-top)) 12px 8px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(244, 246, 245, .96);
+      backdrop-filter: blur(10px);
+      scrollbar-width: none;
+    }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a {
+      flex: 0 0 auto;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--white);
+      font-size: .82rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 30px 18px 22px;
+      color: var(--white);
+      background: var(--deep);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -52px;
+      top: 28px;
+      width: 176px;
+      height: 176px;
+      border: 24px solid rgba(55, 178, 157, .15);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .eyebrow { margin-bottom: 4px; color: #8ed3c8; font-size: .82rem; font-weight: 800; }
+    .role { max-width: 620px; margin-bottom: 18px; color: #dce9e6; font-weight: 700; }
+    .event {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin: 0 -18px;
+      border-top: 1px solid rgba(255,255,255,.2);
+      border-bottom: 1px solid rgba(255,255,255,.2);
+    }
+    .event > div { min-width: 0; padding: 12px 18px; }
+    .event > div + div { border-left: 1px solid rgba(255,255,255,.2); }
+    .event small { display: block; color: #95c9c0; font-size: .74rem; }
+    .event strong { display: block; margin-top: 2px; overflow-wrap: anywhere; font-size: .93rem; }
+    .countdown { position: relative; z-index: 1; margin: 13px 0 0; color: #b8d8d2; font-size: .84rem; text-align: center; }
+    .section { padding: 27px 18px; scroll-margin-top: 58px; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .kicker { margin-bottom: 4px; color: var(--amber); font-size: .76rem; font-weight: 800; text-transform: uppercase; }
+    .intro { margin-bottom: 15px; color: var(--muted); }
+    .status { margin: 0 0 16px; padding: 12px 13px; border-left: 4px solid var(--teal); background: var(--teal-soft); color: #214e4c; font-size: .91rem; }
+    .status.pending { border-left-color: var(--amber); background: var(--amber-soft); color: #6d3d1e; }
+    .label {
+      display: inline-block;
+      margin-right: 5px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      color: var(--white);
+      background: var(--teal);
+      font-size: .7rem;
+      font-weight: 800;
+      vertical-align: 1px;
+    }
+    .label.infer { background: var(--amber); }
+    .label.ask { background: var(--blue); }
+    .timeline, .facts, .evidence, .metrics { border-top: 1px solid var(--line); }
+    .timeline-row, .fact, .evidence-row, .metric-row { padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .timeline-row { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; }
+    .timeline-row time { color: var(--teal); font-weight: 800; }
+    .timeline-row strong, .fact strong, .evidence-row strong, .metric-row strong { display: block; }
+    .timeline-row span, .fact p, .evidence-row p, .metric-row p { display: block; margin-bottom: 0; color: var(--muted); font-size: .9rem; }
+    .fit-grid { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
+    .fit-grid > div { padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .fit-grid h3 { color: var(--teal); }
+    .fit-grid .gap h3 { color: var(--amber); }
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+      margin: 16px 0 0;
+    }
+    .flow-step {
+      position: relative;
+      padding: 12px 13px;
+      border-left: 4px solid var(--teal);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .flow-step strong { display: block; color: var(--deep); }
+    .flow-step span { display: block; margin-top: 2px; color: var(--muted); font-size: .84rem; }
+    .flow-arrow { color: var(--amber); font-weight: 900; text-align: center; }
+    .script { padding: 15px; border-left: 4px solid var(--teal); background: var(--white); box-shadow: var(--shadow); }
+    .script + .script { margin-top: 15px; }
+    .script p:last-of-type { margin-bottom: 0; }
+    .script-title { margin-bottom: 8px; color: var(--deep); font-size: .86rem; font-weight: 900; }
+    .copy-btn, .timer-btn {
+      min-height: 40px;
+      margin-top: 12px;
+      padding: 7px 11px;
+      border: 1px solid var(--teal);
+      border-radius: 5px;
+      color: var(--teal);
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .copy-btn.done, .timer-btn.primary { color: var(--white); background: var(--teal); }
+    .callout { margin: 15px 0 0; padding: 13px; border: 1px solid #e2c7ad; background: var(--amber-soft); }
+    .callout.info { border-color: #bfd3df; background: var(--blue-soft); }
+    .callout.danger { border-color: #e0bdb8; background: var(--red-soft); }
+    .callout p:last-child { margin-bottom: 0; }
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { position: relative; padding: 14px 34px 14px 0; cursor: pointer; font-weight: 800; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 4px; top: 10px; color: var(--amber); font-size: 1.4rem; }
+    details[open] summary::after { content: "−"; }
+    .detail { padding: 0 0 16px; color: var(--muted); }
+    .answer { margin-top: 9px; padding: 12px; border-left: 3px solid var(--teal); background: var(--teal-soft); color: var(--ink); }
+    .answer strong { color: var(--deep); }
+    .demo-steps { counter-reset: demo; margin: 0; padding: 0; list-style: none; }
+    .demo-steps li { position: relative; min-height: 55px; padding: 11px 0 11px 45px; border-bottom: 1px solid var(--line); }
+    .demo-steps li::before {
+      counter-increment: demo;
+      content: counter(demo);
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--teal);
+      font-weight: 900;
+    }
+    .demo-steps strong { display: block; }
+    .demo-steps span { display: block; color: var(--muted); font-size: .86rem; }
+    .timer-panel { margin-top: 15px; padding: 14px; border: 1px solid var(--line); background: var(--white); }
+    .timer-display { font: 800 2.1rem/1 Consolas, monospace; color: var(--deep); }
+    .timer-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+    .checklist { border-top: 1px solid var(--line); }
+    .check { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+    .check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--teal); }
+    .score-grid { border-top: 1px solid var(--line); }
+    .score-row { display: grid; grid-template-columns: minmax(0, 1fr) 92px; gap: 12px; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--line); }
+    .score-row label { font-weight: 700; }
+    .score-row select { min-height: 38px; width: 100%; border: 1px solid var(--line); border-radius: 4px; background: var(--white); }
+    .score-total { margin-top: 12px; color: var(--deep); font-weight: 900; }
+    textarea { width: 100%; min-height: 180px; padding: 12px; resize: vertical; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--white); line-height: 1.55; }
+    .note-state { margin-top: 7px; color: var(--muted); font-size: .78rem; }
+    .sources { color: var(--muted); font-size: .84rem; }
+    .sources a { color: var(--blue); overflow-wrap: anywhere; }
+    footer { padding: 20px 18px calc(28px + env(safe-area-inset-bottom)); color: var(--muted); font-size: .78rem; text-align: center; }
+    @media (min-width: 680px) {
+      h1 { font-size: 2.22rem; }
+      .hero, .section { padding-right: 30px; padding-left: 30px; }
+      .event { margin-right: -30px; margin-left: -30px; }
+      .event > div { padding-right: 30px; padding-left: 30px; }
+      .fit-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .fit-grid > div { min-width: 0; }
+      .flow { grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: stretch; gap: 7px; }
+      .flow-step { min-width: 0; border-left: 0; border-top: 4px solid var(--teal); }
+      .flow-arrow { display: grid; place-items: center; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="topbar" aria-label="頁面導覽">
+      <a href="./index.html">面試清單</a><a href="#strategy">策略</a><a href="#company">公司</a><a href="#intro">自介</a><a href="#projects">作品</a><a href="#demo">Demo</a><a href="#qa">問答</a><a href="#technical">技術</a><a href="#ask">反問</a><a href="#check">檢查</a>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">TOCLOUD TECHNOLOGY</p>
+      <h1>向雲科技</h1>
+      <p class="role">AI 應用工程師｜LLM、RAG、Agent、Workflow、API 與資料串接</p>
+      <div class="event">
+        <div><small>面試時間</small><strong>9/1（二）14:00</strong></div>
+        <div><small>面試地點</small><strong>待公司回覆確認</strong></div>
+      </div>
+      <p class="countdown" id="countdown">正在計算距離面試時間…</p>
+    </header>
+
+    <main>
+      <section class="section" id="strategy">
+        <p class="kicker">Core strategy</p><h2>這場面試的主線</h2>
+        <p class="status"><strong>你的定位：</strong>不是模型研究員，也不是只會下 Prompt 的使用者；你是能把資料、API、檢索、測試與稽核串成可驗證 AI 應用的新鮮人工程師。</p>
+        <div class="timeline">
+          <div class="timeline-row"><time>開場</time><div><strong>先講方向吻合</strong><span>資工＋通訊背景，想走 AI 應用落地；以 Python、資料庫、API 與 RAG 作品證明。</span></div></div>
+          <div class="timeline-row"><time>作品</time><div><strong>主講 MedEvidence，論文作第二證據</strong><span>RAG 展示職缺直接技能；論文展示資料管線、驗證與系統整合。</span></div></div>
+          <div class="timeline-row"><time>技術</time><div><strong>先釐清條件，再畫資料流</strong><span>回答 RAG、Agent、API 或效能題時，說明輸入、元件、失敗處理、量測與驗證。</span></div></div>
+          <div class="timeline-row"><time>收尾</time><div><strong>確認真正工作內容</strong><span>問清楚團隊、AI Harness 定義、客戶交付、部署環境、mentor 與核薪。</span></div></div>
+        </div>
+        <div class="callout danger"><strong>不要這樣說：</strong>「程式都是 AI 幫我寫的」、「我很熟所有 Agent 框架」、「這是正式醫療 RAG 系統」。改成：AI 協助加速實作，但需求、資料語意、變更審查、執行測試、結果驗證與限制說明由我負責。</div>
+      </section>
+
+      <section class="section" id="company">
+        <p class="kicker">Company &amp; role</p><h2>公司與職務判讀</h2>
+        <p class="status pending"><strong>行程狀態：</strong>9/1 14:00 已回覆可配合；確切地址、攜帶文件及是否有技術測驗仍待公司回覆。104 與官網登載地址為台中市南屯區五權西路二段 501 號 9 樓，不先當成面試地點。</p>
+        <div class="facts">
+          <div class="fact"><strong><span class="label">已確認</span>公司定位</strong><p>公司官網與 104 將向雲定位為資訊系統整合服務商，成立於 2012 年；服務從雲端、虛擬化、網路與備援延伸到 AI 解決方案。</p></div>
+          <div class="fact"><strong><span class="label">已確認</span>職缺範圍</strong><p>LLM、RAG、Agent、AI Harness、工具與 Workflow、API／資料串接、開發測試部署、客戶協作及技術文件。</p></div>
+          <div class="fact"><strong><span class="label">已確認</span>門檻與待遇</strong><p>經歷不拘、專科以上，月薪刊載 30,000–70,000 元；要求 Python、Linux CLI、AI 專案經驗、需求釐清與邊界驗證。</p></div>
+          <div class="fact"><strong><span class="label infer">合理推論</span>工作型態</strong><p>公司規模在 104 列為 12 人，且職缺同時涵蓋規劃、開發、部署與客戶合作，實際工作可能比大型公司更廣，需確認是否有技術帶領與明確分工。</p></div>
+          <div class="fact"><strong><span class="label ask">面試確認</span>真正的 AI Harness</strong><p>這個詞可能指 Agent 周邊的 context、tools、state、permissions、observability 與 verification，也可能是公司內部產品名稱；先說你的理解，再請主管說明團隊定義。</p></div>
+        </div>
+        <div class="fit-grid">
+          <div>
+            <h3>你已具備</h3>
+            <ul><li>Python、SQL、REST API、資料處理</li><li>BM25＋BGE＋RRF 混合檢索原型</li><li>來源引用、拒答、稽核與固定評測</li><li>Git、測試、技術文件與問題追查</li><li>能把技術結果說成使用條件與限制</li></ul>
+          </div>
+          <div class="gap">
+            <h3>誠實缺口</h3>
+            <ul><li>正式商用 Agent 系統與大量使用者經驗有限</li><li>Linux 部署、Docker 與雲端維運需再深化</li><li>尚未主導客戶需求訪談與正式交付</li><li>沒有從零訓練或微調大型語言模型</li><li>需確認公司實際框架與模型供應商</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="intro">
+        <p class="kicker">Opening</p><h2>自我介紹</h2>
+        <div class="script" data-copy-target data-copy-label="複製 30 秒自介">
+          <div class="script-title">30 秒版本</div>
+          <p>您好，我是謝向嶸，大學畢業於勤益科大資訊工程系，碩士畢業於臺灣海洋大學通訊與導航工程學系。我的主要經驗是用 Python、PostgreSQL 與 REST API，把不同格式的資料整理成可查詢、可驗證的系統；最近也完成一套 BM25、BGE 向量與 RRF 混合檢索的 RAG 治理原型。我想找的正是 AI 應用落地工作，因此很希望了解貴公司在 RAG、Agent 與 AI Harness 的實際專案。</p>
+          <button class="copy-btn" type="button">複製 30 秒自介</button>
+        </div>
+        <div class="script" data-copy-target data-copy-label="複製 90 秒自介">
+          <div class="script-title">90 秒版本</div>
+          <p>您好，我是謝向嶸，大學就讀勤益科大資訊工程系，碩士就讀臺灣海洋大學通訊與導航工程學系。我的強項是把來源複雜的資料，整理成可以查詢、追蹤與驗證的系統。</p>
+          <p>碩士研究中，我用 Python 處理 NetCDF、HDF5 與 GeoJSON，建立 PostgreSQL 資料庫、REST API 與 QGIS 檢視流程，最後以 114 組原始資料重算確認資料庫結果一致。最近我也完成 MedEvidence RAG 原型，公開版在瀏覽器執行 BM25、BGE 中文向量與 Weighted RRF，並加入來源引用、資料不足處理、稽核紀錄與固定回歸評測；本機版則保留 FastAPI、SQLite 與 Ollama 串接。</p>
+          <p>我平常會使用 Claude Code、Codex 等 AI 工具加速理解與實作，但我會先定義需求、檢查修改差異、親自執行測試並驗證邊界情況。這和職缺強調的需求釐清、簡單實用的工程判斷，以及交付前親自驗證很一致。我希望加入能把 AI 真正接到資料、API 與商業流程的團隊。</p>
+          <button class="copy-btn" type="button">複製 90 秒自介</button>
+        </div>
+        <details><summary>為什麼選向雲科技？</summary><div class="detail"><div class="answer">我想做的不是單純模型研究，而是把 LLM、RAG 與 Agent 接到真實資料、API 和工作流程。這份職缺同時要求技術實作、需求釐清、測試部署與客戶合作，和我從資料處理一路做到 API、查詢介面與驗證的經驗最接近。公司原本也有系統整合與雲端服務背景，我想了解 AI 團隊如何把既有企業系統能力延伸到新的 AI 專案。</div></div></details>
+      </section>
+
+      <section class="section" id="projects">
+        <p class="kicker">Evidence</p><h2>三條能力證據</h2>
+        <div class="evidence">
+          <div class="evidence-row"><strong>1. MedEvidence：最直接對應 RAG</strong><p>BM25 字詞召回、BGE-small-zh-v1.5 語意向量、Weighted RRF 融合、Top 3 來源、資料不足拒答、BM25 降級模式、Audit Trail 與 13 題固定回歸評測。</p></div>
+          <div class="evidence-row"><strong>2. 碩士系統：證明資料與後端基本功</strong><p>NetCDF／HDF5 解析、時空配對、PostgreSQL、REST API、QGIS；42 個目標日、114 組日期與時距組合，原始資料重算與資料庫結果 114／114 一致。</p></div>
+          <div class="evidence-row"><strong>3. AI 協作方式：對應 Harness 思維</strong><p>先寫清楚任務與限制，再提供最小必要 context 與工具權限；保留 git diff、執行 log、測試與結果證據，遇到失敗能追查原因，而不是只接受模型最後輸出。</p></div>
+        </div>
+
+        <div class="flow" aria-label="RAG 系統流程">
+          <div class="flow-step"><strong>文件與 metadata</strong><span>來源、版本、日期、適用範圍</span></div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-step"><strong>混合召回</strong><span>BM25＋BGE，RRF 融合排名</span></div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-step"><strong>回答與治理</strong><span>引用、拒答、安全路由</span></div>
+        </div>
+
+        <details open><summary>90 秒 RAG 專案講法</summary><div class="detail"><div class="answer">我做的 MedEvidence 是公開文件問答與治理稽核原型。使用者可以自由輸入問題，系統先做範圍與風險判定，再以 BM25 召回關鍵詞相近文件、用 BGE 中文向量補足語意相近但字面不同的文件，最後以 Weighted RRF 合併排名。公開版為了可重現與避免假裝接了雲端模型，採決定式 evidence-extractive 整理；本機 FastAPI 版才把後端重新驗證過的 Top 3 文件交給 Ollama。系統另外保存來源、延遲與 request id，並用固定題庫做回歸測試。這個專案讓我實際處理了檢索品質、失敗降級、引用可信度與 AI 回答不能只看起來合理的問題。</div></div></details>
+        <details><summary>60 秒碩士論文講法</summary><div class="detail"><div class="answer">我的碩士研究不是建立預報模型，而是做動態海洋資料的品質監測系統。原始資料有不同格式、日期、預報時距與空間位置，我用 Python 完成解析與配對，將結果寫入 PostgreSQL，由 REST API 提供查詢，再在 QGIS 重建空間圖層。為避免轉換或寫入過程改變結果，我以原始資料重算 114 組，與資料庫全部一致。這段經驗證明我能處理異質資料、資料庫與 API，也會為系統建立可追溯的驗證證據。</div></div></details>
+      </section>
+
+      <section class="section" id="demo">
+        <p class="kicker">Live demo</p><h2>3 分鐘 Demo 操作</h2>
+        <p class="intro">主動詢問能否展示；若時間不足，只打開架構頁與一筆自由問句。公開版不接雲端 LLM，這不是缺點，而是你主動保留的能力界線。</p>
+        <ol class="demo-steps">
+          <li><strong>先講一句定位</strong><span>「這是用公開資料製作的 RAG 治理原型，不含病人資料，也不是臨床決策工具。」</span></li>
+          <li><strong>輸入自己的同義問句</strong><span>例：「醫療機構導入生成式 AI 前，要先建立哪些管理措施？」不要只按預設題。</span></li>
+          <li><strong>展開 RAG 檢索追蹤</strong><span>指出 BM25、BGE 語意分數、RRF 融合與 Top 3；說明 RRF 避免直接比較不同尺度的原始分數。</span></li>
+          <li><strong>開啟來源原文</strong><span>說明引用可追溯，但「有引用」仍不等於回答一定正確，仍要做內容與版本核對。</span></li>
+          <li><strong>測一個邊界案例</strong><span>輸入個別診斷要求或無關問題，展示拒答／安全路由；若 BGE 無法載入，說明系統會明示降級到 BM25。</span></li>
+          <li><strong>以評測收尾</strong><span>打開固定評測或稽核紀錄：「每次改 Prompt 或檢索參數後，不靠感覺，而是跑固定題庫看有沒有 regression。」</span></li>
+        </ol>
+        <div class="callout info"><strong>Demo 網址：</strong><a href="https://steven65026502.github.io/medical-rag-audit-demo/" target="_blank" rel="noopener">steven65026502.github.io/medical-rag-audit-demo/</a><br><strong>原始碼：</strong><a href="https://github.com/steven65026502/medical-rag-audit-demo" target="_blank" rel="noopener">github.com/steven65026502/medical-rag-audit-demo</a></div>
+        <div class="timer-panel">
+          <div class="timer-display" id="timerDisplay" aria-live="polite">03:00</div>
+          <div class="timer-actions"><button class="timer-btn primary" id="timerStart" type="button">開始</button><button class="timer-btn" id="timerPause" type="button">暫停</button><button class="timer-btn" id="timerReset" type="button">重設</button></div>
+        </div>
+      </section>
+
+      <section class="section" id="qa">
+        <p class="kicker">Likely questions</p><h2>高機率問答</h2>
+        <details open><summary>你用 AI 工具做很多，哪些是你自己做的？</summary><div class="detail"><div class="answer">我會用 AI 協助理解程式、比較方案與產生初版，但我負責把需求與限制說清楚、決定資料語意和驗證方式、檢查 git diff、親自執行測試並核對輸出。以 RAG Demo 為例，是否使用 BM25、BGE、RRF、如何降級、哪些資料可送進模型、怎麼拒答與做固定評測，都必須由我理解後才能決定。AI 加速實作，但成果是否成立由我負責。</div></div></details>
+        <details><summary>RAG 和 fine-tuning 有什麼不同？</summary><div class="detail"><div class="answer">RAG 在推論時檢索外部知識，適合需要更新、引用及權限控制的內容；fine-tuning 改變模型行為或輸出風格，並不等於把最新事實可靠存進模型。企業文件問答通常先做好資料、檢索與評測，再判斷是否真的需要微調。</div></div></details>
+        <details><summary>為什麼同時用 BM25、BGE 與 RRF？</summary><div class="detail"><div class="answer">BM25 對產品名、條文、代碼等精確字詞強；BGE 能找出字面不同但語意相近的內容。兩者原始分數尺度不同，RRF 直接依排名融合，比硬把分數正規化後相加更穩健也更容易解釋。之後仍要用固定題庫比較 hybrid 是否真的優於單一路徑。</div></div></details>
+        <details><summary>怎麼降低幻覺？</summary><div class="detail"><div class="answer">先改善檢索與 metadata 篩選，再限制模型只能根據通過門檻的證據回答；要求逐項引用、資料不足時拒答，並驗證引用是否真的支持句子。對高風險輸出加入人工核准，最後用固定測試集檢查回答正確率、引用正確率、拒答與延遲。</div></div></details>
+        <details><summary>Workflow 和 Agent 有什麼不同？</summary><div class="detail"><div class="answer">Workflow 的步驟與分支由程式預先定義，較可控、易測試；Agent 會依目標與當下狀態選擇工具或下一步，彈性高但風險也高。能用明確 workflow 解決的問題，我會先採 workflow；只有路徑確實需要動態決策時才加入 agent loop。</div></div></details>
+        <details><summary>你怎麼理解 AI Harness Engineering？</summary><div class="detail"><div class="answer">我理解它不是單一模型或 Prompt，而是模型外層的執行支援：任務規格、context 選擇、工具與權限、狀態與記憶、觀測紀錄、失敗歸因及完成前驗證。我的專案已做過來源限制、工具／資料邊界、降級、audit 與 regression test，但我不會宣稱已建成完整商用 harness；我也想請教貴公司內部對這個詞的具體定義與目前架構。</div></div></details>
+        <details><summary>需求很模糊時，你會怎麼做？</summary><div class="detail"><div class="answer">先確認使用者、決策情境、輸入來源、期望輸出、不能做的事與驗收標準，再用一個小案例確認理解一致。先交付最小可驗證流程，保留 log 與失敗案例；若需求改變，能看出影響的是資料、檢索、模型、工具還是介面，而不是直接猜著開發。</div></div></details>
+        <details><summary>客戶說 AI 回答不好，你怎麼查？</summary><div class="detail"><div class="answer">先保存問題、版本、檢索候選、最終 context 與回答，再分類是知識缺漏、切塊／metadata、召回、排序、Prompt、模型或使用者期待問題。建立可重現案例後只改一個變因，以固定題庫比較改善前後，並檢查其他題是否退步。</div></div></details>
+        <details><summary>Agent 呼叫會改資料的工具，怎麼避免重複執行？</summary><div class="detail"><div class="answer">工具使用明確 schema 與最小權限；寫入動作帶 idempotency key，先檢查狀態再執行，設定 timeout 與有限 retry。付款、刪除、寄信等高風險動作在真正送出前由人確認，並保存 request id、輸入、結果與錯誤，讓整段可追溯。</div></div></details>
+        <details><summary>如果 API 很慢，你會先做什麼？</summary><div class="detail"><div class="answer">先定義流量與目標，查看 p50、p95、p99、錯誤率和每個階段耗時，不只看平均值。再依瓶頸考慮索引、連線池、快取、batch、非同步 I/O 或縮短 context；修改後用相同負載重測，確認延遲改善且答案品質沒有下降。</div></div></details>
+        <details><summary>你最大的技術缺口是什麼？</summary><div class="detail"><div class="answer">我目前的主要缺口是正式商用環境的大流量部署與跨客戶交付經驗，Linux、Docker 和雲端維運也需要透過實際專案深化。不過我已能完成資料、API、檢索、測試與文件的端到端原型，也習慣明確標示不知道的地方並用可驗證方式補齊。</div></div></details>
+      </section>
+
+      <section class="section" id="technical">
+        <p class="kicker">Technical refresh</p><h2>面試前技術複習</h2>
+        <div class="metrics">
+          <div class="metric-row"><strong>Python</strong><p>函式、list／dict、JSON、例外處理、typing、logging、pytest、API timeout／retry、讀檔與資料清理。</p></div>
+          <div class="metric-row"><strong>Linux</strong><p><code>pwd</code>、<code>ls -la</code>、<code>cd</code>、<code>cat</code>、<code>tail -f</code>、<code>rg/grep</code>、<code>ps</code>、<code>curl</code>、環境變數、venv 與 log。</p></div>
+          <div class="metric-row"><strong>API／SQL</strong><p>GET／POST、狀態碼、JSON schema、認證、pagination；JOIN、GROUP BY、CTE、Window Function、索引與交易。</p></div>
+          <div class="metric-row"><strong>部署／可靠性</strong><p>環境設定與 secret 分離、health check、structured log、request id、timeout、retry、fallback、rollback 與監控。</p></div>
+          <div class="metric-row"><strong>RAG 評測</strong><p>Recall@k、Top-k 命中、答案正確性、引用支持度、資料不足拒答、延遲、成本與 regression。</p></div>
+        </div>
+        <details open><summary>系統架構題的固定回答順序</summary><div class="detail"><div class="answer"><strong>1. 先問條件：</strong>使用者、資料量、更新頻率、延遲、權限與風險。<br><strong>2. 畫資料流：</strong>輸入 → API → 檢索／模型／工具 → DB → 回應。<br><strong>3. 補失敗處理：</strong>timeout、retry、idempotency、fallback、人工核准。<br><strong>4. 說可觀測性：</strong>request id、log、metrics、trace。<br><strong>5. 說驗證：</strong>固定案例、負載、邊界與回歸測試。</div></div></details>
+        <details><summary>簡化版 RRF 程式題</summary><div class="detail"><pre><code>def rrf(rankings, k=60):
+    scores = {}
+    for ranking in rankings:
+        for rank, doc_id in enumerate(ranking, start=1):
+            scores[doc_id] = scores.get(doc_id, 0) + 1 / (k + rank)
+    return sorted(scores, key=scores.get, reverse=True)</code></pre><p>說明重點：輸入是多組文件排名；同一文件在不同召回器排名越前，融合分數越高。正式版還要處理權重、重複 ID、空結果、Top-k 與測試。</p></div></details>
+        <details><summary>Prompt injection 與資料權限</summary><div class="detail"><div class="answer">將外部文件視為不可信資料，不讓文件文字覆蓋 system 指令；工具採 allowlist 與最小權限，敏感資料先做使用者與文件層級授權。前端送來的文件內容不直接信任，後端依文件 ID 重新取得可信版本。高風險工具需人工核准，所有動作保留 trace。</div></div></details>
+        <div class="callout"><strong>今晚最低練習：</strong>手寫一個 JSON 清理函式、一題 SQL 最新紀錄、一段 API timeout／retry；再用白紙畫一次 RAG＋Agent 系統架構。不要臨時狂背框架 API。</div>
+      </section>
+
+      <section class="section" id="ask">
+        <p class="kicker">Questions to ask</p><h2>你一定要反問</h2>
+        <ol>
+          <li>團隊所稱的 AI Harness Engineering，具體包含哪些元件與責任？目前已做到哪一階段？</li>
+          <li>AI 應用工程師在內部研發、客戶 PoC、正式交付及上線維運的比例各約多少？</li>
+          <li>目前主要使用哪些模型、向量資料庫、Agent／Workflow 框架與部署環境？</li>
+          <li>新人是否有 mentor、code review、測試規範與既有專案文件？前三個月的成功標準是什麼？</li>
+          <li>客戶需求由誰訪談與定義？工程師是否需要到場、出差、簡報或教育訓練？</li>
+          <li>RAG／Agent 的品質如何量測？是否已有 golden dataset、trace、監控及回歸流程？</li>
+          <li>職缺月薪區間很廣，核薪主要依哪些能力？試用期、年終、績效、加班與調薪制度如何？</li>
+        </ol>
+        <div class="callout info"><strong>期望薪資建議：</strong>若先被問，可答「依職務同時包含 AI 開發、API 整合與客戶交付，我希望月薪約 50,000–58,000 元；仍願意依實際責任、培訓、年終與整體制度討論。」若需要獨立交付、常態出差或 on-call，應再往上確認。</div>
+      </section>
+
+      <section class="section" id="check">
+        <p class="kicker">Interview day</p><h2>出發前檢查</h2>
+        <div class="checklist" id="checklist">
+          <label class="check"><input type="checkbox"><span>確認公司回覆的地址、樓層、聯絡人、面試形式與是否有測驗</span></label>
+          <label class="check"><input type="checkbox"><span>紙本履歷 2 份、身分證件、畢業與 N2 證明備用</span></label>
+          <label class="check"><input type="checkbox"><span>筆電、充電器、手機熱點；Demo 網址與 GitHub 先各開一次</span></label>
+          <label class="check"><input type="checkbox"><span>30 秒與 90 秒自介各練兩次，RAG Demo 控制在 3 分鐘</span></label>
+          <label class="check"><input type="checkbox"><span>複習 RAG、Agent、API、Linux 與系統架構固定回答順序</span></label>
+          <label class="check"><input type="checkbox"><span>選出最重要的五個反問；穿商務休閒並提早 20 分鐘抵達</span></label>
+        </div>
+      </section>
+
+      <section class="section" id="score">
+        <p class="kicker">After interview</p><h2>面試後判斷</h2>
+        <div class="score-grid" id="scoreGrid">
+          <div class="score-row"><label for="scoreTech">實際 AI／Python 技術含量</label><select id="scoreTech"><option value="0">未評</option><option value="1">1 低</option><option value="2">2 普通</option><option value="3">3 高</option></select></div>
+          <div class="score-row"><label for="scoreMentor">mentor／code review／文件</label><select id="scoreMentor"><option value="0">未評</option><option value="1">1 弱</option><option value="2">2 普通</option><option value="3">3 完整</option></select></div>
+          <div class="score-row"><label for="scoreRole">工作邊界與客戶交付合理</label><select id="scoreRole"><option value="0">未評</option><option value="1">1 模糊</option><option value="2">2 可接受</option><option value="3">3 清楚</option></select></div>
+          <div class="score-row"><label for="scorePay">薪資、工時與福利</label><select id="scorePay"><option value="0">未評</option><option value="1">1 偏弱</option><option value="2">2 合理</option><option value="3">3 良好</option></select></div>
+          <div class="score-row"><label for="scoreGrowth">一年後可累積的能力</label><select id="scoreGrowth"><option value="0">未評</option><option value="1">1 有限</option><option value="2">2 普通</option><option value="3">3 明確</option></select></div>
+        </div>
+        <p class="score-total" id="scoreTotal">總分：0／15</p>
+        <p class="intro">建議門檻：12–15 優先爭取；9–11 比較其他 offer；8 以下需看到明確補償條件再考慮。</p>
+      </section>
+
+      <section class="section">
+        <p class="kicker">Notes</p><h2>面試速記</h2>
+        <textarea id="notes" placeholder="記錄：團隊人數、AI Harness 定義、技術棧、工作比例、客戶／出差、mentor、薪資、下一關…"></textarea>
+        <p class="note-state" id="noteState">內容只保存在目前瀏覽器。</p>
+      </section>
+
+      <section class="section sources">
+        <p class="kicker">Sources</p><h2>查核來源</h2>
+        <ol>
+          <li><a href="https://www.104.com.tw/company/1a2x6bim60" target="_blank" rel="noopener">104 向雲科技公司與 AI 應用工程師職缺</a></li>
+          <li><a href="https://www.tocloud.com.tw/" target="_blank" rel="noopener">向雲科技官方網站</a></li>
+          <li><a href="https://www.tocloud.com.tw/about.php" target="_blank" rel="noopener">向雲科技官方公司介紹</a></li>
+          <li><a href="https://arxiv.org/abs/2605.13357" target="_blank" rel="noopener">AI Harness Engineering: A Runtime Substrate for Foundation-Model Software Agents</a></li>
+          <li><a href="https://github.com/steven65026502/medical-rag-audit-demo" target="_blank" rel="noopener">MedEvidence 原始碼與技術說明</a></li>
+        </ol>
+        <p>公司與職缺資訊查核日：2026-08-27。面試時間以 104 對話為準；地點與形式仍等待公司確認。</p>
+      </section>
+    </main>
+
+    <footer>最後更新：2026-08-27｜勾選、評分與速記保存在目前瀏覽器</footer>
+  </div>
+
+  <script>
+    const eventTime = new Date("2026-09-01T14:00:00+08:00");
+    const countdown = document.getElementById("countdown");
+    function renderCountdown() {
+      const diff = eventTime - new Date();
+      if (diff <= 0) { countdown.textContent = "面試時間已到，請以公司最新通知為準。"; return; }
+      const minutes = Math.floor(diff / 60000);
+      const days = Math.floor(minutes / 1440);
+      const hours = Math.floor((minutes % 1440) / 60);
+      countdown.textContent = `距離面試約 ${days} 天 ${hours} 小時`;
+    }
+    renderCountdown();
+    setInterval(renderCountdown, 60000);
+
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const box = button.closest("[data-copy-target]");
+        const text = [...box.querySelectorAll("p")].map((p) => p.textContent.trim()).join("\n\n");
+        try {
+          await navigator.clipboard.writeText(text);
+          button.textContent = "已複製";
+          button.classList.add("done");
+          setTimeout(() => {
+            button.textContent = box.dataset.copyLabel;
+            button.classList.remove("done");
+          }, 1600);
+        } catch (_) {
+          button.textContent = "請長按文字複製";
+        }
+      });
+    });
+
+    const timerDisplay = document.getElementById("timerDisplay");
+    const timerStart = document.getElementById("timerStart");
+    const timerPause = document.getElementById("timerPause");
+    const timerReset = document.getElementById("timerReset");
+    let timerRemaining = 180;
+    let timerId = null;
+    function renderTimer() {
+      const minutes = String(Math.floor(timerRemaining / 60)).padStart(2, "0");
+      const seconds = String(timerRemaining % 60).padStart(2, "0");
+      timerDisplay.textContent = `${minutes}:${seconds}`;
+    }
+    timerStart.addEventListener("click", () => {
+      if (timerId || timerRemaining === 0) return;
+      timerId = setInterval(() => {
+        timerRemaining -= 1;
+        renderTimer();
+        if (timerRemaining <= 0) { clearInterval(timerId); timerId = null; }
+      }, 1000);
+    });
+    timerPause.addEventListener("click", () => { clearInterval(timerId); timerId = null; });
+    timerReset.addEventListener("click", () => { clearInterval(timerId); timerId = null; timerRemaining = 180; renderTimer(); });
+
+    [...document.querySelectorAll("#checklist input")].forEach((input, index) => {
+      input.checked = localStorage.getItem(`xiangyun-check-${index}`) === "1";
+      input.addEventListener("change", () => localStorage.setItem(`xiangyun-check-${index}`, input.checked ? "1" : "0"));
+    });
+
+    const scoreSelects = [...document.querySelectorAll("#scoreGrid select")];
+    const scoreTotal = document.getElementById("scoreTotal");
+    function renderScore() {
+      const total = scoreSelects.reduce((sum, select) => sum + Number(select.value), 0);
+      scoreTotal.textContent = `總分：${total}／15`;
+    }
+    scoreSelects.forEach((select) => {
+      select.value = localStorage.getItem(`xiangyun-${select.id}`) || "0";
+      select.addEventListener("change", () => { localStorage.setItem(`xiangyun-${select.id}`, select.value); renderScore(); });
+    });
+    renderScore();
+
+    const notes = document.getElementById("notes");
+    const noteState = document.getElementById("noteState");
+    notes.value = localStorage.getItem("xiangyun-notes") || "";
+    let noteTimer;
+    notes.addEventListener("input", () => {
+      clearTimeout(noteTimer);
+      noteState.textContent = "儲存中…";
+      noteTimer = setTimeout(() => {
+        localStorage.setItem("xiangyun-notes", notes.value);
+        noteState.textContent = "已儲存在目前瀏覽器。";
+      }, 300);
+    });
+
+    if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+  </script>
+</body>
+</html>
