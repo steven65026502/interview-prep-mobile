@@ -86,6 +86,15 @@
       font-weight: 800;
       text-decoration: none;
     }
+    .topbar .home-link {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      color: var(--white);
+      border-color: var(--deep);
+      background: var(--deep);
+      box-shadow: 8px 0 12px rgba(16, 46, 58, .16);
+    }
     .hero {
       position: relative;
       overflow: hidden;
@@ -225,6 +234,28 @@
     .score-total { margin-top: 12px; color: var(--deep); font-weight: 900; }
     textarea { width: 100%; min-height: 180px; padding: 12px; resize: vertical; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--white); line-height: 1.55; }
     .note-state { margin-top: 7px; color: var(--muted); font-size: .78rem; }
+    .return-nav {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 20px 18px calc(20px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--line);
+      background: #e9efed;
+    }
+    .return-nav a {
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 13px;
+      border: 1px solid #bfcac6;
+      border-radius: 5px;
+      background: var(--white);
+      font-weight: 900;
+      text-align: center;
+      text-decoration: none;
+    }
+    .return-nav .primary { color: var(--white); border-color: var(--deep); background: var(--deep); }
     .sources { color: var(--muted); font-size: .84rem; }
     .sources a { color: var(--blue); overflow-wrap: anywhere; }
     footer { padding: 20px 18px calc(28px + env(safe-area-inset-bottom)); color: var(--muted); font-size: .78rem; text-align: center; }
@@ -238,6 +269,7 @@
       .flow { grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: stretch; gap: 7px; }
       .flow-step { min-width: 0; border-left: 0; border-top: 4px solid var(--teal); }
       .flow-arrow { display: grid; place-items: center; }
+      .return-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
@@ -245,7 +277,7 @@
 <body>
   <div class="shell">
     <nav class="topbar" aria-label="頁面導覽">
-      <a href="./index.html">面試清單</a><a href="#strategy">策略</a><a href="#company">公司</a><a href="#intro">自介</a><a href="#projects">作品</a><a href="#demo">Demo</a><a href="#qa">問答</a><a href="#technical">技術</a><a href="#ask">反問</a><a href="#check">檢查</a>
+      <a class="home-link" href="./index.html" aria-label="返回所有面試準備">← 所有面試</a><a href="#strategy">策略</a><a href="#company">公司</a><a href="#intro">自介</a><a href="#projects">作品</a><a href="#demo">Demo</a><a href="#qa">問答</a><a href="#technical">技術</a><a href="#ask">反問</a><a href="#check">檢查</a>
     </nav>
 
     <header class="hero">
@@ -442,7 +474,11 @@
       </section>
     </main>
 
-    <footer>最後更新：2026-08-27｜勾選、評分與速記保存在目前瀏覽器</footer>
+    <nav class="return-nav" aria-label="切換面試準備">
+      <a class="primary" href="./index.html">← 回到所有面試</a>
+      <a href="./muratec.html">下一場：台灣村田機械 →</a>
+    </nav>
+    <footer>最後更新：2026-08-28｜勾選、評分與速記保存在目前瀏覽器</footer>
   </div>
 
   <script>
