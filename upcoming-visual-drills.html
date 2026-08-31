@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#153d47">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23153d47'/%3E%3Cpath d='M15 17h34v8H15zm0 12h22v8H15zm0 12h29v8H15z' fill='%23f4bd58'/%3E%3C/svg%3E">
+  <title>村田機械與船舶中心｜視覺面試題庫</title>
+  <style>
+    :root {
+      --bg: #edf2f0;
+      --paper: #fbfcfb;
+      --surface: #ffffff;
+      --surface-2: #e3ece9;
+      --line: #c5d4d0;
+      --text: #17282e;
+      --muted: #5b6d71;
+      --deep: #153d47;
+      --teal: #16756f;
+      --teal-soft: #dceee9;
+      --amber: #b86217;
+      --amber-soft: #fff0d7;
+      --blue: #28658d;
+      --blue-soft: #e2eef6;
+      --green: #37764c;
+      --green-soft: #e2efe5;
+      --red: #9a4138;
+      --red-soft: #f8e6e2;
+      --shadow: 0 10px 26px rgba(22, 52, 57, .09);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1c20;
+        --paper: #14262b;
+        --surface: #1a2e33;
+        --surface-2: #233a3f;
+        --line: #3a5157;
+        --text: #eef5f2;
+        --muted: #b4c3c1;
+        --deep: #0a3038;
+        --teal: #71c8bd;
+        --teal-soft: #19413e;
+        --amber: #efb65d;
+        --amber-soft: #4b361f;
+        --blue: #8abde0;
+        --blue-soft: #233e50;
+        --green: #88c799;
+        --green-soft: #223f2c;
+        --red: #ec9790;
+        --red-soft: #4d2c2b;
+        --shadow: 0 10px 26px rgba(0, 0, 0, .24);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); font-size: 16px; }
+    body { margin: 0; color: var(--text); background: var(--bg); font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif; line-height: 1.62; letter-spacing: 0; }
+    a { color: inherit; text-underline-offset: 3px; }
+    button { font: inherit; cursor: pointer; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: .65rem; font-size: clamp(1.8rem, 7vw, 3.2rem); line-height: 1.12; text-wrap: balance; }
+    h2 { margin-bottom: .5rem; font-size: clamp(1.3rem, 4.4vw, 1.95rem); line-height: 1.25; text-wrap: balance; }
+    h3 { margin-bottom: .28rem; font-size: 1rem; }
+    .page { width: min(1160px, 100%); margin: 0 auto; }
+    .topbar { position: sticky; top: 0; z-index: 50; display: flex; gap: .42rem; overflow-x: auto; padding: calc(.55rem + env(safe-area-inset-top)) .7rem .55rem; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(12px); scrollbar-width: none; }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a, .topbar button { flex: 0 0 auto; min-height: 38px; display: inline-flex; align-items: center; justify-content: center; padding: .4rem .7rem; border: 1px solid var(--line); border-radius: 4px; color: var(--text); background: var(--surface); font-size: .79rem; font-weight: 800; text-decoration: none; }
+    .topbar .back { color: #fff; border-color: var(--deep); background: var(--deep); }
+    .topbar button { color: #18343b; border-color: #dda23e; background: #ffd47e; }
+    .hero { padding: clamp(2rem, 7vw, 4.5rem) clamp(1rem, 5vw, 3rem) 2rem; color: #f7fbf9; background: var(--deep); }
+    .eyebrow { margin-bottom: .45rem; color: #8bd8cc; font-family: Consolas, monospace; font-size: .78rem; font-weight: 800; text-transform: uppercase; }
+    .hero p { max-width: 760px; margin-bottom: 1.2rem; color: #dceae6; }
+    .marks { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .marks span { padding: .32rem .58rem; border: 1px solid rgba(255,255,255,.28); border-radius: 4px; background: rgba(255,255,255,.07); font-size: .76rem; font-weight: 800; }
+    main { padding: 0 .8rem 4rem; }
+    .company-band { margin: 1.2rem -.8rem 0; padding: 1.25rem max(.8rem, calc((100% - 1120px) / 2)); color: #fff; background: var(--teal); }
+    .company-band.ship { background: var(--blue); }
+    .company-band p { margin-bottom: 0; color: rgba(255,255,255,.88); }
+    .section { scroll-margin-top: 74px; padding: clamp(1rem, 3vw, 1.65rem) 0; border-bottom: 1px solid var(--line); }
+    .section-head { display: grid; gap: .7rem; margin-bottom: 1rem; }
+    .num { width: 2.35rem; height: 2.35rem; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--deep); font-family: Consolas, monospace; font-size: .8rem; font-weight: 900; }
+    .lead { max-width: 68ch; margin-bottom: 0; color: var(--muted); }
+    figure { margin: 1rem 0; }
+    figcaption { margin-top: .6rem; color: var(--muted); font-size: .82rem; font-weight: 700; }
+    .diagram { padding: clamp(.75rem, 3vw, 1.3rem); border: 1px solid var(--line); border-radius: 5px; background: var(--paper); box-shadow: var(--shadow); }
+    .node { min-width: 0; padding: .68rem; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); text-align: center; }
+    .node strong { display: block; font-size: .87rem; }
+    .node small { display: block; margin-top: .15rem; color: var(--muted); font-size: .72rem; }
+    .node.teal { border-color: var(--teal); background: var(--teal-soft); }
+    .node.amber { border-color: var(--amber); background: var(--amber-soft); }
+    .node.blue { border-color: var(--blue); background: var(--blue-soft); }
+    .node.green { border-color: var(--green); background: var(--green-soft); }
+    .node.red { border-color: var(--red); background: var(--red-soft); }
+    .arrow { display: grid; place-items: center; color: var(--muted); font-family: Consolas, monospace; font-weight: 900; }
+    .pipeline { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .42rem; align-items: center; }
+    .pipeline .arrow { display: none; }
+    .pipeline .node:not(:last-child) { position: relative; }
+    .pipeline .node:not(:last-child)::after { content: "→"; position: absolute; right: -.55rem; top: 50%; z-index: 2; transform: translateY(-50%); color: var(--muted); font-weight: 900; }
+    .two-lanes { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .lane { display: grid; gap: .48rem; align-content: start; padding: .7rem; border: 1px dashed var(--line); background: var(--surface); }
+    .lane-title { display: flex; justify-content: space-between; gap: .5rem; font-weight: 900; }
+    .lane-title span { color: var(--muted); font-size: .7rem; }
+    .timeline { display: grid; gap: .6rem; }
+    .time-row { display: grid; grid-template-columns: 5.3rem 1fr auto; gap: .6rem; align-items: center; }
+    .time-row strong { font-size: .77rem; }
+    .track { height: 1rem; overflow: hidden; border: 1px solid var(--line); background: var(--surface-2); }
+    .bar { height: 100%; background: var(--teal); }
+    .time-row:nth-child(2) .bar { background: var(--blue); }
+    .time-row:nth-child(3) .bar { background: var(--amber); }
+    .time-row:nth-child(4) .bar { background: var(--red); }
+    .time-row output { color: var(--muted); font-family: Consolas, monospace; font-size: .73rem; }
+    .matrix { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem; }
+    .matrix article { min-width: 0; padding: .72rem; border-top: 4px solid var(--teal); background: var(--surface); }
+    .matrix article:nth-child(2) { border-top-color: var(--blue); }
+    .matrix article:nth-child(3) { border-top-color: var(--amber); }
+    .matrix article:nth-child(4) { border-top-color: var(--green); }
+    .matrix p { margin-bottom: 0; color: var(--muted); font-size: .77rem; }
+    .product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+    .product { min-width: 0; padding: .8rem; border: 1px solid var(--line); background: var(--surface); }
+    .product b { display: inline-block; margin-bottom: .45rem; padding: .12rem .4rem; border-radius: 3px; color: #fff; background: var(--deep); font-family: Consolas, monospace; }
+    .product p { margin-bottom: 0; color: var(--muted); font-size: .8rem; }
+    .answer-frame { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
+    .answer-frame div { padding: .7rem; border: 1px solid var(--line); background: var(--surface); }
+    .answer-frame strong { display: block; font-size: .86rem; }
+    .answer-frame span { color: var(--muted); font-size: .74rem; }
+    .script { margin-top: .9rem; border: 1px solid var(--line); border-left: 5px solid var(--teal); background: var(--surface); }
+    .ship-section .script { border-left-color: var(--blue); }
+    .script summary { padding: .82rem .95rem; font-weight: 900; cursor: pointer; }
+    .script-body { padding: 0 .95rem .95rem; }
+    .script-body p { margin-bottom: .58rem; }
+    .script-body p:last-child { margin-bottom: 0; }
+    .cue { display: inline-block; margin-right: .3rem; padding: .1rem .34rem; border-radius: 3px; color: #18343b; background: #ffd47e; font-size: .7rem; font-weight: 900; }
+    .warning { margin-top: .7rem; padding: .62rem .72rem; border: 1px solid var(--red); color: var(--red); background: var(--red-soft); font-size: .79rem; font-weight: 800; }
+    .topbar .nav-timer { flex: 0 0 auto; min-width: 3.3rem; display: inline-flex; align-items: center; justify-content: center; padding: .4rem .58rem; border: 1px solid var(--deep); border-radius: 4px; color: #fff; background: var(--deep); font-family: Consolas, monospace; font-size: .79rem; font-weight: 900; }
+    .topbar .timer-primary { color: #18343b; border-color: #dda23e; background: #ffd47e; }
+    .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .65rem; padding: 1.2rem .8rem 2rem; }
+    .footer-nav a { padding: .62rem .82rem; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); font-weight: 800; text-decoration: none; }
+    body.answers-hidden .script-body { filter: blur(6px); user-select: none; pointer-events: none; }
+    body.answers-hidden .script::after { content: "先看圖自己說，再按上方顯示答案"; display: block; padding: 0 .95rem .95rem; color: var(--amber); font-size: .77rem; font-weight: 900; }
+    @media (min-width: 760px) { main { padding-right: 1.2rem; padding-left: 1.2rem; } .section-head { grid-template-columns: 2.6rem 1fr; } .section-head .lead { grid-column: 2; } }
+    @media (max-width: 760px) { .pipeline { grid-template-columns: 1fr; } .pipeline .node:not(:last-child)::after { content: "↓"; right: 50%; top: auto; bottom: -.7rem; transform: translateX(50%); } .two-lanes, .product-grid { grid-template-columns: 1fr; } .matrix { grid-template-columns: 1fr 1fr; } .answer-frame { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 430px) { .section { padding-top: .9rem; padding-bottom: .9rem; } .matrix, .answer-frame { grid-template-columns: 1fr; } .time-row { grid-template-columns: 4.8rem 1fr 2.7rem; gap: .4rem; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="topbar" aria-label="圖解導覽">
+      <a class="back" href="./index.html">← 面試清單</a>
+      <button type="button" id="answerToggle">隱藏答案</button>
+      <output class="nav-timer" id="timer" aria-live="polite">00:45</output>
+      <button type="button" class="timer-primary" id="startTimer">開始 45 秒</button>
+      <button type="button" id="resetTimer">重設</button>
+      <a href="#frame">骨架</a>
+      <a href="#muratec">村田</a>
+      <a href="#delay">延遲</a>
+      <a href="#alarm">告警</a>
+      <a href="#ship">船舶</a>
+      <a href="#products">產品</a>
+      <a href="#scale">擴充</a>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">VISUAL INTERVIEW DRILLS · 9/3 + 9/10</p>
+      <h1>先看機制圖<br>再回答公司情境題</h1>
+      <p>村田與船舶中心考的領域不同，但答題方法相同：先釐清條件，畫出資料或事件如何流動，再說失敗處理、量測與驗證。</p>
+      <div class="marks"><span>村田機械</span><span>船舶中心</span><span>設備除錯</span><span>電子海圖與資料服務</span></div>
+    </header>
+
+    <main>
+      <section class="section" id="frame">
+        <div class="section-head"><div class="num">00</div><div><h2>情境題的四步骨架</h2><p class="lead">沒有看過的設備或規格也能回答，但要把假設說出來，不要靠猜技術名詞。</p></div></div>
+        <div class="answer-frame">
+          <div><strong>1. 先問條件</strong><span>影響範圍、時間、頻率、最近變更。</span></div>
+          <div><strong>2. 畫主流程</strong><span>輸入、傳輸、處理、儲存、輸出。</span></div>
+          <div><strong>3. 保存證據</strong><span>ID、時間戳、log、版本、正常對照。</span></div>
+          <div><strong>4. 修正後驗證</strong><span>原案例、邊界、尖峰與回歸測試。</span></div>
+        </div>
+      </section>
+
+      <div class="company-band" id="muratec"><h2>台灣村田機械</h2><p>核心不是猜哪一台設備壞掉，而是把一次搬送任務串成端到端時間線。</p></div>
+
+      <section class="section" id="mur-flow">
+        <div class="section-head"><div class="num">M1</div><div><h2>搬送任務到底經過哪些層？</h2><p class="lead">每層都要共用任務 ID 與時間戳，否則只能看到零散錯誤，無法定位延遲在哪裡發生。</p></div></div>
+        <figure>
+          <div class="diagram pipeline" role="img" aria-label="搬送任務端到端資料流">
+            <div class="node teal"><strong>上位系統</strong><small>建立任務</small></div>
+            <div class="node blue"><strong>任務 Queue</strong><small>排程與等待</small></div>
+            <div class="node amber"><strong>資料庫</strong><small>狀態與歷程</small></div>
+            <div class="node"><strong>網路／訊息</strong><small>送至控制端</small></div>
+            <div class="node green"><strong>設備控制</strong><small>執行與回報</small></div>
+            <div class="node red"><strong>告警／人工</strong><small>異常處置</small></div>
+          </div>
+          <figcaption>回答設備問題時，先指出你會沿任務 ID 追這六層，而不是直接認定設備、網路或資料庫故障。</figcaption>
+        </figure>
+        <details class="script" open><summary>35 秒口語回答</summary><div class="script-body"><p><span class="cue">主張</span>我會先把一次搬送任務建立成端到端時間線。</p><p>從上位系統送單、queue 等待、資料庫狀態、網路傳輸、控制端執行到設備回報，都要能用同一個任務 ID 和時間戳串起來。這樣才能比較正常與異常任務，知道延遲落在哪一段，而不是先猜某個元件壞掉。</p></div></details>
+      </section>
+
+      <section class="section" id="delay">
+        <div class="section-head"><div class="num">M2</div><div><h2>任務偶爾延遲，怎麼查？</h2><p class="lead">偶發問題最需要正常樣本作對照。平均值會掩蓋尖峰，至少要看各段 p50 與 p95。</p></div></div>
+        <figure>
+          <div class="diagram two-lanes" role="img" aria-label="正常與異常搬送任務時間線比較">
+            <div class="lane"><div class="lane-title">正常任務 <span>baseline</span></div><div class="timeline"><div class="time-row"><strong>Queue</strong><div class="track"><div class="bar" style="width:18%"></div></div><output>0.2s</output></div><div class="time-row"><strong>DB</strong><div class="track"><div class="bar" style="width:12%"></div></div><output>0.1s</output></div><div class="time-row"><strong>Network</strong><div class="track"><div class="bar" style="width:20%"></div></div><output>0.2s</output></div><div class="time-row"><strong>Device</strong><div class="track"><div class="bar" style="width:45%"></div></div><output>1.8s</output></div></div></div>
+            <div class="lane"><div class="lane-title">異常任務 <span>same task type</span></div><div class="timeline"><div class="time-row"><strong>Queue</strong><div class="track"><div class="bar" style="width:82%"></div></div><output>4.8s</output></div><div class="time-row"><strong>DB</strong><div class="track"><div class="bar" style="width:14%"></div></div><output>0.1s</output></div><div class="time-row"><strong>Network</strong><div class="track"><div class="bar" style="width:23%"></div></div><output>0.2s</output></div><div class="time-row"><strong>Device</strong><div class="track"><div class="bar" style="width:46%"></div></div><output>1.9s</output></div></div></div>
+          </div>
+          <figcaption>數字是面試示意。真正答案要說明如何取得相同任務類型的正常與異常 trace，再針對瓶頸驗證。</figcaption>
+        </figure>
+        <details class="script" open><summary>45 秒口語回答</summary><div class="script-body"><p>我會先確認影響設備、任務 ID、開始時間、發生頻率與最近變更，再保留 log 和狀態快照。接著把每一段 latency 串起來，比較同類正常任務與異常任務，並看 p50、p95，而不是只看平均。</p><p>如果影響生產，先依 SOP 降級或人工復歸；定位後只改一個變因，再用原案例、尖峰負載與告警測試確認修正。</p></div></details>
+        <div class="warning">不要一開始就說「應該是網路」或「加快取」。先說你要用什麼證據排除各層。</div>
+      </section>
+
+      <section class="section" id="alarm">
+        <div class="section-head"><div class="num">M3</div><div><h2>24 小時設備告警怎麼設計？</h2><p class="lead">告警不是收到訊息就一直寄信。先驗證、去重與分級，再決定通知或復歸。</p></div></div>
+        <figure>
+          <div class="diagram pipeline" role="img" aria-label="設備告警處理流程">
+            <div class="node teal"><strong>設備事件</strong><small>設備 ID、錯誤碼、時間</small></div>
+            <div class="node blue"><strong>格式驗證</strong><small>必要欄位與版本</small></div>
+            <div class="node amber"><strong>去重</strong><small>idempotency key</small></div>
+            <div class="node"><strong>嚴重度</strong><small>規則與影響範圍</small></div>
+            <div class="node green"><strong>保存／通知</strong><small>值班、SOP、timeout</small></div>
+            <div class="node red"><strong>結案稽核</strong><small>原因、處置與回歸</small></div>
+          </div>
+          <figcaption>設計重點是避免同一事件重複執行，同時保留完整處置歷程。</figcaption>
+        </figure>
+        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body"><p>事件進站時先帶設備 ID、任務 ID、錯誤碼與時間，完成格式驗證、去重和嚴重度判斷，再寫入狀態與歷史紀錄。只有需要處置的事件才通知值班或觸發既定復歸流程。</p><p>重複事件以唯一鍵避免重複執行，外部通知要有 timeout 與有限 retry；監控至少包含告警量、處理延遲、失敗率與未結案數。</p></div></details>
+      </section>
+
+      <section class="section" id="mur-fit">
+        <div class="section-head"><div class="num">M4</div><div><h2>沒有搬送設備經驗，怎麼回答？</h2><p class="lead">不把海洋資料說成設備經驗；把可移轉的方法與明確補強順序說出來。</p></div></div>
+        <div class="matrix">
+          <article><h3>已具備</h3><p>Python、SQL、API、資料流與時間索引。</p></article>
+          <article><h3>可移轉</h3><p>log 追查、正常／異常比較、回歸驗證。</p></article>
+          <article><h3>需補強</h3><p>搬送流程、設備協定、現場 SOP 與技術棧。</p></article>
+          <article><h3>切入方式</h3><p>先讀架構、既有案例，再從可驗證的小任務開始。</p></article>
+        </div>
+        <details class="script" open><summary>30 秒口語回答</summary><div class="script-body"><p>我不會把海洋資料經驗直接說成設備經驗。不過資料流、時間同步、狀態紀錄、API／資料庫與問題追查方法可以移轉。入職後我會先熟悉搬送架構、訊息流程、SOP 與既有故障案例，再從可驗證的小任務開始，並利用日文 N2 閱讀日方技術文件。</p></div></details>
+      </section>
+
+      <div class="company-band ship" id="ship"><h2>船舶暨海洋產業研發中心</h2><p>核心不是背完整規格，而是知道不同產品扮演什麼角色，以及資料如何被驗證、保存與回查。</p></div>
+
+      <section class="section ship-section" id="products">
+        <div class="section-head"><div class="num">S1</div><div><h2>ENC、S-111、S-104 有什麼不同？</h2><p class="lead">三者可以一起支援航行應用，但資料模型、時間性與物理量不同，不能混成同一種資料。</p></div></div>
+        <figure>
+          <div class="diagram product-grid" role="img" aria-label="S-101、S-111 與 S-104 產品角色比較">
+            <div class="product"><b>S-101</b><h3>電子航行圖</h3><p>航道、水深、礙航物與航海圖徵，提供基礎航行環境。</p></div>
+            <div class="product"><b>S-111</b><h3>表面流</h3><p>隨時間變化的流速與流向，重點包含有效時間與格網位置。</p></div>
+            <div class="product"><b>S-104</b><h3>水位資訊</h3><p>隨時間變化的水位格網，解讀時必須注意垂直基準。</p></div>
+          </div>
+          <figcaption>面試重點：說出各產品的角色與邊界，再連回你真正做過的 S-111／S-104。</figcaption>
+        </figure>
+        <details class="script" open><summary>35 秒口語回答</summary><div class="script-body"><p>S-101 是 ENC 的 S-100 世代產品，重點是航海圖徵；S-111 描述隨時間變化的表面流速與流向，S-104 則描述水位資訊。三者可在航行應用中共同使用，但資料模型、時間性與用途不同。</p><p>我的實作強項是 S-111／S-104 動態資料、HDF5、GeoJSON 與 QGIS；S-101 ENC 圖徵模型則需要依團隊規格與測試資料補強。</p></div></details>
+      </section>
+
+      <section class="section ship-section" id="geo">
+        <div class="section-head"><div class="num">S2</div><div><h2>拿到一份電子海圖或格網資料，先檢查什麼？</h2><p class="lead">畫面能顯示不代表資料正確。先確認身分與座標，再處理欄位，最後用已知點驗證。</p></div></div>
+        <figure>
+          <div class="diagram pipeline" role="img" aria-label="航海空間資料解析與驗證流程">
+            <div class="node teal"><strong>規格／版本</strong><small>產品與交換格式</small></div>
+            <div class="node blue"><strong>CRS／範圍</strong><small>座標、邊界、格距</small></div>
+            <div class="node amber"><strong>圖徵／格網</strong><small>feature、attribute、mask</small></div>
+            <div class="node"><strong>時間／基準</strong><small>有效時間、單位、VDAT</small></div>
+            <div class="node green"><strong>已知點核對</strong><small>小樣本與邊界案例</small></div>
+            <div class="node red"><strong>全批驗證</strong><small>結果、log、版本</small></div>
+          </div>
+          <figcaption>順序可避免一開始就在錯誤座標或單位上做大量運算。</figcaption>
+        </figure>
+        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body"><p>我會先確認產品規格、版本與交換格式，再檢查座標參考系統、範圍、格網或向量圖徵。之後才解析 attribute、時間、單位、metadata、缺值與遮罩。</p><p>我會先用已知位置和小樣本核對，再跑全資料驗證。視覺化只負責呈現，不能取代資料層的數值與語意檢查。</p></div></details>
+      </section>
+
+      <section class="section ship-section" id="scale">
+        <div class="section-head"><div class="num">S3</div><div><h2>格網資料增加 10 倍，API 變慢怎麼辦？</h2><p class="lead">先區分完整來源場與線上查詢需求。不是每個格點都必須塞進同一張線上資料表。</p></div></div>
+        <figure>
+          <div class="diagram two-lanes" role="img" aria-label="完整格網與線上查詢雙軌保存架構">
+            <div class="lane"><div class="lane-title">離線完整資料 <span>重現</span></div><div class="node blue"><strong>來源檔／成果包</strong><small>NetCDF、HDF5、GeoJSON、版本與雜湊</small></div><div class="arrow">↓ 批次計算</div><div class="node green"><strong>可重新產生</strong><small>完整空間場與原始證據</small></div></div>
+            <div class="lane"><div class="lane-title">線上查詢資料 <span>服務</span></div><div class="node amber"><strong>PostgreSQL</strong><small>摘要、品質關注點位與常用索引</small></div><div class="arrow">↓ 範圍／欄位／分頁</div><div class="node teal"><strong>Read-only API</strong><small>只回傳使用者真正需要的結果</small></div></div>
+          </div>
+          <figcaption>雙軌設計的目的不是省資料，而是把完整保存與互動查詢分成不同責任。</figcaption>
+        </figure>
+        <details class="script" open><summary>45 秒口語回答</summary><div class="script-body"><p>我會先確認使用者查的是完整格網、空間範圍，還是每日摘要，並量測資料庫、序列化與網路各段耗時。</p><p>完整來源格網保留在來源檔與成果包，資料庫保存常查詢的統計摘要與品質關注點位；依日期、預報時距與位置建立索引，API 限制欄位、範圍與分頁。批次計算和線上查詢分離，仍不足時再評估空間索引、分區或快取。</p></div></details>
+        <div class="warning">不要直接說「換 NoSQL」或「全部加 Redis」。先說目前查詢語意、真正瓶頸與驗證指標。</div>
+      </section>
+
+      <section class="section ship-section" id="trace">
+        <div class="section-head"><div class="num">S4</div><div><h2>怎麼讓資料處理結果可追溯？</h2><p class="lead">可追溯不是只有 log。輸入、參數、程式版本、批次狀態與輸出要能形成同一條證據鏈。</p></div></div>
+        <figure>
+          <div class="diagram pipeline" role="img" aria-label="海洋資料批次可追溯證據鏈">
+            <div class="node teal"><strong>輸入身分</strong><small>檔名、hash、版本</small></div>
+            <div class="node blue"><strong>批次鍵</strong><small>日期、時間、時距</small></div>
+            <div class="node amber"><strong>程式／參數</strong><small>Git commit、門檻</small></div>
+            <div class="node"><strong>Transaction</strong><small>唯一限制、防重跑</small></div>
+            <div class="node green"><strong>輸出成果</strong><small>檔案與資料庫摘要</small></div>
+            <div class="node red"><strong>驗證紀錄</strong><small>重算、錯誤與測試</small></div>
+          </div>
+          <figcaption>任何一筆結果都應能回到「哪個輸入、哪版程式、哪些參數、何時完成」。</figcaption>
+        </figure>
+        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body"><p>來源檔進站後先保存檔案識別、版本、雜湊與時間範圍，再做格式、座標、單位與缺值驗證。計算工作以日期與預報時距作批次鍵，保存程式版本和參數。</p><p>資料庫寫入使用 transaction 與唯一限制，避免重跑造成重複；每批保留輸入、輸出、錯誤 log 與驗證結果，API 只讀取已完成批次。</p></div></details>
+      </section>
+    </main>
+
+    <nav class="footer-nav" aria-label="相關頁面">
+      <a href="./muratec.html">村田完整準備</a>
+      <a href="./ship-center.html">船舶中心完整準備</a>
+      <a href="./xiangyun-technical-visual.html">向雲圖解題庫</a>
+      <a href="./index.html">所有面試</a>
+    </nav>
+  </div>
+
+  <script>
+    const answerToggle = document.getElementById('answerToggle');
+    answerToggle.addEventListener('click', () => {
+      document.body.classList.toggle('answers-hidden');
+      answerToggle.textContent = document.body.classList.contains('answers-hidden') ? '顯示答案' : '隱藏答案';
+    });
+    const timer = document.getElementById('timer');
+    const start = document.getElementById('startTimer');
+    const reset = document.getElementById('resetTimer');
+    let remaining = 45;
+    let interval = null;
+    function paintTimer() {
+      timer.textContent = `00:${String(remaining).padStart(2, '0')}`;
+      timer.style.color = remaining <= 10 ? '#ffd47e' : '#ffffff';
+    }
+    function resetTimer() {
+      clearInterval(interval);
+      interval = null;
+      remaining = 45;
+      start.textContent = '開始 45 秒';
+      paintTimer();
+    }
+    start.addEventListener('click', () => {
+      if (interval) { clearInterval(interval); interval = null; start.textContent = '繼續'; return; }
+      if (remaining === 0) remaining = 45;
+      start.textContent = '暫停';
+      interval = setInterval(() => {
+        remaining -= 1;
+        paintTimer();
+        if (remaining <= 0) { clearInterval(interval); interval = null; start.textContent = '再練一次'; }
+      }, 1000);
+    });
+    reset.addEventListener('click', resetTimer);
+    paintTimer();
+  </script>
+</body>
+</html>

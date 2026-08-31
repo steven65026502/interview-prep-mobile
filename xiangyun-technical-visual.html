@@ -251,28 +251,9 @@
     .cue { display: inline-block; margin-right: .35rem; padding: .12rem .36rem; border-radius: 3px; color: var(--deep); background: #ffd47e; font-size: .72rem; font-weight: 900; }
     .trap { margin-top: .75rem; padding: .65rem .75rem; border: 1px solid var(--red); color: var(--red); background: var(--red-soft); font-size: .8rem; font-weight: 800; }
     .memory { margin-top: .75rem; padding: .65rem .75rem; border: 1px solid var(--blue); color: var(--blue); background: var(--blue-soft); font-size: .8rem; font-weight: 800; }
-    .practice {
-      position: sticky;
-      bottom: .7rem;
-      z-index: 40;
-      width: min(520px, calc(100% - 1.2rem));
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      gap: .5rem;
-      align-items: center;
-      margin: 1rem auto 0;
-      padding: .65rem;
-      border: 1px solid #0d3037;
-      border-radius: 5px;
-      color: #fff;
-      background: rgba(18, 58, 67, .96);
-      box-shadow: 0 12px 32px rgba(0,0,0,.24);
-      backdrop-filter: blur(10px);
-    }
-    .practice output { font-family: Consolas, monospace; font-size: 1.05rem; font-weight: 900; }
-    .practice button { min-height: 38px; padding: .4rem .65rem; border: 1px solid rgba(255,255,255,.35); border-radius: 4px; color: #fff; background: transparent; font-size: .78rem; font-weight: 900; }
-    .practice button.primary { color: #18343b; border-color: #ffd47e; background: #ffd47e; }
-    .footer-nav { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; padding: 1.2rem .8rem 4.8rem; }
+    .topbar .nav-timer { flex: 0 0 auto; min-width: 3.3rem; display: inline-flex; align-items: center; justify-content: center; padding: .42rem .58rem; border: 1px solid var(--deep); border-radius: 4px; color: #fff; background: var(--deep); font-family: Consolas, monospace; font-size: .79rem; font-weight: 900; }
+    .topbar .timer-primary { color: #18343b; border-color: #e4a844; background: #ffd47e; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; padding: 1.2rem .8rem 2rem; }
     .footer-nav a { padding: .65rem .85rem; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); font-weight: 800; text-decoration: none; }
     body.answers-hidden .script .script-body { filter: blur(6px); user-select: none; pointer-events: none; }
     body.answers-hidden .script[open] .script-body { display: block; }
@@ -291,8 +272,6 @@
       .shield-row { grid-template-columns: 2.7rem 1fr; }
       .shield-state { grid-column: 2; justify-self: start; }
       .stair { width: 100%; }
-      .practice { grid-template-columns: 1fr auto; }
-      .practice output { grid-column: 1 / -1; text-align: center; }
     }
     @media (max-width: 430px) {
       html { font-size: 16px; }
@@ -310,6 +289,10 @@
   <div class="page">
     <nav class="topbar" aria-label="圖解導覽">
       <a class="back" href="./xiangyun.html">← 向雲準備</a>
+      <button type="button" id="answerToggle">隱藏答案</button>
+      <output class="nav-timer" id="timer" aria-live="polite">00:45</output>
+      <button type="button" class="timer-primary" id="startTimer">開始 45 秒</button>
+      <button type="button" id="resetTimer">重設</button>
       <a href="#frame">答題骨架</a>
       <a href="#rag">RAG</a>
       <a href="#hybrid">混合檢索</a>
@@ -318,7 +301,6 @@
       <a href="#performance">效能</a>
       <a href="#architecture">架構題</a>
       <a href="#ownership">AI 協作</a>
-      <button type="button" id="answerToggle">隱藏答案</button>
     </nav>
 
     <header class="hero">
@@ -526,12 +508,6 @@
         </div></details>
       </section>
     </main>
-
-    <div class="practice" aria-label="口說計時器">
-      <output id="timer" aria-live="polite">00:45</output>
-      <button type="button" class="primary" id="startTimer">開始 45 秒</button>
-      <button type="button" id="resetTimer">重設</button>
-    </div>
 
     <nav class="footer-nav" aria-label="相關頁面">
       <a href="./xiangyun.html">回向雲完整準備</a>

@@ -78,6 +78,17 @@
     }
     .item.training .date { background: var(--orange); }
     .item.training .date strong { font-size: .98rem; }
+    .item.visual {
+      margin: -9px -8px 18px;
+      min-height: 78px;
+      padding-right: 12px;
+      padding-left: 12px;
+      border: 1px solid #bdd6df;
+      border-left: 5px solid #28658d;
+      background: #eef5f8;
+    }
+    .item.visual .date { min-height: 48px; background: #28658d; }
+    .item.visual .date strong { font-size: .9rem; }
     .item.past { opacity: .62; }
     .date {
       display: grid;
@@ -110,6 +121,16 @@
       <a class="item training" href="./system-design.html">
         <span class="date"><span><strong>練習</strong><span>共用</span></span></span>
         <span><span class="company">系統架構、工程邏輯與效能</span><span class="role">兩分鐘隨機題＋村田／船舶中心情境</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="item visual" href="./xiangyun-technical-visual.html">
+        <span class="date"><span><strong>圖解</strong><span>9/1</span></span></span>
+        <span><span class="company">向雲高機率技術題</span><span class="role">RAG、混合檢索、Agent、效能與架構</span></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="item visual" href="./upcoming-visual-drills.html">
+        <span class="date"><span><strong>圖解</strong><span>後續</span></span></span>
+        <span><span class="company">村田＋船舶中心情境題</span><span class="role">設備故障時間線、電子海圖與資料服務</span></span>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
       <a class="item past" href="./mediatek.html">
@@ -148,7 +169,7 @@
         <span class="arrow" aria-hidden="true">→</span>
       </a>
     </nav>
-    <footer>更新日期：2026-08-28</footer>
+    <footer>更新日期：2026-08-31</footer>
   </main>
   <script>
     if ("serviceWorker" in navigator) {
