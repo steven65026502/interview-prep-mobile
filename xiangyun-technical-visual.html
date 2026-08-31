@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#123a43">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23123a43'/%3E%3Cpath d='M14 20h36M14 32h23M14 44h30' stroke='%23f5b544' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <title>向雲科技高機率技術題｜視覺答題圖</title>
+  <style>
+    :root {
+      --bg: #edf2ef;
+      --paper: #fbfcfa;
+      --surface: #ffffff;
+      --surface-2: #e7efeb;
+      --border: #c8d6d1;
+      --text: #17282e;
+      --text-dim: #5c6d71;
+      --deep: #123a43;
+      --teal: #14766f;
+      --teal-soft: #d9eee8;
+      --amber: #b66318;
+      --amber-soft: #fff0d8;
+      --blue: #25648d;
+      --blue-soft: #e2eef6;
+      --red: #9c3b32;
+      --red-soft: #f8e5e1;
+      --green: #38754c;
+      --green-soft: #e2f0e5;
+      --shadow: 0 12px 32px rgba(19, 52, 57, .10);
+      --radius: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1c20;
+        --paper: #132328;
+        --surface: #182c31;
+        --surface-2: #21373b;
+        --border: #395057;
+        --text: #eef5f2;
+        --text-dim: #b2c1c0;
+        --deep: #092c34;
+        --teal: #68c7bb;
+        --teal-soft: #173f3d;
+        --amber: #f0b45e;
+        --amber-soft: #4b351d;
+        --blue: #85bce2;
+        --blue-soft: #223d50;
+        --red: #ed9189;
+        --red-soft: #4d2a2a;
+        --green: #83c695;
+        --green-soft: #213e2b;
+        --shadow: 0 12px 32px rgba(0, 0, 0, .25);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); font-size: 16px; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+      font-size: 1rem;
+      line-height: 1.62;
+      letter-spacing: 0;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; text-underline-offset: 3px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: .65rem; font-size: clamp(1.85rem, 7vw, 3.4rem); line-height: 1.1; text-wrap: balance; }
+    h2 { margin-bottom: .55rem; font-size: clamp(1.35rem, 4.2vw, 2rem); line-height: 1.25; text-wrap: balance; }
+    h3 { margin-bottom: .35rem; font-size: 1.02rem; line-height: 1.35; }
+    code { font-family: Consolas, "Cascadia Code", monospace; }
+    .page { width: min(1180px, 100%); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      gap: .45rem;
+      overflow-x: auto;
+      padding: calc(.55rem + env(safe-area-inset-top)) .7rem .55rem;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(12px);
+      scrollbar-width: none;
+    }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a, .topbar button {
+      flex: 0 0 auto;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .42rem .72rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      background: var(--surface);
+      font-size: .79rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .topbar .back { color: #fff; border-color: var(--deep); background: var(--deep); }
+    .topbar button { color: var(--deep); border-color: #e4a844; background: #ffd47e; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(2rem, 7vw, 5rem) clamp(1rem, 5vw, 3rem) 2.2rem;
+      color: #f7fbf9;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px) 0 0 / 34px 34px,
+        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px) 0 0 / 34px 34px,
+        var(--deep);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -65px;
+      bottom: -95px;
+      width: 270px;
+      height: 270px;
+      border: 34px solid rgba(245, 181, 68, .16);
+      border-radius: 50%;
+    }
+    .eyebrow { margin-bottom: .45rem; color: #8bd9ca; font-family: Consolas, monospace; font-size: .78rem; font-weight: 800; text-transform: uppercase; }
+    .hero p { position: relative; z-index: 1; max-width: 720px; margin-bottom: 1.25rem; color: #dceae6; font-size: 1.02rem; }
+    .hero-marks { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: .55rem; }
+    .hero-marks span { padding: .35rem .62rem; border: 1px solid rgba(255,255,255,.28); border-radius: 4px; background: rgba(255,255,255,.07); font-size: .78rem; font-weight: 800; }
+    main { padding: 1rem .8rem 4rem; }
+    .section {
+      scroll-margin-top: 76px;
+      margin: 1rem auto;
+      padding: clamp(1rem, 3vw, 1.7rem);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .section-head { display: grid; gap: .7rem; margin-bottom: 1rem; }
+    .number {
+      width: 2.4rem;
+      height: 2.4rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--deep);
+      font-family: Consolas, monospace;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+    .lead { max-width: 68ch; margin-bottom: 0; color: var(--text-dim); }
+    .answer-frame {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .55rem;
+      margin-top: 1rem;
+    }
+    .answer-step { min-width: 0; padding: .75rem; border: 1px solid var(--border); border-top: 4px solid var(--teal); background: var(--surface); }
+    .answer-step:nth-child(2) { border-top-color: var(--amber); }
+    .answer-step:nth-child(3) { border-top-color: var(--blue); }
+    .answer-step:nth-child(4) { border-top-color: var(--green); }
+    .answer-step strong { display: block; margin-bottom: .22rem; font-size: .88rem; }
+    .answer-step span { color: var(--text-dim); font-size: .78rem; }
+    figure { margin: 1rem 0; }
+    figcaption { margin-top: .65rem; color: var(--text-dim); font-size: .83rem; font-weight: 700; }
+    .diagram {
+      overflow: hidden;
+      padding: clamp(.8rem, 3vw, 1.4rem);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background:
+        linear-gradient(90deg, color-mix(in srgb, var(--teal) 7%, transparent) 1px, transparent 1px) 0 0 / 26px 26px,
+        linear-gradient(color-mix(in srgb, var(--teal) 7%, transparent) 1px, transparent 1px) 0 0 / 26px 26px,
+        var(--surface);
+    }
+    .node { min-width: 0; padding: .7rem; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); text-align: center; }
+    .node strong { display: block; font-size: .88rem; }
+    .node small { display: block; margin-top: .18rem; color: var(--text-dim); font-size: .72rem; }
+    .node.teal { border-color: var(--teal); background: var(--teal-soft); }
+    .node.amber { border-color: var(--amber); background: var(--amber-soft); }
+    .node.blue { border-color: var(--blue); background: var(--blue-soft); }
+    .node.red { border-color: var(--red); background: var(--red-soft); }
+    .node.green { border-color: var(--green); background: var(--green-soft); }
+    .arrow { display: grid; place-items: center; color: var(--text-dim); font-family: Consolas, monospace; font-size: 1.1rem; font-weight: 900; }
+    .flow-row { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: .45rem; align-items: center; }
+    .split-flow { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    .lane { display: grid; gap: .5rem; align-content: start; padding: .75rem; border: 1px dashed var(--border); background: color-mix(in srgb, var(--surface) 82%, transparent); }
+    .lane-title { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .2rem; font-weight: 900; }
+    .lane-title span { padding: .15rem .38rem; border-radius: 3px; color: var(--text-dim); background: var(--surface-2); font-size: .68rem; }
+    .retrieval {
+      display: grid;
+      grid-template-areas:
+        "query query"
+        "bm25 bge"
+        "rrf rrf"
+        "docs answer";
+      grid-template-columns: 1fr 1fr;
+      gap: .55rem;
+    }
+    .query { grid-area: query; }
+    .bm25 { grid-area: bm25; }
+    .bge { grid-area: bge; }
+    .rrf { grid-area: rrf; }
+    .docs { grid-area: docs; }
+    .answer { grid-area: answer; }
+    .merge-line { position: relative; }
+    .merge-line::before, .merge-line::after { content: ""; position: absolute; top: -.58rem; width: 1px; height: .58rem; background: var(--border); }
+    .merge-line::before { left: 25%; }
+    .merge-line::after { right: 25%; }
+    .shield-stack { display: grid; gap: .5rem; }
+    .shield-row { display: grid; grid-template-columns: 3.1rem 1fr auto; gap: .65rem; align-items: center; padding: .65rem; border: 1px solid var(--border); background: var(--surface); }
+    .shield-index { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 50% 50% 45% 45%; color: #fff; background: var(--deep); font-family: Consolas, monospace; font-weight: 900; }
+    .shield-row strong { display: block; font-size: .88rem; }
+    .shield-row span { color: var(--text-dim); font-size: .76rem; }
+    .shield-state { padding: .2rem .42rem; border-radius: 3px; color: var(--green); background: var(--green-soft); font-size: .68rem; font-weight: 900; }
+    .waterfall { display: grid; gap: .62rem; }
+    .water-row { display: grid; grid-template-columns: 5rem 1fr 3rem; gap: .6rem; align-items: center; }
+    .water-row strong { font-size: .78rem; }
+    .bar-track { height: 1.05rem; overflow: hidden; border: 1px solid var(--border); background: var(--surface-2); }
+    .bar { height: 100%; background: var(--teal); }
+    .water-row:nth-child(2) .bar { background: var(--blue); }
+    .water-row:nth-child(3) .bar { background: var(--amber); }
+    .water-row:nth-child(4) .bar { background: var(--red); }
+    .water-row:nth-child(5) .bar { background: var(--green); }
+    .water-row output { color: var(--text-dim); font-family: Consolas, monospace; font-size: .74rem; text-align: right; }
+    .design-stairs { display: grid; gap: .55rem; }
+    .stair { display: grid; grid-template-columns: 2.5rem 1fr; gap: .65rem; align-items: center; width: calc(64% + var(--n) * 8%); padding: .62rem .72rem; border: 1px solid var(--border); background: var(--surface); }
+    .stair b { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; color: #fff; background: var(--deep); font-family: Consolas, monospace; }
+    .stair strong { display: block; font-size: .86rem; }
+    .stair span { color: var(--text-dim); font-size: .74rem; }
+    .truth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .truth-card { padding: .9rem; border: 1px solid var(--border); background: var(--surface); }
+    .truth-card h3 { display: flex; justify-content: space-between; gap: .4rem; }
+    .truth-card h3 span { padding: .15rem .4rem; border-radius: 3px; color: var(--green); background: var(--green-soft); font-size: .67rem; }
+    .truth-card.local h3 span { color: var(--blue); background: var(--blue-soft); }
+    .truth-card ul { margin: .55rem 0 0; padding-left: 1.15rem; color: var(--text-dim); font-size: .8rem; }
+    .script {
+      margin-top: 1rem;
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--teal);
+      background: var(--surface);
+    }
+    .script summary { padding: .85rem 1rem; font-weight: 900; cursor: pointer; }
+    .script summary::marker { color: var(--teal); }
+    .script-body { padding: 0 1rem 1rem; }
+    .script-body p { margin-bottom: .65rem; }
+    .script-body p:last-child { margin-bottom: 0; }
+    .cue { display: inline-block; margin-right: .35rem; padding: .12rem .36rem; border-radius: 3px; color: var(--deep); background: #ffd47e; font-size: .72rem; font-weight: 900; }
+    .trap { margin-top: .75rem; padding: .65rem .75rem; border: 1px solid var(--red); color: var(--red); background: var(--red-soft); font-size: .8rem; font-weight: 800; }
+    .memory { margin-top: .75rem; padding: .65rem .75rem; border: 1px solid var(--blue); color: var(--blue); background: var(--blue-soft); font-size: .8rem; font-weight: 800; }
+    .practice {
+      position: sticky;
+      bottom: .7rem;
+      z-index: 40;
+      width: min(520px, calc(100% - 1.2rem));
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: .5rem;
+      align-items: center;
+      margin: 1rem auto 0;
+      padding: .65rem;
+      border: 1px solid #0d3037;
+      border-radius: 5px;
+      color: #fff;
+      background: rgba(18, 58, 67, .96);
+      box-shadow: 0 12px 32px rgba(0,0,0,.24);
+      backdrop-filter: blur(10px);
+    }
+    .practice output { font-family: Consolas, monospace; font-size: 1.05rem; font-weight: 900; }
+    .practice button { min-height: 38px; padding: .4rem .65rem; border: 1px solid rgba(255,255,255,.35); border-radius: 4px; color: #fff; background: transparent; font-size: .78rem; font-weight: 900; }
+    .practice button.primary { color: #18343b; border-color: #ffd47e; background: #ffd47e; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; padding: 1.2rem .8rem 4.8rem; }
+    .footer-nav a { padding: .65rem .85rem; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); font-weight: 800; text-decoration: none; }
+    body.answers-hidden .script .script-body { filter: blur(6px); user-select: none; pointer-events: none; }
+    body.answers-hidden .script[open] .script-body { display: block; }
+    body.answers-hidden .script::after { content: "先看圖自己說，再按上方顯示答案"; display: block; padding: 0 1rem 1rem; color: var(--amber); font-size: .78rem; font-weight: 900; }
+    @media (min-width: 760px) {
+      main { padding: 1.2rem 1.2rem 4rem; }
+      .section-head { grid-template-columns: 2.6rem 1fr; align-items: start; }
+      .section-head .lead { grid-column: 2; }
+      .section { margin-top: 1.25rem; }
+    }
+    @media (max-width: 700px) {
+      .answer-frame { grid-template-columns: 1fr 1fr; }
+      .split-flow, .truth-grid { grid-template-columns: 1fr; }
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-row .arrow { transform: rotate(90deg); }
+      .shield-row { grid-template-columns: 2.7rem 1fr; }
+      .shield-state { grid-column: 2; justify-self: start; }
+      .stair { width: 100%; }
+      .practice { grid-template-columns: 1fr auto; }
+      .practice output { grid-column: 1 / -1; text-align: center; }
+    }
+    @media (max-width: 430px) {
+      html { font-size: 16px; }
+      .hero { padding-top: 1.7rem; }
+      .section { padding: .9rem; }
+      .answer-frame { grid-template-columns: 1fr; }
+      .retrieval { grid-template-columns: 1fr; grid-template-areas: "query" "bm25" "bge" "rrf" "docs" "answer"; }
+      .merge-line::before, .merge-line::after { display: none; }
+      .water-row { grid-template-columns: 4.4rem 1fr 2.6rem; gap: .4rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="topbar" aria-label="圖解導覽">
+      <a class="back" href="./xiangyun.html">← 向雲準備</a>
+      <a href="#frame">答題骨架</a>
+      <a href="#rag">RAG</a>
+      <a href="#hybrid">混合檢索</a>
+      <a href="#hallucination">幻覺</a>
+      <a href="#agent">Agent</a>
+      <a href="#performance">效能</a>
+      <a href="#architecture">架構題</a>
+      <a href="#ownership">AI 協作</a>
+      <button type="button" id="answerToggle">隱藏答案</button>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">VISUAL INTERVIEW REHEARSAL · 9/1</p>
+      <h1>不要背八段答案<br>記住八張機制圖</h1>
+      <p>每一題先看資料怎麼流，再用「定義、理由、證據、限制」講 30–45 秒。面試官追問時才展開技術細節。</p>
+      <div class="hero-marks"><span>向雲科技</span><span>AI 應用工程師</span><span>RAG · Agent · API</span><span>手機複習版</span></div>
+    </header>
+
+    <main>
+      <section class="section" id="frame">
+        <div class="section-head"><div class="number">00</div><div><h2>所有技術題都用同一副骨架</h2><p class="lead">真正要背的只有四個動作。即使遇到沒看過的題目，也能先把思路講完整。</p></div></div>
+        <div class="answer-frame" aria-label="四步答題骨架">
+          <div class="answer-step"><strong>1. 定義</strong><span>一句話說它是什麼，不先堆名詞。</span></div>
+          <div class="answer-step"><strong>2. 理由</strong><span>它解決什麼問題，為什麼這樣選。</span></div>
+          <div class="answer-step"><strong>3. 證據</strong><span>用自己的 Demo 或論文舉一個例子。</span></div>
+          <div class="answer-step"><strong>4. 限制</strong><span>說驗證方式與尚未處理的邊界。</span></div>
+        </div>
+        <div class="memory">記憶句：先說人話，再畫資料流；先承認條件，再給可驗證的方法。</div>
+      </section>
+
+      <section class="section" id="rag">
+        <div class="section-head"><div class="number">01</div><div><h2>RAG 與 Fine-tuning 差在哪裡？</h2><p class="lead">把它想成「考試可以翻資料」與「重新訓練答題習慣」，兩者改動的位置不同。</p></div></div>
+        <figure>
+          <div class="diagram split-flow" role="img" aria-label="RAG 與 Fine-tuning 的差異圖">
+            <div class="lane">
+              <div class="lane-title">RAG <span>推論時</span></div>
+              <div class="node teal"><strong>問題</strong><small>現在要回答什麼</small></div>
+              <div class="arrow">↓ 檢索</div>
+              <div class="node blue"><strong>外部文件</strong><small>可更新、可授權、可引用</small></div>
+              <div class="arrow">↓ 當作 context</div>
+              <div class="node green"><strong>模型回答</strong><small>根據當次取得的證據</small></div>
+            </div>
+            <div class="lane">
+              <div class="lane-title">Fine-tuning <span>訓練時</span></div>
+              <div class="node amber"><strong>範例資料</strong><small>理想輸入與輸出</small></div>
+              <div class="arrow">↓ 調整權重</div>
+              <div class="node red"><strong>模型行為</strong><small>格式、風格、任務習慣</small></div>
+              <div class="arrow">↓ 之後沿用</div>
+              <div class="node"><strong>固定版本</strong><small>新事實仍需重新處理</small></div>
+            </div>
+          </div>
+          <figcaption>核心差異：RAG 改變當次輸入的知識；Fine-tuning 改變模型本身的行為。</figcaption>
+        </figure>
+        <details class="script" open><summary>30 秒口語回答</summary><div class="script-body">
+          <p><span class="cue">定義</span>RAG 是回答前先取得外部文件，再把文件交給模型；Fine-tuning 則是用範例資料調整模型參數與行為。</p>
+          <p><span class="cue">理由</span>需要最新資料、來源引用或權限控管時，我會先選 RAG；需要固定格式、語氣或任務習慣時，才評估微調。</p>
+          <p><span class="cue">限制</span>Fine-tuning 不等於可靠記住最新事實，所以企業文件問答通常先把資料、檢索與評測做好。</p>
+        </div></details>
+        <div class="trap">不要說：「Fine-tuning 就是把公司的所有知識灌進模型。」</div>
+      </section>
+
+      <section class="section" id="hybrid">
+        <div class="section-head"><div class="number">02</div><div><h2>為什麼 BM25＋BGE＋RRF？</h2><p class="lead">兩個檢索器像兩位擅長不同線索的調查員，RRF 不比較兩人的原始分數，而比較各自排出的名次。</p></div></div>
+        <figure>
+          <div class="diagram retrieval" role="img" aria-label="BM25、BGE 與 RRF 混合檢索流程">
+            <div class="node query"><strong>使用者問題</strong><small>「醫院導入生成式 AI 前，要先做哪些管理？」</small></div>
+            <div class="node amber bm25"><strong>BM25｜看字面</strong><small>條文、產品名、代碼、精確詞</small></div>
+            <div class="node blue bge"><strong>BGE｜看語意</strong><small>同義改寫、字面不同但意思接近</small></div>
+            <div class="node teal rrf merge-line"><strong>Weighted RRF｜合併名次</strong><small>排名越前，融合分數越高；避開不同分數尺度</small></div>
+            <div class="node docs"><strong>Top 3 證據</strong><small>來源、版本、分數與適用範圍</small></div>
+            <div class="node green answer"><strong>有依據的回答</strong><small>證據不足則拒答或補問</small></div>
+          </div>
+          <figcaption>一個負責精確詞、一個負責語意；RRF 的工作是融合排名，不是直接相加異質分數。</figcaption>
+        </figure>
+        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body">
+          <p><span class="cue">定義</span>BM25 對關鍵詞、代碼與條文很敏感；BGE 可以找出用詞不同但語意相近的內容。</p>
+          <p><span class="cue">理由</span>兩者原始分數不在同一尺度，所以我用 RRF 依名次融合，而不是硬把分數相加。</p>
+          <p><span class="cue">證據</span>我的 MedEvidence 公開版就是這條流程，會顯示兩路召回、融合排名與 Top 3 來源。</p>
+          <p><span class="cue">限制</span>混合不一定永遠較好，仍要用固定題庫比較 Top-k 命中與引用支持度。</p>
+        </div></details>
+        <div class="trap">不要只說：「混合檢索比較準。」要補上兩路各自補什麼，以及怎麼驗證。</div>
+      </section>
+
+      <section class="section" id="hallucination">
+        <div class="section-head"><div class="number">03</div><div><h2>怎麼降低幻覺？</h2><p class="lead">不是加一句「請不要亂講」。要把防線分散在資料、檢索、回答、動作與評測五層。</p></div></div>
+        <figure>
+          <div class="diagram shield-stack" role="img" aria-label="降低幻覺的五層防線">
+            <div class="shield-row"><div class="shield-index">1</div><div><strong>可信資料與版本</strong><span>只收可追溯來源，保存 metadata、日期與適用範圍。</span></div><div class="shield-state">輸入層</div></div>
+            <div class="shield-row"><div class="shield-index">2</div><div><strong>檢索門檻與權限</strong><span>先授權再檢索；分數不足不把文件交給模型。</span></div><div class="shield-state">檢索層</div></div>
+            <div class="shield-row"><div class="shield-index">3</div><div><strong>證據約束與逐項引用</strong><span>回答只能根據取得的 context，引用必須真的支持句子。</span></div><div class="shield-state">生成層</div></div>
+            <div class="shield-row"><div class="shield-index">4</div><div><strong>拒答與人工核准</strong><span>資料不足時停下；高風險寫入或決策由人確認。</span></div><div class="shield-state">行動層</div></div>
+            <div class="shield-row"><div class="shield-index">5</div><div><strong>固定題庫與 Regression</strong><span>版本變更後重跑正確性、引用、拒答、延遲與成本。</span></div><div class="shield-state">驗證層</div></div>
+          </div>
+          <figcaption>幻覺是系統問題，不只是一個 Prompt 問題；每一層都要留下可回查證據。</figcaption>
+        </figure>
+        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body">
+          <p><span class="cue">主張</span>我不會只靠 Prompt 降低幻覺，而會做多層控制。</p>
+          <p>先管理資料來源與版本，檢索時加上權限和門檻；回答只能根據通過門檻的證據並附來源。資料不足時拒答，高風險操作交由人工確認。</p>
+          <p><span class="cue">驗證</span>最後保存問題、檢索結果、模型版本與回答，用固定題庫檢查正確性、引用支持度、拒答與延遲。</p>
+        </div></details>
+        <div class="trap">有引用不代表答案正確；仍需確認引用內容真的支持那一句結論。</div>
+      </section>
+
+      <section class="section" id="agent">
+        <div class="section-head"><div class="number">04</div><div><h2>Workflow 與 Agent 怎麼選？</h2><p class="lead">先問路徑是否需要動態決策。固定路徑用 Workflow，真正需要臨場選工具才讓 Agent 決定。</p></div></div>
+        <figure>
+          <div class="diagram split-flow" role="img" aria-label="Workflow 與 Agent 的流程差異">
+            <div class="lane">
+              <div class="lane-title">Workflow <span>路線先畫好</span></div>
+              <div class="flow-row"><div class="node teal"><strong>分類</strong></div><div class="arrow">→</div><div class="node blue"><strong>檢索</strong></div><div class="arrow">→</div><div class="node green"><strong>回答</strong></div></div>
+              <div class="memory">優點：可控、可測試、容易預估成本。</div>
+            </div>
+            <div class="lane">
+              <div class="lane-title">Agent <span>依狀態選下一步</span></div>
+              <div class="node amber"><strong>觀察目前狀態</strong><small>目標、工具結果、剩餘步驟</small></div>
+              <div class="arrow">↓ 選工具</div>
+              <div class="split-flow"><div class="node blue"><strong>查資料庫</strong></div><div class="node teal"><strong>呼叫 API</strong></div></div>
+              <div class="arrow">↓ 判斷是否完成／重試</div>
+              <div class="node red"><strong>完成前驗證</strong><small>步數上限、權限、人工核准</small></div>
+            </div>
+          </div>
+          <figcaption>選擇原則不是哪個比較新，而是哪個用最少的不確定性完成任務。</figcaption>
+        </figure>
+        <details class="script" open><summary>35 秒口語回答</summary><div class="script-body">
+          <p><span class="cue">定義</span>Workflow 的步驟與分支由程式預先定義；Agent 則會依目標和當下狀態選擇工具與下一步。</p>
+          <p><span class="cue">取捨</span>能用固定流程解決時，我會先採 Workflow，因為較容易測試、控管權限與預估成本。只有路徑確實需要動態決策時才加入 Agent。</p>
+          <p><span class="cue">安全</span>Agent 仍需工具 allowlist、步數上限、timeout、稽核紀錄與高風險動作人工核准。</p>
+        </div></details>
+      </section>
+
+      <section class="section" id="performance">
+        <div class="section-head"><div class="number">05</div><div><h2>API 很慢，你怎麼找原因？</h2><p class="lead">先量每一段，不先猜。平均值也不夠，要看 p50、p95、錯誤率與流量條件。</p></div></div>
+        <figure>
+          <div class="diagram" role="img" aria-label="API 各階段延遲瀑布圖示意">
+            <div class="waterfall">
+              <div class="water-row"><strong>網路／閘道</strong><div class="bar-track"><div class="bar" style="width:18%"></div></div><output>40 ms</output></div>
+              <div class="water-row"><strong>API 邏輯</strong><div class="bar-track"><div class="bar" style="width:12%"></div></div><output>25 ms</output></div>
+              <div class="water-row"><strong>資料庫</strong><div class="bar-track"><div class="bar" style="width:35%"></div></div><output>80 ms</output></div>
+              <div class="water-row"><strong>檢索／Rerank</strong><div class="bar-track"><div class="bar" style="width:58%"></div></div><output>135 ms</output></div>
+              <div class="water-row"><strong>模型推論</strong><div class="bar-track"><div class="bar" style="width:92%"></div></div><output>820 ms</output></div>
+            </div>
+          </div>
+          <figcaption>圖中數字只是答題示意。實務上先用 trace 找出真正瓶頸，再針對該階段修改。</figcaption>
+        </figure>
+        <div class="flow-row" aria-label="效能處理循環">
+          <div class="node teal"><strong>量測</strong><small>p50／p95、error rate、QPS</small></div><div class="arrow">→</div>
+          <div class="node amber"><strong>定位</strong><small>DB、網路、檢索、模型</small></div><div class="arrow">→</div>
+          <div class="node green"><strong>同負載重測</strong><small>速度改善且品質不退步</small></div>
+        </div>
+        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body">
+          <p><span class="cue">第一步</span>先確認流量與服務目標，量測 p50、p95、錯誤率及各階段耗時，而不是先猜資料庫慢。</p>
+          <p><span class="cue">第二步</span>定位瓶頸後，再選擇索引、連線池、快取、batch、非同步 I/O 或縮短 context。</p>
+          <p><span class="cue">驗證</span>修改後用相同資料與負載重測，同時檢查答案品質與錯誤率，避免只是把速度換成錯誤。</p>
+        </div></details>
+        <div class="trap">不要一聽到慢就回答「加 Redis」；先說怎麼證明瓶頸值得快取。</div>
+      </section>
+
+      <section class="section" id="architecture">
+        <div class="section-head"><div class="number">06</div><div><h2>現場突然出一題系統架構，怎麼開口？</h2><p class="lead">不要立刻畫框架名稱。先把假設問清楚，接著依五階段把答案搭起來。</p></div></div>
+        <figure>
+          <div class="diagram design-stairs" role="img" aria-label="系統架構題五步回答階梯">
+            <div class="stair" style="--n:0"><b>1</b><div><strong>先問條件</strong><span>使用者、資料量、更新頻率、延遲、權限、風險</span></div></div>
+            <div class="stair" style="--n:1"><b>2</b><div><strong>畫資料流</strong><span>Client → API → 檢索／模型／工具 → DB → Response</span></div></div>
+            <div class="stair" style="--n:2"><b>3</b><div><strong>補失敗處理</strong><span>timeout、有限 retry、idempotency、fallback、人工核准</span></div></div>
+            <div class="stair" style="--n:3"><b>4</b><div><strong>加入可觀測性</strong><span>request id、structured log、metrics、trace、版本</span></div></div>
+            <div class="stair" style="--n:4"><b>5</b><div><strong>說驗證方式</strong><span>固定案例、邊界、負載、權限與 regression test</span></div></div>
+          </div>
+          <figcaption>架構題評估的是取捨過程。先釐清條件，通常比背出更多技術名稱更重要。</figcaption>
+        </figure>
+        <details class="script" open><summary>萬用開場句</summary><div class="script-body">
+          <p>「在開始畫架構前，我想先確認使用者規模、文件量與更新頻率、可接受延遲、資料權限，以及這個回答出錯時的風險。若先假設是企業內部文件問答、需要引用且文件有權限，我會這樣設計……」</p>
+          <p>接著照圖上的五層往下講。遇到不熟的元件，可以說「這裡需要依流量與團隊既有技術棧再選型」，不要硬猜。</p>
+        </div></details>
+      </section>
+
+      <section class="section" id="ownership">
+        <div class="section-head"><div class="number">07</div><div><h2>「你是不是都靠 AI 做？」怎麼回答？</h2><p class="lead">不要防衛，也不要把 AI 隱藏掉。把工作切成「AI 加速」與「你負責成果成立」兩張責任清單。</p></div></div>
+        <figure>
+          <div class="diagram split-flow" role="img" aria-label="AI 協助與個人責任邊界">
+            <div class="lane">
+              <div class="lane-title">AI 協助加速 <span>工具</span></div>
+              <div class="node blue"><strong>理解與搜尋</strong><small>快速比較技術選項</small></div>
+              <div class="node blue"><strong>產生初版</strong><small>程式、測試案例、文件草稿</small></div>
+              <div class="node blue"><strong>提出替代方案</strong><small>協助發現可能遺漏</small></div>
+            </div>
+            <div class="lane">
+              <div class="lane-title">我對結果負責 <span>Owner</span></div>
+              <div class="node teal"><strong>需求與限制</strong><small>什麼能做、不能做、怎樣算完成</small></div>
+              <div class="node amber"><strong>架構與資料語意</strong><small>取捨是否符合真實使用情境</small></div>
+              <div class="node green"><strong>Diff、測試與證據</strong><small>親自執行、核對輸出、說明限制</small></div>
+            </div>
+          </div>
+          <figcaption>企業真正關心的不是你有沒有用 AI，而是錯誤發生時誰能理解、驗證、追查並負責。</figcaption>
+        </figure>
+        <details class="script" open><summary>45 秒口語回答</summary><div class="script-body">
+          <p>我確實會使用 Claude Code、Codex 等工具協助理解程式、比較方案與產生初版，但我會先定義需求和限制，檢查 Git diff，親自執行測試並核對輸出。</p>
+          <p>以 RAG Demo 為例，是否採 BM25、BGE、RRF，如何處理降級、拒答與固定評測，都必須由我理解後才能決定。AI 加速實作，但系統為什麼這樣設計、結果是否成立及限制如何說明，由我負責。</p>
+        </div></details>
+        <div class="trap">不要說：「程式都是 AI 寫的，我主要負責下 Prompt。」也不要反過來假裝完全沒用 AI。</div>
+      </section>
+
+      <section class="section" id="demo-truth">
+        <div class="section-head"><div class="number">08</div><div><h2>你的 Demo 到底是不是完整 RAG？</h2><p class="lead">這題要主動說清楚部署邊界。公開版展示可重現檢索與治理，本機版才包含 FastAPI 與 Ollama。</p></div></div>
+        <figure>
+          <div class="diagram truth-grid" role="img" aria-label="MedEvidence 公開版與本機版差異">
+            <div class="truth-card"><h3>GitHub Pages 公開版 <span>可直接展示</span></h3><ul><li>BM25＋BGE＋RRF 混合檢索</li><li>Top 3 來源與引用追溯</li><li>範圍判定、拒答、稽核與固定題庫</li><li>決定式 evidence-extractive 整理</li></ul></div>
+            <div class="truth-card local"><h3>FastAPI 本機版 <span>生成路徑</span></h3><ul><li>後端重新驗證取得的文件</li><li>SQLite／API／request id</li><li>將可信 Top 3 context 交給 Ollama</li><li>完整 log、失敗與模型版本管理</li></ul></div>
+          </div>
+          <figcaption>誠實定位：這是 RAG 治理與檢索原型，不是正式醫療系統，也不假裝靜態網站已連接商用雲端模型。</figcaption>
+        </figure>
+        <details class="script" open><summary>被追問時這樣回答</summary><div class="script-body">
+          <p>典型 RAG 會包含檢索與生成。我的公開版受靜態託管限制，主要展示混合檢索、來源引用、拒答與稽核，回答採可重現的證據式整理；本機 FastAPI 版才會把後端重新驗證的 Top 3 文件交給 Ollama。</p>
+          <p>所以我會稱它為 RAG 治理與檢索原型，而不是已完成的商用醫療生成系統。正式上線還需要身分權限、受控模型服務、監控、資安與更完整評測。</p>
+        </div></details>
+      </section>
+    </main>
+
+    <div class="practice" aria-label="口說計時器">
+      <output id="timer" aria-live="polite">00:45</output>
+      <button type="button" class="primary" id="startTimer">開始 45 秒</button>
+      <button type="button" id="resetTimer">重設</button>
+    </div>
+
+    <nav class="footer-nav" aria-label="相關頁面">
+      <a href="./xiangyun.html">回向雲完整準備</a>
+      <a href="./index.html">所有面試</a>
+      <a href="https://steven65026502.github.io/medical-rag-audit-demo/" target="_blank" rel="noopener">開啟 MedEvidence Demo</a>
+    </nav>
+  </div>
+
+  <script>
+    const answerToggle = document.getElementById('answerToggle');
+    answerToggle.addEventListener('click', () => {
+      document.body.classList.toggle('answers-hidden');
+      answerToggle.textContent = document.body.classList.contains('answers-hidden') ? '顯示答案' : '隱藏答案';
+    });
+
+    const timer = document.getElementById('timer');
+    const start = document.getElementById('startTimer');
+    const reset = document.getElementById('resetTimer');
+    let remaining = 45;
+    let interval = null;
+    function paintTimer() {
+      timer.textContent = `00:${String(remaining).padStart(2, '0')}`;
+      timer.style.color = remaining <= 10 ? '#ffd47e' : '#ffffff';
+    }
+    function resetTimer() {
+      clearInterval(interval);
+      interval = null;
+      remaining = 45;
+      start.textContent = '開始 45 秒';
+      paintTimer();
+    }
+    start.addEventListener('click', () => {
+      if (interval) { clearInterval(interval); interval = null; start.textContent = '繼續'; return; }
+      if (remaining === 0) remaining = 45;
+      start.textContent = '暫停';
+      interval = setInterval(() => {
+        remaining -= 1;
+        paintTimer();
+        if (remaining <= 0) { clearInterval(interval); interval = null; start.textContent = '再練一次'; }
+      }, 1000);
+    });
+    reset.addEventListener('click', resetTimer);
+    paintTimer();
+  </script>
+</body>
+</html>
