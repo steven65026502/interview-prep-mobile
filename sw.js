@@ -1,4 +1,4 @@
-const CACHE_NAME = "interview-prep-v11";
+const CACHE_NAME = "interview-prep-v12";
 const FILES = [
   "./",
   "./index.html",
@@ -6,6 +6,22 @@ const FILES = [
   "./xiangyun.html",
   "./xiangyun-technical-visual.html",
   "./upcoming-visual-drills.html",
+  "./assets/visual-drills/muratec-task-journey.svg",
+  "./assets/visual-drills/muratec-latency-investigation.svg",
+  "./assets/visual-drills/muratec-alarm-funnel.svg",
+  "./assets/visual-drills/muratec-skill-bridge.svg",
+  "./assets/visual-drills/ship-product-layers.svg",
+  "./assets/visual-drills/ship-validation-tunnel.svg",
+  "./assets/visual-drills/ship-scale-dual-lane.svg",
+  "./assets/visual-drills/ship-traceability-chain.svg",
+  "./assets/visual-drills/xiangyun-rag-open-book.svg",
+  "./assets/visual-drills/xiangyun-hybrid-detectives.svg",
+  "./assets/visual-drills/xiangyun-trust-gates.svg",
+  "./assets/visual-drills/xiangyun-workflow-agent.svg",
+  "./assets/visual-drills/xiangyun-latency-relay.svg",
+  "./assets/visual-drills/xiangyun-system-house.svg",
+  "./assets/visual-drills/xiangyun-ai-ownership.svg",
+  "./assets/visual-drills/xiangyun-demo-boundary.svg",
   "./mediatek.html",
   "./muratec.html",
   "./yuanzhao.html",

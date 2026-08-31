@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">BM25 與 BGE 像兩位專長不同的調查員</title>
+  <desc id="desc">BM25 找相同關鍵字，BGE 找意思相近內容，RRF 依兩邊排名合併候選，再由 reranker 精排。</desc>
+  <defs><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#28658d"/></marker><filter id="s"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#17343b" flood-opacity=".14"/></filter></defs>
+  <rect width="1200" height="675" fill="#eef5f2"/>
+  <text x="62" y="70" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="42" font-weight="700">混合檢索＝請兩位不同專長的調查員一起找</text>
+  <text x="63" y="111" fill="#597078" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23">一位認字，一位懂意思；RRF 看名次，不硬比兩種分數</text>
+
+  <g transform="translate(65 162)" filter="url(#s)">
+    <rect width="395" height="350" rx="12" fill="#fff" stroke="#b86217" stroke-width="4"/>
+    <circle cx="92" cy="90" r="48" fill="#fff0d7" stroke="#b86217" stroke-width="4"/><circle cx="79" cy="82" r="6" fill="#153d47"/><circle cx="105" cy="82" r="6" fill="#153d47"/><path d="M122 110L159 147" stroke="#b86217" stroke-width="10" stroke-linecap="round"/>
+    <text x="233" y="68" fill="#b86217" font-family="Consolas,monospace" font-size="31" font-weight="700">BM25</text>
+    <text x="233" y="103" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="24" font-weight="700">認「相同字詞」</text>
+    <g font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="19">
+      <rect x="44" y="183" width="307" height="44" rx="7" fill="#fff0d7"/><text x="62" y="212" fill="#153d47">1　最低天文潮 LAT</text>
+      <rect x="44" y="238" width="307" height="44" rx="7" fill="#f7f1e8"/><text x="62" y="267" fill="#153d47">2　LAT 基準定義</text>
+      <rect x="44" y="293" width="307" height="44" rx="7" fill="#f7f1e8"/><text x="62" y="322" fill="#153d47">3　潮位參考面</text>
+    </g>
+  </g>
+  <g transform="translate(65 530)"><rect width="395" height="52" rx="8" fill="#b86217"/><text x="198" y="34" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="21" font-weight="700">適合專有名詞、編號與精確字串</text></g>
+
+  <g transform="translate(740 162)" filter="url(#s)">
+    <rect width="395" height="350" rx="12" fill="#fff" stroke="#28658d" stroke-width="4"/>
+    <circle cx="92" cy="90" r="48" fill="#e2eef6" stroke="#28658d" stroke-width="4"/><path d="M65 94Q92 58 119 94M65 108Q92 72 119 108" fill="none" stroke="#28658d" stroke-width="6"/>
+    <text x="233" y="68" fill="#28658d" font-family="Consolas,monospace" font-size="31" font-weight="700">BGE</text>
+    <text x="233" y="103" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="24" font-weight="700">懂「意思相近」</text>
+    <g font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="19">
+      <rect x="44" y="183" width="307" height="44" rx="7" fill="#e2eef6"/><text x="62" y="212" fill="#153d47">1　海水最低參考零點</text>
+      <rect x="44" y="238" width="307" height="44" rx="7" fill="#edf3f7"/><text x="62" y="267" fill="#153d47">2　天文潮基準面</text>
+      <rect x="44" y="293" width="307" height="44" rx="7" fill="#edf3f7"/><text x="62" y="322" fill="#153d47">3　航海水深起算點</text>
+    </g>
+  </g>
+  <g transform="translate(740 530)"><rect width="395" height="52" rx="8" fill="#28658d"/><text x="198" y="34" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="21" font-weight="700">適合自然語句與同義表達</text></g>
+
+  <g transform="translate(480 238)" filter="url(#s)">
+    <path d="M0 0H240V192H0Z" fill="#153d47" stroke="#fff" stroke-width="5"/>
+    <text x="120" y="53" text-anchor="middle" fill="#8bd8cc" font-family="Consolas,monospace" font-size="33" font-weight="700">RRF</text>
+    <text x="120" y="91" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="21">依名次合併</text>
+    <path d="M54 129H186M75 151H165" stroke="#f4bd58" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <path d="M463 302H479M721 302H740" stroke="#28658d" stroke-width="8" marker-end="url(#a)"/>
+  <rect x="479" y="456" width="242" height="68" rx="9" fill="#37764c"/>
+  <text x="600" y="484" text-anchor="middle" fill="#e2efe5" font-family="Consolas,monospace" font-size="20">RERANK</text>
+  <text x="600" y="511" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="20">最後再精排</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">從既有資料工程能力跨到搬送設備領域</title>
+  <desc id="desc">左側為 Python、SQL、API 與日誌驗證能力，透過閱讀架構、故障案例、現場 SOP 與小任務驗證，跨到右側的搬送設備與控制系統。</desc>
+  <defs><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#b86217"/></marker><filter id="s"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#17343b" flood-opacity=".13"/></filter></defs>
+  <rect width="1200" height="675" fill="#eef5f2"/>
+  <text x="62" y="70" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="42" font-weight="700">誠實說缺口，同時畫出你會怎麼補上</text>
+  <text x="63" y="111" fill="#597078" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23">不把海洋資料說成設備經驗；證明自己的方法能移轉</text>
+  <g transform="translate(60 168)" filter="url(#s)">
+    <rect width="320" height="350" rx="12" fill="#fff" stroke="#28658d" stroke-width="4"/>
+    <text x="160" y="52" text-anchor="middle" fill="#28658d" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="29" font-weight="700">我已具備</text>
+    <g font-family="Consolas,monospace" font-size="24" fill="#153d47">
+      <rect x="42" y="89" width="236" height="49" rx="7" fill="#e2eef6"/><text x="70" y="122">Python / SQL</text>
+      <rect x="42" y="153" width="236" height="49" rx="7" fill="#dceee9"/><text x="70" y="186">API / data flow</text>
+      <rect x="42" y="217" width="236" height="49" rx="7" fill="#fff0d7"/><text x="70" y="250">log / regression</text>
+      <rect x="42" y="281" width="236" height="49" rx="7" fill="#e2efe5"/><text x="70" y="314">JLPT N2</text>
+    </g>
+  </g>
+  <g transform="translate(433 165)">
+    <path d="M0 337C92 230 178 230 270 337" fill="none" stroke="#b86217" stroke-width="24" stroke-linecap="round"/>
+    <path d="M34 315L86 263M103 252L156 229M174 233L231 280" stroke="#fff" stroke-width="8"/>
+    <path d="M135 165V238" stroke="#b86217" stroke-width="7" marker-end="url(#a)"/>
+    <text x="135" y="43" text-anchor="middle" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="27" font-weight="700">補強順序</text>
+    <g font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+      <g transform="translate(8 386)"><circle r="25" fill="#153d47"/><text y="7" fill="#fff">1</text><text y="57" fill="#153d47">讀架構</text></g>
+      <g transform="translate(91 298)"><circle r="25" fill="#153d47"/><text y="7" fill="#fff">2</text><text y="57" fill="#153d47">看案例</text></g>
+      <g transform="translate(178 298)"><circle r="25" fill="#153d47"/><text y="7" fill="#fff">3</text><text y="57" fill="#153d47">跟 SOP</text></g>
+      <g transform="translate(262 386)"><circle r="25" fill="#153d47"/><text y="7" fill="#fff">4</text><text y="57" fill="#153d47">小任務驗證</text></g>
+    </g>
+  </g>
+  <g transform="translate(760 168)" filter="url(#s)">
+    <rect width="380" height="350" rx="12" fill="#fff" stroke="#37764c" stroke-width="4"/>
+    <text x="190" y="52" text-anchor="middle" fill="#37764c" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="29" font-weight="700">要進入的現場</text>
+    <g transform="translate(40 92)">
+      <path d="M0 0H300V180H0Z" fill="#e2efe5" stroke="#37764c" stroke-width="4"/>
+      <path d="M23 26H110V150H23ZM190 26H277V150H190Z" fill="#fff" stroke="#37764c" stroke-width="4"/>
+      <path d="M126 117H179V158H126Z" fill="#f4bd58" stroke="#153d47" stroke-width="4"/>
+      <circle cx="138" cy="168" r="13" fill="#153d47"/><circle cx="168" cy="168" r="13" fill="#153d47"/>
+      <path d="M25 76H107M193 76H275" stroke="#b7cec2" stroke-width="7" stroke-dasharray="10 8"/>
+    </g>
+    <text x="190" y="315" text-anchor="middle" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23" font-weight="700">設備流程 · 訊息協定 · 現場 SOP</text>
+  </g>
+  <rect x="190" y="563" width="820" height="61" rx="9" fill="#153d47"/>
+  <text x="600" y="602" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="24" font-weight="700">回答重點：我沒有假裝會，但我知道如何把陌生系統拆成可驗證的小步驟</text>
+</svg>

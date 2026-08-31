@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Workflow 像火車，Agent 像計程車</title>
+  <desc id="desc">固定流程適合照軌道執行的 Workflow，需要根據情況選工具時才使用 Agent；任何高風險寫入都先經人工確認。</desc>
+  <defs><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#28658d"/></marker><filter id="s"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#17343b" flood-opacity=".14"/></filter></defs>
+  <rect width="1200" height="675" fill="#eef5f2"/>
+  <text x="62" y="70" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="42" font-weight="700">固定路線搭火車；需要臨場選路才叫計程車</text>
+  <text x="63" y="111" fill="#597078" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23">不要為了叫 Agent，把本來能固定的流程變得不可預測</text>
+  <g transform="translate(55 157)" filter="url(#s)">
+    <rect width="520" height="385" rx="12" fill="#fff" stroke="#1b6f73" stroke-width="4"/>
+    <text x="260" y="48" text-anchor="middle" fill="#1b6f73" font-family="Consolas,monospace" font-size="29" font-weight="700">WORKFLOW</text>
+    <path d="M48 296H472M48 328H472" stroke="#6f8888" stroke-width="7"/>
+    <g stroke="#6f8888" stroke-width="6"><path d="M91 278V346M170 278V346M249 278V346M328 278V346M407 278V346"/></g>
+    <g transform="translate(80 151)"><rect width="252" height="114" rx="12" fill="#dceee9" stroke="#1b6f73" stroke-width="4"/><rect x="28" y="-40" width="90" height="52" rx="6" fill="#fff" stroke="#1b6f73" stroke-width="4"/><circle cx="55" cy="114" r="23" fill="#153d47"/><circle cx="203" cy="114" r="23" fill="#153d47"/><path d="M40 43H212" stroke="#1b6f73" stroke-width="8" stroke-dasharray="16 10"/><text x="126" y="79" text-anchor="middle" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="22" font-weight="700">每次走同一路線</text></g>
+    <text x="260" y="366" text-anchor="middle" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="20" font-weight="700">驗證 → 分類 → 通知 → 紀錄</text>
+  </g>
+  <g transform="translate(625 157)" filter="url(#s)">
+    <rect width="520" height="385" rx="12" fill="#fff" stroke="#28658d" stroke-width="4"/>
+    <text x="260" y="48" text-anchor="middle" fill="#28658d" font-family="Consolas,monospace" font-size="29" font-weight="700">AGENT</text>
+    <path d="M52 302C132 167 197 330 274 194C336 84 399 245 471 113" fill="none" stroke="#bdd5e3" stroke-width="24" stroke-linecap="round"/>
+    <g transform="translate(95 227)"><rect width="154" height="82" rx="14" fill="#e2eef6" stroke="#28658d" stroke-width="4"/><path d="M18 24H136V61H18Z" fill="#fff" stroke="#28658d" stroke-width="3"/><circle cx="36" cy="84" r="17" fill="#153d47"/><circle cx="119" cy="84" r="17" fill="#153d47"/></g>
+    <g font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="17" font-weight="700" text-anchor="middle">
+      <g transform="translate(335 94)"><circle r="35" fill="#fff0d7" stroke="#b86217" stroke-width="4"/><text y="6" fill="#153d47">查文件</text></g>
+      <g transform="translate(426 194)"><circle r="35" fill="#dceee9" stroke="#1b6f73" stroke-width="4"/><text y="6" fill="#153d47">查 SQL</text></g>
+      <g transform="translate(317 298)"><circle r="35" fill="#f8e6e2" stroke="#9a4138" stroke-width="4"/><text y="6" fill="#153d47">叫 API</text></g>
+    </g>
+    <text x="260" y="366" text-anchor="middle" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="20" font-weight="700">依情境選工具與下一步</text>
+  </g>
+  <g transform="translate(398 565)"><rect width="404" height="70" rx="9" fill="#153d47"/><path d="M31 35H86" stroke="#f4bd58" stroke-width="8" marker-end="url(#a)"/><rect x="105" y="14" width="96" height="42" rx="7" fill="#9a4138"/><text x="153" y="42" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="19" font-weight="700">寫入前</text><text x="289" y="43" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="21" font-weight="700">人工確認</text></g>
+</svg>

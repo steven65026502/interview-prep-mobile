@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">回答系統架構題像蓋一棟房子</title>
+  <desc id="desc">先問需求與規模作為地基，再畫資料流、失敗處理、量測與驗證，不先堆框架名稱。</desc>
+  <defs><filter id="s"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#17343b" flood-opacity=".15"/></filter></defs>
+  <rect width="1200" height="675" fill="#eef5f2"/>
+  <text x="62" y="70" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="42" font-weight="700">系統架構題像蓋房子：先問住誰，再決定怎麼蓋</text>
+  <text x="63" y="111" fill="#597078" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23">先問規模與需求；沒有地基就直接報框架名稱，很容易整棟歪掉</text>
+  <g transform="translate(180 148)" filter="url(#s)">
+    <path d="M0 168L420 0L840 168Z" fill="#153d47"/>
+    <path d="M68 168H772V448H68Z" fill="#fff" stroke="#153d47" stroke-width="5"/>
+    <path d="M102 195H738V262H102Z" fill="#dceee9" stroke="#1b6f73" stroke-width="4"/>
+    <path d="M102 281H738V348H102Z" fill="#e2eef6" stroke="#28658d" stroke-width="4"/>
+    <path d="M102 367H738V428H102Z" fill="#fff0d7" stroke="#b86217" stroke-width="4"/>
+    <g font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-weight="700">
+      <text x="420" y="92" text-anchor="middle" fill="#fff" font-size="27">⑤ 驗證：原案例、邊界、尖峰、回歸</text>
+      <text x="420" y="237" text-anchor="middle" fill="#153d47" font-size="25">④ 量測：延遲、錯誤率、容量、成本</text>
+      <text x="420" y="323" text-anchor="middle" fill="#153d47" font-size="25">③ 失敗處理：timeout、retry、降級、人工</text>
+      <text x="420" y="406" text-anchor="middle" fill="#153d47" font-size="25">② 資料流：輸入 → 處理 → 儲存 → 輸出</text>
+    </g>
+    <path d="M36 448H804V503H36Z" fill="#9a4138"/>
+    <text x="420" y="484" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="27" font-weight="700">① 地基：使用者、流量、資料量、延遲、正確性</text>
+  </g>
+  <g transform="translate(63 215)"><circle cx="54" cy="54" r="48" fill="#f4bd58"/><text x="54" y="45" text-anchor="middle" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="18" font-weight="700">先問</text><text x="54" y="70" text-anchor="middle" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23" font-weight="700">條件</text></g>
+  <g transform="translate(1028 213)"><circle cx="54" cy="54" r="48" fill="#28658d"/><text x="54" y="45" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="18" font-weight="700">最後</text><text x="54" y="70" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23" font-weight="700">驗證</text></g>
+</svg>

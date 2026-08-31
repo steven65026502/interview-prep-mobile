@@ -83,6 +83,19 @@
     .lead { max-width: 68ch; margin-bottom: 0; color: var(--muted); }
     figure { margin: 1rem 0; }
     figcaption { margin-top: .6rem; color: var(--muted); font-size: .82rem; font-weight: 700; }
+    .picture-explainer { margin: 1rem 0 1.15rem; }
+    .picture-button { position: relative; width: 100%; display: block; overflow: hidden; padding: 0; border: 1px solid var(--line); border-radius: 5px; background: var(--paper); box-shadow: var(--shadow); }
+    .picture-button img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: contain; }
+    .picture-button::after { content: "點圖放大"; position: absolute; right: .65rem; bottom: .65rem; padding: .3rem .52rem; border: 1px solid rgba(255,255,255,.42); border-radius: 4px; color: #fff; background: rgba(21,61,71,.92); font-size: .72rem; font-weight: 900; }
+    .picture-explainer figcaption { max-width: 72ch; margin: .68rem auto 0; text-align: center; }
+    .image-dialog { width: min(96vw, 1240px); max-width: none; max-height: 94vh; overflow: auto; padding: .6rem; border: 0; border-radius: 6px; background: var(--surface); box-shadow: 0 24px 70px rgba(0,0,0,.36); }
+    .image-dialog::backdrop { background: rgba(7,20,24,.82); }
+    .image-dialog img { width: 1200px; max-width: none; height: auto; display: block; }
+    .dialog-bar { position: sticky; left: 0; top: 0; z-index: 2; display: flex; justify-content: space-between; gap: .7rem; align-items: center; margin-bottom: .5rem; padding: .45rem .55rem; color: #fff; background: var(--deep); }
+    .dialog-copy { display: grid; gap: .08rem; }
+    .dialog-bar strong { font-size: .82rem; }
+    .dialog-bar small { color: #cfe1dd; font-size: .68rem; }
+    .dialog-bar button { min-height: 36px; padding: .35rem .7rem; border: 1px solid rgba(255,255,255,.4); border-radius: 4px; color: #fff; background: transparent; font-weight: 900; }
     .diagram { padding: clamp(.75rem, 3vw, 1.3rem); border: 1px solid var(--line); border-radius: 5px; background: var(--paper); box-shadow: var(--shadow); }
     .node { min-width: 0; padding: .68rem; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); text-align: center; }
     .node strong { display: block; font-size: .87rem; }
@@ -163,9 +176,9 @@
 
     <header class="hero">
       <p class="eyebrow">VISUAL INTERVIEW DRILLS · 9/3 + 9/10</p>
-      <h1>先看機制圖<br>再回答公司情境題</h1>
-      <p>村田與船舶中心考的領域不同，但答題方法相同：先釐清條件，畫出資料或事件如何流動，再說失敗處理、量測與驗證。</p>
-      <div class="marks"><span>村田機械</span><span>船舶中心</span><span>設備除錯</span><span>電子海圖與資料服務</span></div>
+      <h1>先看八張大圖<br>再用自己的話說</h1>
+      <p>每題只有一個畫面與一句核心概念。先看懂情境，再展開下方講稿；不用先背一整頁名詞。</p>
+      <div class="marks"><span>4 張村田情境圖</span><span>4 張船舶資料圖</span><span>點圖可放大</span><span>45 秒口說</span></div>
     </header>
 
     <main>
@@ -183,118 +196,94 @@
 
       <section class="section" id="mur-flow">
         <div class="section-head"><div class="num">M1</div><div><h2>搬送任務到底經過哪些層？</h2><p class="lead">每層都要共用任務 ID 與時間戳，否則只能看到零散錯誤，無法定位延遲在哪裡發生。</p></div></div>
-        <figure>
-          <div class="diagram pipeline" role="img" aria-label="搬送任務端到端資料流">
-            <div class="node teal"><strong>上位系統</strong><small>建立任務</small></div>
-            <div class="node blue"><strong>任務 Queue</strong><small>排程與等待</small></div>
-            <div class="node amber"><strong>資料庫</strong><small>狀態與歷程</small></div>
-            <div class="node"><strong>網路／訊息</strong><small>送至控制端</small></div>
-            <div class="node green"><strong>設備控制</strong><small>執行與回報</small></div>
-            <div class="node red"><strong>告警／人工</strong><small>異常處置</small></div>
-          </div>
-          <figcaption>回答設備問題時，先指出你會沿任務 ID 追這六層，而不是直接認定設備、網路或資料庫故障。</figcaption>
+        <figure class="picture-explainer">
+          <button class="picture-button" type="button" data-picture="./assets/visual-drills/muratec-task-journey.svg" data-title="一筆搬送任務的旅程" aria-label="放大一筆搬送任務的旅程圖">
+            <img src="./assets/visual-drills/muratec-task-journey.svg" alt="搬送任務由上位系統經任務佇列、資料庫、訊息傳輸、設備到現場處置的圖解">
+          </button>
+          <figcaption>只記一件事：用同一個 Task ID，把整趟旅程串成時間線。</figcaption>
         </figure>
-        <details class="script" open><summary>35 秒口語回答</summary><div class="script-body"><p><span class="cue">主張</span>我會先把一次搬送任務建立成端到端時間線。</p><p>從上位系統送單、queue 等待、資料庫狀態、網路傳輸、控制端執行到設備回報，都要能用同一個任務 ID 和時間戳串起來。這樣才能比較正常與異常任務，知道延遲落在哪一段，而不是先猜某個元件壞掉。</p></div></details>
+        <details class="script"><summary>35 秒口語回答</summary><div class="script-body"><p><span class="cue">主張</span>我會先把一次搬送任務建立成端到端時間線。</p><p>從上位系統送單、queue 等待、資料庫狀態、網路傳輸、控制端執行到設備回報，都要能用同一個任務 ID 和時間戳串起來。這樣才能比較正常與異常任務，知道延遲落在哪一段，而不是先猜某個元件壞掉。</p></div></details>
       </section>
 
       <section class="section" id="delay">
         <div class="section-head"><div class="num">M2</div><div><h2>任務偶爾延遲，怎麼查？</h2><p class="lead">偶發問題最需要正常樣本作對照。平均值會掩蓋尖峰，至少要看各段 p50 與 p95。</p></div></div>
-        <figure>
-          <div class="diagram two-lanes" role="img" aria-label="正常與異常搬送任務時間線比較">
-            <div class="lane"><div class="lane-title">正常任務 <span>baseline</span></div><div class="timeline"><div class="time-row"><strong>Queue</strong><div class="track"><div class="bar" style="width:18%"></div></div><output>0.2s</output></div><div class="time-row"><strong>DB</strong><div class="track"><div class="bar" style="width:12%"></div></div><output>0.1s</output></div><div class="time-row"><strong>Network</strong><div class="track"><div class="bar" style="width:20%"></div></div><output>0.2s</output></div><div class="time-row"><strong>Device</strong><div class="track"><div class="bar" style="width:45%"></div></div><output>1.8s</output></div></div></div>
-            <div class="lane"><div class="lane-title">異常任務 <span>same task type</span></div><div class="timeline"><div class="time-row"><strong>Queue</strong><div class="track"><div class="bar" style="width:82%"></div></div><output>4.8s</output></div><div class="time-row"><strong>DB</strong><div class="track"><div class="bar" style="width:14%"></div></div><output>0.1s</output></div><div class="time-row"><strong>Network</strong><div class="track"><div class="bar" style="width:23%"></div></div><output>0.2s</output></div><div class="time-row"><strong>Device</strong><div class="track"><div class="bar" style="width:46%"></div></div><output>1.9s</output></div></div></div>
-          </div>
-          <figcaption>數字是面試示意。真正答案要說明如何取得相同任務類型的正常與異常 trace，再針對瓶頸驗證。</figcaption>
+        <figure class="picture-explainer">
+          <button class="picture-button" type="button" data-picture="./assets/visual-drills/muratec-latency-investigation.svg" data-title="正常與延遲任務的證據比較" aria-label="放大正常與延遲任務比較圖">
+            <img src="./assets/visual-drills/muratec-latency-investigation.svg" alt="正常與延遲搬送任務沿同一時間尺比較，延遲集中於任務佇列的圖解">
+          </button>
+          <figcaption>不要猜是哪裡壞掉；拿正常任務當對照，逐段找出時間突然變長的位置。</figcaption>
         </figure>
-        <details class="script" open><summary>45 秒口語回答</summary><div class="script-body"><p>我會先確認影響設備、任務 ID、開始時間、發生頻率與最近變更，再保留 log 和狀態快照。接著把每一段 latency 串起來，比較同類正常任務與異常任務，並看 p50、p95，而不是只看平均。</p><p>如果影響生產，先依 SOP 降級或人工復歸；定位後只改一個變因，再用原案例、尖峰負載與告警測試確認修正。</p></div></details>
+        <details class="script"><summary>45 秒口語回答</summary><div class="script-body"><p>我會先確認影響設備、任務 ID、開始時間、發生頻率與最近變更，再保留 log 和狀態快照。接著把每一段 latency 串起來，比較同類正常任務與異常任務，並看 p50、p95，而不是只看平均。</p><p>如果影響生產，先依 SOP 降級或人工復歸；定位後只改一個變因，再用原案例、尖峰負載與告警測試確認修正。</p></div></details>
         <div class="warning">不要一開始就說「應該是網路」或「加快取」。先說你要用什麼證據排除各層。</div>
       </section>
 
       <section class="section" id="alarm">
         <div class="section-head"><div class="num">M3</div><div><h2>24 小時設備告警怎麼設計？</h2><p class="lead">告警不是收到訊息就一直寄信。先驗證、去重與分級，再決定通知或復歸。</p></div></div>
-        <figure>
-          <div class="diagram pipeline" role="img" aria-label="設備告警處理流程">
-            <div class="node teal"><strong>設備事件</strong><small>設備 ID、錯誤碼、時間</small></div>
-            <div class="node blue"><strong>格式驗證</strong><small>必要欄位與版本</small></div>
-            <div class="node amber"><strong>去重</strong><small>idempotency key</small></div>
-            <div class="node"><strong>嚴重度</strong><small>規則與影響範圍</small></div>
-            <div class="node green"><strong>保存／通知</strong><small>值班、SOP、timeout</small></div>
-            <div class="node red"><strong>結案稽核</strong><small>原因、處置與回歸</small></div>
-          </div>
-          <figcaption>設計重點是避免同一事件重複執行，同時保留完整處置歷程。</figcaption>
+        <figure class="picture-explainer">
+          <button class="picture-button" type="button" data-picture="./assets/visual-drills/muratec-alarm-funnel.svg" data-title="設備告警處理漏斗" aria-label="放大設備告警處理漏斗圖">
+            <img src="./assets/visual-drills/muratec-alarm-funnel.svg" alt="重複設備事件經驗證、去重與分級後才通知值班並留下結案紀錄的圖解">
+          </button>
+          <figcaption>告警像漏斗：先去掉重複訊息，再把真正重要的事件交給人處理。</figcaption>
         </figure>
-        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body"><p>事件進站時先帶設備 ID、任務 ID、錯誤碼與時間，完成格式驗證、去重和嚴重度判斷，再寫入狀態與歷史紀錄。只有需要處置的事件才通知值班或觸發既定復歸流程。</p><p>重複事件以唯一鍵避免重複執行，外部通知要有 timeout 與有限 retry；監控至少包含告警量、處理延遲、失敗率與未結案數。</p></div></details>
+        <details class="script"><summary>40 秒口語回答</summary><div class="script-body"><p>事件進站時先帶設備 ID、任務 ID、錯誤碼與時間，完成格式驗證、去重和嚴重度判斷，再寫入狀態與歷史紀錄。只有需要處置的事件才通知值班或觸發既定復歸流程。</p><p>重複事件以唯一鍵避免重複執行，外部通知要有 timeout 與有限 retry；監控至少包含告警量、處理延遲、失敗率與未結案數。</p></div></details>
       </section>
 
       <section class="section" id="mur-fit">
         <div class="section-head"><div class="num">M4</div><div><h2>沒有搬送設備經驗，怎麼回答？</h2><p class="lead">不把海洋資料說成設備經驗；把可移轉的方法與明確補強順序說出來。</p></div></div>
-        <div class="matrix">
-          <article><h3>已具備</h3><p>Python、SQL、API、資料流與時間索引。</p></article>
-          <article><h3>可移轉</h3><p>log 追查、正常／異常比較、回歸驗證。</p></article>
-          <article><h3>需補強</h3><p>搬送流程、設備協定、現場 SOP 與技術棧。</p></article>
-          <article><h3>切入方式</h3><p>先讀架構、既有案例，再從可驗證的小任務開始。</p></article>
-        </div>
-        <details class="script" open><summary>30 秒口語回答</summary><div class="script-body"><p>我不會把海洋資料經驗直接說成設備經驗。不過資料流、時間同步、狀態紀錄、API／資料庫與問題追查方法可以移轉。入職後我會先熟悉搬送架構、訊息流程、SOP 與既有故障案例，再從可驗證的小任務開始，並利用日文 N2 閱讀日方技術文件。</p></div></details>
+        <figure class="picture-explainer">
+          <button class="picture-button" type="button" data-picture="./assets/visual-drills/muratec-skill-bridge.svg" data-title="從既有能力跨到搬送設備" aria-label="放大技能移轉橋梁圖">
+            <img src="./assets/visual-drills/muratec-skill-bridge.svg" alt="將 Python、SQL、API、日誌與日文能力，透過讀架構、看案例、遵循 SOP 和小任務驗證移轉到搬送設備的圖解">
+          </button>
+          <figcaption>你不是假裝已經會設備，而是讓面試官看見一條可信的學習路徑。</figcaption>
+        </figure>
+        <details class="script"><summary>30 秒口語回答</summary><div class="script-body"><p>我不會把海洋資料經驗直接說成設備經驗。不過資料流、時間同步、狀態紀錄、API／資料庫與問題追查方法可以移轉。入職後我會先熟悉搬送架構、訊息流程、SOP 與既有故障案例，再從可驗證的小任務開始，並利用日文 N2 閱讀日方技術文件。</p></div></details>
       </section>
 
       <div class="company-band ship" id="ship"><h2>船舶暨海洋產業研發中心</h2><p>核心不是背完整規格，而是知道不同產品扮演什麼角色，以及資料如何被驗證、保存與回查。</p></div>
 
       <section class="section ship-section" id="products">
         <div class="section-head"><div class="num">S1</div><div><h2>ENC、S-111、S-104 有什麼不同？</h2><p class="lead">三者可以一起支援航行應用，但資料模型、時間性與物理量不同，不能混成同一種資料。</p></div></div>
-        <figure>
-          <div class="diagram product-grid" role="img" aria-label="S-101、S-111 與 S-104 產品角色比較">
-            <div class="product"><b>S-101</b><h3>電子航行圖</h3><p>航道、水深、礙航物與航海圖徵，提供基礎航行環境。</p></div>
-            <div class="product"><b>S-111</b><h3>表面流</h3><p>隨時間變化的流速與流向，重點包含有效時間與格網位置。</p></div>
-            <div class="product"><b>S-104</b><h3>水位資訊</h3><p>隨時間變化的水位格網，解讀時必須注意垂直基準。</p></div>
-          </div>
-          <figcaption>面試重點：說出各產品的角色與邊界，再連回你真正做過的 S-111／S-104。</figcaption>
+        <figure class="picture-explainer">
+          <button class="picture-button" type="button" data-picture="./assets/visual-drills/ship-product-layers.svg" data-title="同一航行畫面的三個資料層" aria-label="放大 S-101、S-111 與 S-104 產品層圖">
+            <img src="./assets/visual-drills/ship-product-layers.svg" alt="船舶航行畫面分別疊加 S-101 電子航行圖、S-111 表面流與 S-104 水位資訊的圖解">
+          </button>
+          <figcaption>把它想成三張透明片：底圖、海流與水位可以疊著看，但不能混成同一種資料。</figcaption>
         </figure>
-        <details class="script" open><summary>35 秒口語回答</summary><div class="script-body"><p>S-101 是 ENC 的 S-100 世代產品，重點是航海圖徵；S-111 描述隨時間變化的表面流速與流向，S-104 則描述水位資訊。三者可在航行應用中共同使用，但資料模型、時間性與用途不同。</p><p>我的實作強項是 S-111／S-104 動態資料、HDF5、GeoJSON 與 QGIS；S-101 ENC 圖徵模型則需要依團隊規格與測試資料補強。</p></div></details>
+        <details class="script"><summary>35 秒口語回答</summary><div class="script-body"><p>S-101 是 ENC 的 S-100 世代產品，重點是航海圖徵；S-111 描述隨時間變化的表面流速與流向，S-104 則描述水位資訊。三者可在航行應用中共同使用，但資料模型、時間性與用途不同。</p><p>我的實作強項是 S-111／S-104 動態資料、HDF5、GeoJSON 與 QGIS；S-101 ENC 圖徵模型則需要依團隊規格與測試資料補強。</p></div></details>
       </section>
 
       <section class="section ship-section" id="geo">
         <div class="section-head"><div class="num">S2</div><div><h2>拿到一份電子海圖或格網資料，先檢查什麼？</h2><p class="lead">畫面能顯示不代表資料正確。先確認身分與座標，再處理欄位，最後用已知點驗證。</p></div></div>
-        <figure>
-          <div class="diagram pipeline" role="img" aria-label="航海空間資料解析與驗證流程">
-            <div class="node teal"><strong>規格／版本</strong><small>產品與交換格式</small></div>
-            <div class="node blue"><strong>CRS／範圍</strong><small>座標、邊界、格距</small></div>
-            <div class="node amber"><strong>圖徵／格網</strong><small>feature、attribute、mask</small></div>
-            <div class="node"><strong>時間／基準</strong><small>有效時間、單位、VDAT</small></div>
-            <div class="node green"><strong>已知點核對</strong><small>小樣本與邊界案例</small></div>
-            <div class="node red"><strong>全批驗證</strong><small>結果、log、版本</small></div>
-          </div>
-          <figcaption>順序可避免一開始就在錯誤座標或單位上做大量運算。</figcaption>
+        <figure class="picture-explainer">
+          <button class="picture-button" type="button" data-picture="./assets/visual-drills/ship-validation-tunnel.svg" data-title="航海資料的六道檢查門" aria-label="放大航海資料檢查門圖">
+            <img src="./assets/visual-drills/ship-validation-tunnel.svg" alt="航海資料依序檢查規格版本、座標範圍、圖徵格網、時間基準與已知點後再進行全批驗證的圖解">
+          </button>
+          <figcaption>先讓一份小樣本通過六道門，再讓整批資料進場。</figcaption>
         </figure>
-        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body"><p>我會先確認產品規格、版本與交換格式，再檢查座標參考系統、範圍、格網或向量圖徵。之後才解析 attribute、時間、單位、metadata、缺值與遮罩。</p><p>我會先用已知位置和小樣本核對，再跑全資料驗證。視覺化只負責呈現，不能取代資料層的數值與語意檢查。</p></div></details>
+        <details class="script"><summary>40 秒口語回答</summary><div class="script-body"><p>我會先確認產品規格、版本與交換格式，再檢查座標參考系統、範圍、格網或向量圖徵。之後才解析 attribute、時間、單位、metadata、缺值與遮罩。</p><p>我會先用已知位置和小樣本核對，再跑全資料驗證。視覺化只負責呈現，不能取代資料層的數值與語意檢查。</p></div></details>
       </section>
 
       <section class="section ship-section" id="scale">
         <div class="section-head"><div class="num">S3</div><div><h2>格網資料增加 10 倍，API 變慢怎麼辦？</h2><p class="lead">先區分完整來源場與線上查詢需求。不是每個格點都必須塞進同一張線上資料表。</p></div></div>
-        <figure>
-          <div class="diagram two-lanes" role="img" aria-label="完整格網與線上查詢雙軌保存架構">
-            <div class="lane"><div class="lane-title">離線完整資料 <span>重現</span></div><div class="node blue"><strong>來源檔／成果包</strong><small>NetCDF、HDF5、GeoJSON、版本與雜湊</small></div><div class="arrow">↓ 批次計算</div><div class="node green"><strong>可重新產生</strong><small>完整空間場與原始證據</small></div></div>
-            <div class="lane"><div class="lane-title">線上查詢資料 <span>服務</span></div><div class="node amber"><strong>PostgreSQL</strong><small>摘要、品質關注點位與常用索引</small></div><div class="arrow">↓ 範圍／欄位／分頁</div><div class="node teal"><strong>Read-only API</strong><small>只回傳使用者真正需要的結果</small></div></div>
-          </div>
-          <figcaption>雙軌設計的目的不是省資料，而是把完整保存與互動查詢分成不同責任。</figcaption>
+        <figure class="picture-explainer">
+          <button class="picture-button" type="button" data-picture="./assets/visual-drills/ship-scale-dual-lane.svg" data-title="十倍格網資料的雙軌架構" aria-label="放大格網資料雙軌架構圖">
+            <img src="./assets/visual-drills/ship-scale-dual-lane.svg" alt="完整格網走離線成果包保存路徑，摘要與關注點位走 PostgreSQL 和唯讀 API 線上查詢路徑的圖解">
+          </button>
+          <figcaption>像倉庫與櫃台：完整貨物留在倉庫，櫃台只拿出使用者現在要看的東西。</figcaption>
         </figure>
-        <details class="script" open><summary>45 秒口語回答</summary><div class="script-body"><p>我會先確認使用者查的是完整格網、空間範圍，還是每日摘要，並量測資料庫、序列化與網路各段耗時。</p><p>完整來源格網保留在來源檔與成果包，資料庫保存常查詢的統計摘要與品質關注點位；依日期、預報時距與位置建立索引，API 限制欄位、範圍與分頁。批次計算和線上查詢分離，仍不足時再評估空間索引、分區或快取。</p></div></details>
+        <details class="script"><summary>45 秒口語回答</summary><div class="script-body"><p>我會先確認使用者查的是完整格網、空間範圍，還是每日摘要，並量測資料庫、序列化與網路各段耗時。</p><p>完整來源格網保留在來源檔與成果包，資料庫保存常查詢的統計摘要與品質關注點位；依日期、預報時距與位置建立索引，API 限制欄位、範圍與分頁。批次計算和線上查詢分離，仍不足時再評估空間索引、分區或快取。</p></div></details>
         <div class="warning">不要直接說「換 NoSQL」或「全部加 Redis」。先說目前查詢語意、真正瓶頸與驗證指標。</div>
       </section>
 
       <section class="section ship-section" id="trace">
         <div class="section-head"><div class="num">S4</div><div><h2>怎麼讓資料處理結果可追溯？</h2><p class="lead">可追溯不是只有 log。輸入、參數、程式版本、批次狀態與輸出要能形成同一條證據鏈。</p></div></div>
-        <figure>
-          <div class="diagram pipeline" role="img" aria-label="海洋資料批次可追溯證據鏈">
-            <div class="node teal"><strong>輸入身分</strong><small>檔名、hash、版本</small></div>
-            <div class="node blue"><strong>批次鍵</strong><small>日期、時間、時距</small></div>
-            <div class="node amber"><strong>程式／參數</strong><small>Git commit、門檻</small></div>
-            <div class="node"><strong>Transaction</strong><small>唯一限制、防重跑</small></div>
-            <div class="node green"><strong>輸出成果</strong><small>檔案與資料庫摘要</small></div>
-            <div class="node red"><strong>驗證紀錄</strong><small>重算、錯誤與測試</small></div>
-          </div>
-          <figcaption>任何一筆結果都應能回到「哪個輸入、哪版程式、哪些參數、何時完成」。</figcaption>
+        <figure class="picture-explainer">
+          <button class="picture-button" type="button" data-picture="./assets/visual-drills/ship-traceability-chain.svg" data-title="一筆結果的追溯證據鏈" aria-label="放大結果追溯證據鏈圖">
+            <img src="./assets/visual-drills/ship-traceability-chain.svg" alt="一筆海洋資料結果由輸入身分、批次鍵、程式參數、寫入狀態、輸出成果與驗證紀錄共同支撐的圖解">
+          </button>
+          <figcaption>可追溯就像收據：每一筆結果都要說得出從哪裡來、怎麼算、由什麼證據確認。</figcaption>
         </figure>
-        <details class="script" open><summary>40 秒口語回答</summary><div class="script-body"><p>來源檔進站後先保存檔案識別、版本、雜湊與時間範圍，再做格式、座標、單位與缺值驗證。計算工作以日期與預報時距作批次鍵，保存程式版本和參數。</p><p>資料庫寫入使用 transaction 與唯一限制，避免重跑造成重複；每批保留輸入、輸出、錯誤 log 與驗證結果，API 只讀取已完成批次。</p></div></details>
+        <details class="script"><summary>40 秒口語回答</summary><div class="script-body"><p>來源檔進站後先保存檔案識別、版本、雜湊與時間範圍，再做格式、座標、單位與缺值驗證。計算工作以日期與預報時距作批次鍵，保存程式版本和參數。</p><p>資料庫寫入使用 transaction 與唯一限制，避免重跑造成重複；每批保留輸入、輸出、錯誤 log 與驗證結果，API 只讀取已完成批次。</p></div></details>
       </section>
     </main>
 
@@ -304,6 +293,10 @@
       <a href="./xiangyun-technical-visual.html">向雲圖解題庫</a>
       <a href="./index.html">所有面試</a>
     </nav>
+    <dialog class="image-dialog" id="imageDialog" aria-labelledby="dialogTitle">
+      <div class="dialog-bar"><div class="dialog-copy"><strong id="dialogTitle">圖解放大</strong><small>可左右滑動看細節</small></div><button type="button" id="closeDialog">關閉</button></div>
+      <img id="dialogImage" alt="">
+    </dialog>
   </div>
 
   <script>
@@ -340,6 +333,19 @@
     });
     reset.addEventListener('click', resetTimer);
     paintTimer();
+    const imageDialog = document.getElementById('imageDialog');
+    const dialogImage = document.getElementById('dialogImage');
+    const dialogTitle = document.getElementById('dialogTitle');
+    document.querySelectorAll('[data-picture]').forEach((button) => {
+      button.addEventListener('click', () => {
+        dialogImage.src = button.dataset.picture;
+        dialogImage.alt = button.querySelector('img').alt;
+        dialogTitle.textContent = button.dataset.title;
+        imageDialog.showModal();
+      });
+    });
+    document.getElementById('closeDialog').addEventListener('click', () => imageDialog.close());
+    imageDialog.addEventListener('click', (event) => { if (event.target === imageDialog) imageDialog.close(); });
   </script>
 </body>
 </html>

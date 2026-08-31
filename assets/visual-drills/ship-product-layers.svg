@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">電子航行圖、表面流與水位資訊的三層航行畫面</title>
+  <desc id="desc">同一艘船的航行環境由 S-101 基礎電子航行圖、S-111 表面流箭頭與 S-104 水位資訊三個不同資料層共同支援。</desc>
+  <defs><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#28658d"/></marker><filter id="s"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#17343b" flood-opacity=".13"/></filter></defs>
+  <rect width="1200" height="675" fill="#eef5f2"/>
+  <text x="62" y="70" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="42" font-weight="700">同一個航行畫面，其實疊著三種不同資料</text>
+  <text x="63" y="111" fill="#597078" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23">先講清楚每層的角色，才不會把 ENC、海流與水位混成同一種產品</text>
+
+  <g transform="translate(60 167)" filter="url(#s)">
+    <rect width="1080" height="398" rx="14" fill="#dfeef5" stroke="#28658d" stroke-width="4"/>
+    <path d="M0 255C163 209 286 283 421 239C570 191 698 286 823 235C935 189 1008 215 1080 239V398H0Z" fill="#78b8d0"/>
+    <path d="M0 303C163 257 286 331 421 287C570 239 698 334 823 283C935 237 1008 263 1080 287" fill="none" stroke="#d9f2f5" stroke-width="5"/>
+    <path d="M0 109L210 34L360 98L498 48L683 113L840 52L1080 125V0H0Z" fill="#d9e7d9" stroke="#8aaa8b" stroke-width="3"/>
+    <path d="M82 50L210 34L274 67M431 73L498 48L574 75M766 82L840 52L934 81" fill="none" stroke="#789875" stroke-width="10" stroke-linecap="round"/>
+    <path d="M210 34L210 178M498 48L498 193M840 52L840 183" stroke="#c6d4b9" stroke-width="3" stroke-dasharray="11 8"/>
+
+    <g transform="translate(470 203)">
+      <path d="M0 68H240L203 124H43Z" fill="#ffffff" stroke="#153d47" stroke-width="5"/>
+      <path d="M73 7H169V68H73Z" fill="#ffffff" stroke="#153d47" stroke-width="5"/>
+      <path d="M98 23H122V53H98ZM134 23H158V53H134Z" fill="#dcebf5" stroke="#28658d" stroke-width="3"/>
+      <path d="M121 7V-44" stroke="#153d47" stroke-width="6"/><path d="M121-44L172-23L121-8Z" fill="#f4bd58"/>
+    </g>
+    <g stroke="#153d47" stroke-width="5" marker-end="url(#a)">
+      <path d="M170 228L235 196"/><path d="M282 260L350 228"/><path d="M742 225L815 197"/><path d="M868 267L941 235"/>
+    </g>
+    <g fill="#28658d"><circle cx="166" cy="230" r="8"/><circle cx="278" cy="262" r="8"/><circle cx="738" cy="227" r="8"/><circle cx="864" cy="269" r="8"/></g>
+
+    <g transform="translate(34 22)"><rect width="174" height="62" rx="8" fill="#153d47"/><text x="87" y="28" text-anchor="middle" fill="#8bd8cc" font-family="Consolas,monospace" font-size="21" font-weight="700">S-101</text><text x="87" y="52" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="19">航道與圖徵</text></g>
+    <g transform="translate(35 171)"><rect width="174" height="62" rx="8" fill="#28658d"/><text x="87" y="28" text-anchor="middle" fill="#d8effa" font-family="Consolas,monospace" font-size="21" font-weight="700">S-111</text><text x="87" y="52" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="19">流速與流向</text></g>
+    <g transform="translate(871 309)"><rect width="174" height="62" rx="8" fill="#1b6f73"/><text x="87" y="28" text-anchor="middle" fill="#d8f4ef" font-family="Consolas,monospace" font-size="21" font-weight="700">S-104</text><text x="87" y="52" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="19">水位與時間</text></g>
+    <path d="M1018 123V294" stroke="#1b6f73" stroke-width="8"/><path d="M998 294H1038" stroke="#1b6f73" stroke-width="8"/><path d="M998 235H1038M998 176H1038" stroke="#1b6f73" stroke-width="5"/>
+  </g>
+  <rect x="150" y="594" width="900" height="52" rx="8" fill="#153d47"/>
+  <text x="600" y="628" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23" font-weight="700">共同使用 ≠ 相同資料模型；時間、單位與基準仍要分開檢查</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">正常與延遲任務的證據比較</title>
+  <desc id="desc">以同類型正常任務作為基線，逐段比較佇列、資料庫、網路與設備耗時，找出延遲集中在佇列等待而非設備。</desc>
+  <defs><filter id="s"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#17343b" flood-opacity=".13"/></filter></defs>
+  <rect width="1200" height="675" fill="#eef5f2"/>
+  <text x="62" y="70" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="42" font-weight="700">偶爾變慢，不靠猜：把正常與異常放在同一條時間尺</text>
+  <text x="63" y="111" fill="#597078" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23">同任務類型、同設備、相近負載，才是有用的對照</text>
+
+  <g transform="translate(64 157)" filter="url(#s)">
+    <rect width="1072" height="176" rx="10" fill="#fff" stroke="#bcd1ca" stroke-width="3"/>
+    <text x="34" y="45" fill="#37764c" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="28" font-weight="700">正常任務</text>
+    <path d="M171 100H1015" stroke="#c9d9d3" stroke-width="12" stroke-linecap="round"/>
+    <g font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="18" text-anchor="middle">
+      <g transform="translate(215 100)"><circle r="27" fill="#1b6f73"/><text y="7" fill="#fff">送單</text></g>
+      <g transform="translate(355 100)"><circle r="27" fill="#28658d"/><text y="7" fill="#fff">Queue</text><text y="58" fill="#597078">0.2 s</text></g>
+      <g transform="translate(486 100)"><circle r="27" fill="#b86217"/><text y="7" fill="#fff">DB</text><text y="58" fill="#597078">0.1 s</text></g>
+      <g transform="translate(617 100)"><circle r="27" fill="#6b7f84"/><text y="7" fill="#fff">網路</text><text y="58" fill="#597078">0.2 s</text></g>
+      <g transform="translate(815 100)"><rect x="-60" y="-34" width="120" height="68" rx="10" fill="#dff0e4" stroke="#37764c" stroke-width="4"/><text y="7" fill="#17343b">設備</text><text y="58" fill="#597078">1.8 s</text></g>
+      <g transform="translate(985 100)"><circle r="31" fill="#37764c"/><path d="M-14 0L-3 12L17-13" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/></g>
+    </g>
+  </g>
+
+  <g transform="translate(64 371)" filter="url(#s)">
+    <rect width="1072" height="200" rx="10" fill="#fff" stroke="#e0b5ae" stroke-width="3"/>
+    <text x="34" y="45" fill="#9a4138" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="28" font-weight="700">異常任務</text>
+    <path d="M171 112H1015" stroke="#c9d9d3" stroke-width="12" stroke-linecap="round"/>
+    <g font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="18" text-anchor="middle">
+      <g transform="translate(215 112)"><circle r="27" fill="#1b6f73"/><text y="7" fill="#fff">送單</text></g>
+      <g transform="translate(495 112)"><path d="M-175 0H-35" stroke="#9a4138" stroke-width="28" stroke-linecap="round"/><circle r="37" fill="#9a4138"/><text y="7" fill="#fff">Queue</text><text y="67" fill="#9a4138" font-weight="700">4.8 s　← 瓶頸集中在這裡</text></g>
+      <g transform="translate(641 112)"><circle r="27" fill="#b86217"/><text y="7" fill="#fff">DB</text><text y="58" fill="#597078">0.1 s</text></g>
+      <g transform="translate(756 112)"><circle r="27" fill="#6b7f84"/><text y="7" fill="#fff">網路</text><text y="58" fill="#597078">0.2 s</text></g>
+      <g transform="translate(890 112)"><rect x="-60" y="-34" width="120" height="68" rx="10" fill="#dff0e4" stroke="#37764c" stroke-width="4"/><text y="7" fill="#17343b">設備</text><text y="58" fill="#597078">1.9 s</text></g>
+      <g transform="translate(1020 112)"><circle r="31" fill="#9a4138"/><path d="M-14-14L14 14M14-14L-14 14" stroke="#fff" stroke-width="8" stroke-linecap="round"/></g>
+    </g>
+  </g>
+  <g transform="translate(744 120)">
+    <rect width="392" height="62" rx="8" fill="#153d47"/>
+    <text x="196" y="26" text-anchor="middle" fill="#8bd8cc" font-family="Consolas,monospace" font-size="18">p50 = typical　p95 = slow tail</text>
+    <text x="196" y="50" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="17">平均值可能把偶發尖峰藏起來</text>
+  </g>
+</svg>

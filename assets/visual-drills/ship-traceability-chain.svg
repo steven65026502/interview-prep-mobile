@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">一筆結果的完整追溯證據鏈</title>
+  <desc id="desc">中心的品質結果由輸入檔與雜湊、日期時間批次鍵、程式版本與參數、交易狀態、輸出成果與重算驗證六項證據共同支撐。</desc>
+  <defs><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#28658d"/></marker><filter id="s"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#17343b" flood-opacity=".15"/></filter></defs>
+  <rect width="1200" height="675" fill="#eef5f2"/>
+  <text x="62" y="70" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="42" font-weight="700">可追溯，不只是「我有寫 log」</text>
+  <text x="63" y="111" fill="#597078" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23">任何一筆結果，都要能回答：哪個輸入、哪版程式、哪些參數、何時完成</text>
+
+  <g fill="none" stroke="#8badb8" stroke-width="6" marker-end="url(#a)">
+    <path d="M287 231L488 284"/><path d="M290 417L485 359"/><path d="M494 181L552 268"/>
+    <path d="M708 268L767 181"/><path d="M715 359L910 417"/><path d="M712 284L913 231"/>
+  </g>
+  <g transform="translate(486 239)" filter="url(#s)">
+    <circle cx="114" cy="99" r="112" fill="#153d47"/>
+    <path d="M62 52H166V148H62Z" fill="#fff" stroke="#8bd8cc" stroke-width="5"/>
+    <path d="M83 79H145M83 105H145M83 131H128" stroke="#28658d" stroke-width="7" stroke-linecap="round"/>
+    <text x="114" y="190" text-anchor="middle" fill="#8bd8cc" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23" font-weight="700">這筆結果</text>
+  </g>
+  <g font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" text-anchor="middle" filter="url(#s)">
+    <g transform="translate(70 154)"><rect width="220" height="133" rx="10" fill="#fff" stroke="#1b6f73" stroke-width="4"/><path d="M28 30H77V88H28Z" fill="#dceee9" stroke="#1b6f73" stroke-width="3"/><text x="132" y="47" fill="#153d47" font-size="23" font-weight="700">輸入身分</text><text x="132" y="78" fill="#597078" font-size="18">檔名 · hash</text><text x="132" y="104" fill="#597078" font-size="18">產品版本</text></g>
+    <g transform="translate(72 388)"><rect width="220" height="133" rx="10" fill="#fff" stroke="#28658d" stroke-width="4"/><circle cx="54" cy="61" r="32" fill="#e2eef6" stroke="#28658d" stroke-width="3"/><path d="M54 61V40M54 61L72 71" stroke="#28658d" stroke-width="5"/><text x="141" y="47" fill="#153d47" font-size="23" font-weight="700">批次鍵</text><text x="141" y="78" fill="#597078" font-size="18">日期 · 時間</text><text x="141" y="104" fill="#597078" font-size="18">預報時距</text></g>
+    <g transform="translate(398 124)"><rect width="204" height="123" rx="10" fill="#fff" stroke="#b86217" stroke-width="4"/><path d="M28 37L48 57L28 77M78 37L58 57L78 77" fill="none" stroke="#b86217" stroke-width="6"/><text x="143" y="44" fill="#153d47" font-size="21" font-weight="700">程式與參數</text><text x="143" y="75" fill="#597078" font-size="17">Git commit</text><text x="143" y="99" fill="#597078" font-size="17">門檻 · 單位</text></g>
+    <g transform="translate(692 124)"><rect width="204" height="123" rx="10" fill="#fff" stroke="#6b7f84" stroke-width="4"/><path d="M29 34H81V87H29Z" fill="#e8eeee" stroke="#6b7f84" stroke-width="3"/><path d="M41 59L52 70L71 47" fill="none" stroke="#37764c" stroke-width="6"/><text x="143" y="44" fill="#153d47" font-size="21" font-weight="700">寫入狀態</text><text x="143" y="75" fill="#597078" font-size="17">transaction</text><text x="143" y="99" fill="#597078" font-size="17">防重複</text></g>
+    <g transform="translate(909 154)"><rect width="220" height="133" rx="10" fill="#fff" stroke="#37764c" stroke-width="4"/><path d="M27 35H80V91H27Z" fill="#e2efe5" stroke="#37764c" stroke-width="3"/><path d="M37 76L51 61L63 70L72 48" fill="none" stroke="#37764c" stroke-width="5"/><text x="147" y="47" fill="#153d47" font-size="23" font-weight="700">輸出成果</text><text x="147" y="78" fill="#597078" font-size="18">檔案 · DB</text><text x="147" y="104" fill="#597078" font-size="18">API 狀態</text></g>
+    <g transform="translate(907 388)"><rect width="220" height="133" rx="10" fill="#fff" stroke="#9a4138" stroke-width="4"/><circle cx="54" cy="62" r="31" fill="#f8e6e2" stroke="#9a4138" stroke-width="3"/><path d="M38 62L50 74L72 48" fill="none" stroke="#9a4138" stroke-width="6"/><text x="147" y="47" fill="#153d47" font-size="23" font-weight="700">驗證紀錄</text><text x="147" y="78" fill="#597078" font-size="18">重算 · 測試</text><text x="147" y="104" fill="#597078" font-size="18">錯誤證據</text></g>
+  </g>
+  <rect x="264" y="574" width="672" height="62" rx="9" fill="#153d47"/>
+  <text x="600" y="613" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="24" font-weight="700">六項都連得起來，才叫真正能回查與重現</text>
+</svg>

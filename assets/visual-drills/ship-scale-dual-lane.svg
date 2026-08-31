@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">格網資料放大十倍時的雙軌架構</title>
+  <desc id="desc">完整來源檔與成果包走離線重現路徑，摘要與品質關注點位進入 PostgreSQL 和唯讀 API，避免每次線上查詢都掃描完整格網。</desc>
+  <defs><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#28658d"/></marker><filter id="s"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#17343b" flood-opacity=".13"/></filter></defs>
+  <rect width="1200" height="675" fill="#eef5f2"/>
+  <text x="62" y="70" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="42" font-weight="700">資料變成 10 倍，不代表所有東西都塞進同一張表</text>
+  <text x="63" y="111" fill="#597078" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23">完整保存與即時查詢，是兩種不同責任</text>
+  <g transform="translate(55 170)" filter="url(#s)">
+    <rect width="226" height="314" rx="12" fill="#fff" stroke="#153d47" stroke-width="4"/>
+    <g transform="translate(35 45)">
+      <path d="M0 0H156V197H0Z" fill="#e2eef6" stroke="#28658d" stroke-width="4"/>
+      <path d="M18 26H138V173H18Z" fill="#fff" stroke="#89abc0" stroke-width="3"/>
+      <path d="M18 75H138M18 124H138M58 26V173M98 26V173" stroke="#bdd5e3" stroke-width="3"/>
+      <circle cx="58" cy="75" r="9" fill="#b86217"/><circle cx="98" cy="124" r="9" fill="#37764c"/>
+    </g>
+    <text x="113" y="279" text-anchor="middle" fill="#153d47" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23" font-weight="700">完整格網 × 10</text>
+  </g>
+  <path d="M290 327H376" stroke="#28658d" stroke-width="8" marker-end="url(#a)"/>
+  <circle cx="352" cy="327" r="28" fill="#153d47"/><text x="352" y="337" text-anchor="middle" fill="#fff" font-family="Aptos,Arial,sans-serif" font-size="32" font-weight="700">?</text>
+
+  <g transform="translate(402 149)" filter="url(#s)">
+    <rect width="738" height="190" rx="12" fill="#fff" stroke="#28658d" stroke-width="4"/>
+    <rect x="27" y="26" width="170" height="138" rx="8" fill="#e2eef6"/>
+    <path d="M54 55H169M54 88H169M54 121H139" stroke="#28658d" stroke-width="9" stroke-linecap="round"/>
+    <path d="M219 95H288" stroke="#28658d" stroke-width="7" marker-end="url(#a)"/>
+    <g transform="translate(307 32)"><rect width="176" height="126" rx="8" fill="#153d47"/><text x="88" y="49" text-anchor="middle" fill="#8bd8cc" font-family="Consolas,monospace" font-size="20">SOURCE + HASH</text><text x="88" y="83" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="20">成果包</text><text x="88" y="110" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="18">可離線重現</text></g>
+    <path d="M504 95H566" stroke="#28658d" stroke-width="7" marker-end="url(#a)"/>
+    <g transform="translate(584 25)"><path d="M0 0H118V137H0Z" fill="#e2efe5" stroke="#37764c" stroke-width="4"/><path d="M18 25H100M18 57H100M18 89H100" stroke="#37764c" stroke-width="7"/><text x="59" y="171" text-anchor="middle" fill="#37764c" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="21" font-weight="700">完整證據</text></g>
+    <text x="20" y="-15" fill="#28658d" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="25" font-weight="700">離線路徑：保存與重現</text>
+  </g>
+  <g transform="translate(402 394)" filter="url(#s)">
+    <rect width="738" height="190" rx="12" fill="#fff" stroke="#1b6f73" stroke-width="4"/>
+    <g transform="translate(32 36)"><ellipse cx="70" cy="22" rx="68" ry="22" fill="#dceee9" stroke="#1b6f73" stroke-width="4"/><path d="M2 22V104C2 116 32 126 70 126C108 126 138 116 138 104V22" fill="#edf7f4" stroke="#1b6f73" stroke-width="4"/><ellipse cx="70" cy="104" rx="68" ry="22" fill="#dceee9" stroke="#1b6f73" stroke-width="4"/></g>
+    <path d="M199 95H287" stroke="#28658d" stroke-width="7" marker-end="url(#a)"/>
+    <g transform="translate(306 34)"><rect width="157" height="122" rx="8" fill="#153d47"/><text x="79" y="48" text-anchor="middle" fill="#8bd8cc" font-family="Consolas,monospace" font-size="23">READ-ONLY</text><text x="79" y="84" text-anchor="middle" fill="#fff" font-family="Consolas,monospace" font-size="27">API</text><path d="M44 103H113" stroke="#f4bd58" stroke-width="7"/></g>
+    <path d="M484 95H557" stroke="#28658d" stroke-width="7" marker-end="url(#a)"/>
+    <g transform="translate(581 30)"><rect width="126" height="128" rx="8" fill="#e2eef6" stroke="#28658d" stroke-width="4"/><path d="M18 18H108V109H18Z" fill="#fff" stroke="#28658d" stroke-width="3"/><path d="M18 63H108M63 18V109" stroke="#bdd5e3" stroke-width="3"/><path d="M28 91L53 63L80 75L99 39" fill="none" stroke="#b86217" stroke-width="7"/></g>
+    <text x="20" y="-15" fill="#1b6f73" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="25" font-weight="700">線上路徑：摘要、範圍與互動查詢</text>
+  </g>
+  <rect x="104" y="574" width="246" height="61" rx="9" fill="#9a4138"/><text x="227" y="613" text-anchor="middle" fill="#fff" font-family="Microsoft JhengHei,Noto Sans TC,sans-serif" font-size="23" font-weight="700">先量瓶頸再改架構</text>
+</svg>
