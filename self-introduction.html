@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173b57">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="data:,">
+  <title>共用英文自我介紹｜面試準備</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #66717d;
+      --line: #d8dee5;
+      --paper: #f4f6f8;
+      --white: #fff;
+      --navy: #173b57;
+      --orange: #b55616;
+      --green: #27725c;
+      --green-soft: #eaf3ef;
+      --blue-soft: #eaf1f6;
+      --shadow: 0 8px 22px rgba(23, 59, 87, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+    button { font: inherit; }
+    h1, h2, p { margin-top: 0; }
+    h1 { margin-bottom: 7px; font-size: 1.75rem; line-height: 1.25; }
+    h2 { margin-bottom: 10px; font-size: 1.25rem; line-height: 1.35; }
+    .shell { width: min(780px, 100%); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 7px;
+      overflow-x: auto;
+      padding: calc(8px + env(safe-area-inset-top)) 12px 8px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(244, 246, 248, .96);
+      backdrop-filter: blur(10px);
+      scrollbar-width: none;
+    }
+    .topbar::-webkit-scrollbar { display: none; }
+    .topbar a {
+      flex: 0 0 auto;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      color: var(--ink);
+      background: var(--white);
+      font-size: .84rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .hero { padding: 28px 18px 24px; color: var(--white); background: var(--navy); }
+    .hero p { margin-bottom: 0; color: #dce7ef; }
+    .section { padding: 25px 18px; scroll-margin-top: 58px; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .kicker { margin-bottom: 4px; color: var(--orange); font-size: .76rem; font-weight: 800; text-transform: uppercase; }
+    .status { margin: 0; padding: 12px 13px; border-left: 4px solid var(--green); color: #285546; background: var(--green-soft); }
+    .script { padding: 16px; border-left: 4px solid var(--navy); background: var(--white); box-shadow: var(--shadow); }
+    .script p:last-of-type { margin-bottom: 0; }
+    .copy-btn, .timer-btn {
+      min-height: 42px;
+      margin-top: 13px;
+      padding: 8px 12px;
+      border: 1px solid var(--navy);
+      border-radius: 5px;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .copy-btn.done, .timer-btn.active { color: var(--white); background: var(--navy); }
+    .timer { display: flex; gap: 10px; align-items: center; margin-top: 14px; }
+    .timer strong { min-width: 56px; color: var(--navy); font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+    .timer .timer-btn { margin: 0; }
+    .cues { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-top: 13px; }
+    .cue { padding: 9px 5px; border: 1px solid var(--line); background: var(--white); font-size: .78rem; font-weight: 700; text-align: center; }
+    .ending { padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .ending:first-of-type { border-top: 1px solid var(--line); }
+    .ending strong { display: block; margin-bottom: 4px; color: var(--navy); }
+    .ending p { margin-bottom: 0; color: var(--muted); }
+    .tip { margin: 14px 0 0; padding: 13px; background: var(--blue-soft); }
+    footer { padding: 20px 18px calc(28px + env(safe-area-inset-bottom)); color: var(--muted); font-size: .78rem; text-align: center; }
+    @media (min-width: 640px) {
+      h1 { font-size: 2rem; }
+      .hero, .section { padding-right: 28px; padding-left: 28px; }
+    }
+    @media (max-width: 420px) {
+      .cues { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cue:last-child { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="topbar" aria-label="頁面導覽">
+      <a href="./index.html">面試清單</a><a href="#script">兩分鐘公版</a><a href="#ending">職缺結尾</a>
+    </nav>
+
+    <header class="hero">
+      <h1>共用英文自我介紹</h1>
+      <p>約 195 字；保留主要內容，只替換最後一句的職缺連結。</p>
+    </header>
+
+    <main>
+      <section class="section">
+        <p class="status">不要逐字背。記住 Education、Project、Problem solving、Learning、Why this role 五個節點，講錯一個字就繼續往下。</p>
+      </section>
+
+      <section class="section" id="script">
+        <p class="kicker">Two-minute introduction</p>
+        <h2>自然口語公版</h2>
+        <div class="script" data-copy-target>
+          <p lang="en">Hi, I'm Hsiang-Jung Hsieh. I recently completed my master's degree in Communications, Navigation and Control Engineering at National Taiwan Ocean University. Before that, I studied Computer Science and Information Engineering at National Chin-Yi University of Technology.</p>
+          <p lang="en">During graduate school, I built a system for monitoring marine forecast data. I used Python, PostgreSQL, a web API, and QGIS to process the data and make the results easier to check. What I enjoyed most was figuring out why data did not line up, tracing errors, and turning the results into something people could actually use.</p>
+          <p lang="en">I would describe myself as patient and willing to dig into a problem. When I do not know something, I break it into smaller parts, test each part, and learn what I need along the way. As a recent graduate, I still have a lot to learn, but I am comfortable learning new tools and asking questions when needed.</p>
+          <p lang="en">I am now looking for a role where I can work on real systems, learn from experienced teammates, and gradually take on more responsibility. This opportunity interested me because it would let me use my technical background while continuing to grow. Thank you.</p>
+          <button class="copy-btn" type="button">複製英文自介</button>
+        </div>
+        <div class="timer" aria-live="polite">
+          <strong id="timerText">2:00</strong>
+          <button class="timer-btn" id="timerBtn" type="button">開始計時</button>
+        </div>
+        <div class="cues" aria-label="自我介紹提示詞">
+          <span class="cue">Education</span>
+          <span class="cue">Project</span>
+          <span class="cue">Problem</span>
+          <span class="cue">Learning</span>
+          <span class="cue">Why role</span>
+        </div>
+      </section>
+
+      <section class="section" id="ending">
+        <p class="kicker">Tailor one sentence</p>
+        <h2>只替換最後一句</h2>
+        <div class="ending"><strong>軟體工程</strong><p lang="en">This opportunity interested me because I would have the chance to work on software development and system troubleshooting.</p></div>
+        <div class="ending"><strong>AI 應用</strong><p lang="en">This opportunity interested me because it combines software development, data, and practical AI applications.</p></div>
+        <div class="ending"><strong>資料工程</strong><p lang="en">This opportunity interested me because I would have the chance to work on data processing, databases, and reliable data services.</p></div>
+        <div class="ending"><strong>技術型 PM</strong><p lang="en">This opportunity interested me because it connects technical implementation with users' actual needs.</p></div>
+        <div class="ending"><strong>系統整合／技術支援</strong><p lang="en">This opportunity interested me because it combines system integration, troubleshooting, and communication with users.</p></div>
+        <p class="tip">面試官若只要求一分鐘，就保留第一、第二及最後一段，略過第三段。</p>
+      </section>
+    </main>
+
+    <footer>共用版本｜最後更新：2026-09-03</footer>
+  </div>
+  <script>
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = button.closest("[data-copy-target]");
+        const text = [...target.querySelectorAll("p")].map((p) => p.innerText.trim()).join("\n\n");
+        await navigator.clipboard.writeText(text);
+        button.textContent = "已複製";
+        button.classList.add("done");
+        setTimeout(() => {
+          button.textContent = "複製英文自介";
+          button.classList.remove("done");
+        }, 1600);
+      });
+    });
+
+    const timerText = document.getElementById("timerText");
+    const timerBtn = document.getElementById("timerBtn");
+    let timerId = null;
+    let remaining = 120;
+    function renderTimer() {
+      const minutes = Math.floor(remaining / 60);
+      const seconds = String(remaining % 60).padStart(2, "0");
+      timerText.textContent = `${minutes}:${seconds}`;
+    }
+    timerBtn.addEventListener("click", () => {
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+        remaining = 120;
+        timerBtn.textContent = "開始計時";
+        timerBtn.classList.remove("active");
+        renderTimer();
+        return;
+      }
+      remaining = 120;
+      timerBtn.textContent = "重新計時";
+      timerBtn.classList.add("active");
+      renderTimer();
+      timerId = setInterval(() => {
+        remaining -= 1;
+        renderTimer();
+        if (remaining <= 0) {
+          clearInterval(timerId);
+          timerId = null;
+          timerBtn.textContent = "再練一次";
+          timerBtn.classList.remove("active");
+        }
+      }, 1000);
+    });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+    }
+  </script>
+</body>
+</html>
