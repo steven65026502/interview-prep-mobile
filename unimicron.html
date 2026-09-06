@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#276653">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="data:,">
+  <title>欣興電子｜智慧製造工程師面試準備</title>
+  <style>
+    :root { --ink:#202a2b; --muted:#5f6c70; --paper:#f5f7f6; --line:#d3ded9; --green:#276653; --soft:#eaf3ee; --wine:#783743; --blue:#285c80; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; background:var(--paper); }
+    body { margin:0; color:var(--ink); font:16px/1.7 "Microsoft JhengHei","Noto Sans TC",Arial,sans-serif; letter-spacing:0; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:1.85rem; line-height:1.3; margin-bottom:5px; }
+    h2 { font-size:1.3rem; line-height:1.4; margin-bottom:14px; }
+    h3 { font-size:1rem; margin-bottom:5px; }
+    a { color:var(--blue); text-underline-offset:4px; overflow-wrap:anywhere; }
+    button,select,textarea { font:inherit; }
+    button,a,input,select,summary,textarea { -webkit-tap-highlight-color:transparent; }
+    :focus-visible { outline:3px solid var(--blue); outline-offset:4px; }
+    .shell { width:min(840px,100%); margin:auto; }
+    .topbar { position:sticky; top:0; z-index:5; background:#fff; border-bottom:1px solid var(--line); }
+    .topbar .shell { display:flex; align-items:center; gap:18px; padding:calc(8px + env(safe-area-inset-top)) 18px 8px; }
+    .home { flex:0 0 auto; color:var(--green); font-size:.9rem; font-weight:700; text-decoration:none; padding:8px 0; }
+    .tabs { display:flex; min-width:0; overflow-x:auto; gap:17px; scrollbar-width:thin; }
+    .tabs a { flex:0 0 auto; font-size:.85rem; padding:8px 0; color:var(--muted); text-decoration:none; }
+    header { padding:25px 20px 20px; background:var(--soft); border-bottom:1px solid var(--line); }
+    .eyebrow { color:var(--green); font-size:.78rem; font-weight:700; margin-bottom:5px; }
+    .role { margin-bottom:15px; font-weight:700; }
+    .event { display:grid; grid-template-columns:1fr 1fr; gap:16px; border-top:1px solid #b6cec2; padding-top:12px; }
+    .event small { display:block; color:var(--muted); }
+    .event strong { display:block; }
+    .address { margin:12px 0 0; font-size:.9rem; }
+    section { padding:27px 20px; scroll-margin-top:85px; }
+    section + section { border-top:1px solid var(--line); }
+    .hint { color:var(--muted); font-size:.89rem; }
+    .notice { border-left:3px solid var(--wine); padding:8px 0 8px 13px; margin:15px 0; }
+    .notice p:last-child { margin-bottom:0; }
+    ul,ol { padding-left:1.35rem; margin:8px 0 16px; }
+    li + li { margin-top:6px; }
+    .check { display:grid; grid-template-columns:22px minmax(0,1fr); gap:12px; padding:12px 0; border-bottom:1px solid var(--line); cursor:pointer; }
+    .check input { width:20px; height:20px; accent-color:var(--green); margin-top:4px; }
+    .check strong { display:block; }
+    .check small { display:block; color:var(--muted); font-size:.85rem; }
+    .script { margin:0; padding:12px 0 12px 15px; border-left:3px solid var(--green); }
+    .script p:last-child { margin-bottom:0; }
+    .actions { display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:12px 0; }
+    .command,.icon-button { display:inline-flex; gap:8px; justify-content:center; align-items:center; min-height:44px; border:1px solid var(--line); border-radius:5px; background:#fff; color:var(--ink); cursor:pointer; padding:8px 12px; }
+    button:hover { background:var(--soft); }
+    button:disabled { opacity:.5; cursor:default; }
+    button img { width:19px; height:19px; }
+    .icon-button { width:44px; padding:0; }
+    .timer { font-variant-numeric:tabular-nums; font-size:1.3rem; font-weight:700; min-width:70px; }
+    select { min-height:44px; max-width:100%; border:1px solid var(--line); background:#fff; padding:5px 8px; border-radius:5px; }
+    .timer-controls { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:20px; padding-top:14px; border-top:1px solid var(--line); }
+    details { border-top:1px solid var(--line); }
+    details:last-of-type { border-bottom:1px solid var(--line); }
+    summary { cursor:pointer; padding:15px 0; font-weight:700; }
+    details > div { padding:0 0 18px; }
+    .answer { background:var(--soft); border-left:3px solid var(--green); padding:12px 14px; margin:12px 0; }
+    .answer p:last-child { margin-bottom:0; }
+    pre { max-width:100%; overflow-x:auto; background:#eef1f3; border:1px solid var(--line); border-radius:5px; padding:14px; font:14px/1.65 Consolas,monospace; tab-size:4; }
+    code { overflow-wrap:anywhere; }
+    pre code { overflow-wrap:normal; }
+    figure { margin:18px 0; }
+    figure img { display:block; width:min(100%,580px); height:auto; margin:auto; }
+    figcaption { margin-top:8px; font-size:.82rem; color:var(--muted); text-align:center; }
+    .route { margin:0; padding:0; list-style:none; }
+    .route li { display:grid; grid-template-columns:80px minmax(0,1fr); gap:12px; border-bottom:1px solid var(--line); padding:12px 0; margin:0; }
+    .route strong { color:var(--green); }
+    textarea { display:block; width:100%; min-height:170px; border:1px solid var(--line); border-radius:5px; padding:12px; background:#fff; resize:vertical; }
+    .sources { font-size:.85rem; }
+    footer { padding:22px 20px calc(30px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); }
+    .return { display:inline-block; padding:10px 0; font-weight:700; }
+    #save-status,#copy-status { min-height:1.7em; margin:5px 0 0; color:var(--muted); font-size:.85rem; }
+    @media(min-width:700px) { section,header,footer { padding-left:34px; padding-right:34px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+    @media print { .topbar,.actions,.timer-controls,button { display:none; } section,header { padding:15px 0; } details > div { display:block; } }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="面試導覽"><div class="shell">
+    <a class="home" href="./index.html">← 所有面試</a>
+    <div class="tabs"><a href="#check">必辦</a><a href="#intro">自介</a><a href="#projects">作品</a><a href="#practice">技術練習</a><a href="#ask">反問</a><a href="#notes">速記</a></div>
+  </div></nav>
+  <div class="shell">
+    <header>
+      <p class="eyebrow">UNIMICRON · 面試準備</p>
+      <h1>欣興電子</h1>
+      <p class="role">【工業4.0】智慧製造工程師（蘆二廠）</p>
+      <div class="event"><div><small>已確認時間</small><strong>9/7（一）13:00</strong></div><div><small>通知預估時長</small><strong>約 3 小時</strong></div></div>
+      <p class="address">桃園市蘆竹區南山路三段17巷8號<br>依通知附件的招募中心地圖報到；建議 12:40–12:45 抵達。</p>
+    </header>
+    <main>
+      <section id="check">
+        <p class="eyebrow">先確認這四件事</p><h2>今天先完成，明天帶齊</h2>
+        <label class="check"><input id="check-resume" type="checkbox"><span><strong>欣興招募網履歷</strong><small>公司要求：信箱驗證後，進「個人資料維護 → 我的履歷」填妥並保存。不只是建立帳號。<a href="https://recruit.unimicron.com/" target="_blank" rel="noopener">開啟招募網</a></small></span></label>
+        <label class="check"><input id="check-assessment" type="checkbox"><span><strong>104 職能測驗</strong><small>公司要求：依私人通知信的受測資訊進入，自己作答並確認完成。<a href="https://assessment.104.com.tw/index.jsp" target="_blank" rel="noopener">測驗入口</a></small></span></label>
+        <label class="check"><input id="check-id" type="checkbox"><span><strong>雙證件</strong><small>公司要求：供入廠換證與核對身分。可準備身分證加健保卡或駕照，依現場規定辦理。</small></span></label>
+        <label class="check"><input id="check-english" type="checkbox"><span><strong>確認英文成績單是否適用</strong><small>公司要求：若有一年內多益／雅思／托福成績才攜帶；沒有就不必臨時補考。</small></span></label>
+        <div class="notice"><p><strong>履歷與測驗完成狀態：尚未核實。</strong>這裡的勾選是個人備忘，不代表企業系統已送出。9/4 的註冊驗證信也不等於履歷完成。</p></div>
+        <p><strong>建議備用：</strong>紙本履歷 1–2 份、筆、筆記本、手機、行動電源。現有作品簡報留一份 PDF；筆電與 USB 能否攜入、使用，依廠區規定。</p>
+        <p class="hint">9/3 正式通知沒有要求事前寄 PPT，也沒有列出現場筆試科目。不等於一定沒有測驗；簡報可備用，現場先問是否需要展示。</p>
+      </section>
+
+      <section id="company">
+        <p class="eyebrow">先了解職務</p><h2>工作重點是工廠系統整合</h2>
+        <p>欣興從事印刷電路板（PCB）與 IC 載板等產品。這份職務的準備重點，是資料、設備、資訊系統如何協作，而非把自己包裝成製程或晶片設計專家。<a href="https://job.taiwanjobs.gov.tw/Internet/jobwanted/company_desc2.aspx?BRANCH_ID=&amp;EMPLOYER_ID=150246" target="_blank" rel="noopener">公司公開介紹</a></p>
+        <h3>正式通知列出的工作</h3>
+        <ol><li>設備聯網、系統介接、測試驗證的標準文件與 SOP。</li><li>配合新機台、新產線，導入自動化系統並上線。</li><li>智慧工廠的 AI、數據改善、預測維護與自動化應用。</li><li>以工廠知識庫建置專用 AI 問答系統。</li></ol>
+        <p><strong>尚待確認：</strong>實際技術棧、開發與現場支援比例、輪班／待命、培訓與核薪。通知沒有提供這些答案。</p>
+      </section>
+
+      <section id="intro">
+        <p class="eyebrow">開場</p><h2>先把自己講清楚</h2>
+        <h3>30 秒版</h3>
+        <blockquote class="script" id="intro-short"><p>您好，我是謝向嶸，大學讀勤益科大資訊工程系，碩士讀海洋大學通訊與導航工程學系。我的論文用 Python、PostgreSQL、Flask API 和 QGIS 建立資料品質監測系統。我想把資料串接、結果驗證和問題追查的經驗，用到智慧製造的實際專案中。</p></blockquote>
+        <div class="actions"><button class="command" type="button" data-copy="intro-short"><img src="./assets/icons/copy.svg" alt="">複製 30 秒自介</button></div>
+        <details><summary>60–90 秒版：再加求職動機與能力界線</summary><div>
+          <blockquote class="script" id="intro-long"><p>您好，我是謝向嶸，大學畢業於勤益科大資訊工程系，碩士畢業於海洋大學通訊與導航工程學系。</p><p>我的碩士研究是海洋資料品質監測與查詢系統。資料有不同格式、時間和位置，我使用 Python 處理配對與計算，再將結果存進 PostgreSQL，透過 Flask API 查詢，最後在 QGIS 顯示。我累積較多的經驗是資料處理、系統串接，以及檢查結果和來源是否一致。</p><p>我對這個職缺有興趣，是因為它包含設備資料串接、系統導入和 AI 知識庫應用，和我做過的資料流程有相關性。我也做過公開文件問答的小型原型。不過製造現場、設備通訊及正式上線維運，是我需要學習的部分，希望能在團隊帶領下，從實際專案逐步累積。</p></blockquote>
+          <div class="actions"><button class="command" type="button" data-copy="intro-long"><img src="./assets/icons/copy.svg" alt="">複製完整自介</button></div>
+        </div></details>
+        <p id="copy-status" role="status"></p>
+        <div class="timer-controls"><label for="timer-mode">練習時間</label><select id="timer-mode"><option value="60">自介 1 分鐘</option><option value="180">作品 3 分鐘</option></select><output class="timer" id="timer">01:00</output><button class="icon-button" type="button" id="timer-start" aria-label="開始計時" title="開始計時"><img src="./assets/icons/play.svg" alt=""></button><button class="icon-button" type="button" id="timer-pause" aria-label="暫停計時" title="暫停計時" disabled><img src="./assets/icons/pause.svg" alt=""></button><button class="icon-button" type="button" id="timer-reset" aria-label="重設計時" title="重設計時"><img src="./assets/icons/rotate-ccw.svg" alt=""></button></div>
+        <p><a href="./self-introduction.html">英文自我介紹備用</a></p>
+      </section>
+
+      <section id="projects">
+        <p class="eyebrow">作品說明</p><h2>論文為主，RAG 為輔</h2>
+        <ol class="route"><li><strong>0:00–0:30</strong><span>問題：格式、有效時間、格點位置不一致，結果需要回查來源。</span></li><li><strong>0:30–1:30</strong><span>流程：NetCDF／HDF5 → Python → PostgreSQL → Flask API → QGIS。說出自己的實作與 AI 協助範圍。</span></li><li><strong>1:30–2:15</strong><span>驗證：挑一個能解釋的檢查或除錯案例，不要只列工具名稱。</span></li><li><strong>2:15–3:00</strong><span>連結職務：資料接入、欄位與時間檢查、查詢、可追溯紀錄。承認設備與製造知識需補強。</span></li></ol>
+        <div class="answer"><p>「我的研究不是建立預報模型，而是把來源資料整理成能保存、查詢、展示與驗證的系統。這些經驗可以延伸到設備資料接入和資訊整合，但我不會把研究環境說成已經有工廠量產上線經驗。」</p></div>
+        <details><summary>如果面試官問工廠知識庫 AI 問答</summary><div><p>先用公開文件問答原型說明：問題進來後先檢索資料，再依來源整理回答；要能指出來源，找不到依據時明確說明不足。展示前先確認目前開啟版本，到底有沒有實際模型生成，不把靜態展示或模擬功能說成完整生成式 RAG。</p><p>延伸到工廠時，需再確認文件版本、權限、機密資料部署方式與測試案例。涉及設備操作的建議需由授權人員確認，不能讓問答原型直接下控制指令。</p><p><a href="https://steven65026502.github.io/medical-rag-audit-demo/" target="_blank" rel="noopener">公開文件 Demo</a> · <a href="https://github.com/steven65026502" target="_blank" rel="noopener">作品集首頁</a></p></div></details>
+        <details><summary>如果被問「是不是用 AI 做的？」</summary><div><div class="answer">「有使用 AI 協助開發，我會把協助範圍說清楚。面試中我能說明的部分，會從需求、輸入輸出、資料流程和驗證結果來解釋；不熟的程式細節，我不會假裝已經精通。目前也在補強 Python 基礎和獨立除錯能力。」</div></div></details>
+      </section>
+
+      <section id="practice">
+        <p class="eyebrow">先回憶，再練回答</p><h2>四個基礎情境就好</h2>
+        <p class="hint">以下是依職務準備的練習，不是公司已公布的筆試題。先理解流程，再開啟範例；今晚不必跳到複雜分散式系統或困難演算法。</p>
+        <figure><img src="./assets/unimicron-data-flow.png" width="900" height="1150" alt="練習資料流：設備或檔案產生事件，接收端檢查欄位、時間和單位，保存有效資料，再由 API 查詢及畫面呈現。無效資料隔離並留下可追查原因。" loading="lazy"><figcaption>假設情境：設備資料查詢流程，不代表欣興的實際內部架構。</figcaption></figure>
+        <details><summary>1. API 有回應，但其中一個欄位不見了</summary><div>
+          <p><strong>先問：</strong>整個請求失敗，還是只有欄位缺少？欄位必填嗎？原始回應有沒有值？這個資料是否要等非同步工作完成？</p>
+          <div class="answer">「我會先保留請求識別碼，對照來源回應、解析結果和回傳格式，找出資料在哪一層消失。如果是必要欄位缺失，回報明確狀態，不把缺值補成 0。確認是暫時性失敗才考慮有限次重試；不是直接在 return 前加 sleep。」</div>
+          <h3>先回憶：dict、get、None、return</h3>
+          <p><code>dict</code> 是鍵和值；<code>get</code> 找不到鍵時預設回傳 <code>None</code>。<code>0</code> 可能是有效量測，不能用 <code>if not value</code> 把它當成缺值。<code>return</code> 會結束目前函式並回傳結果。</p>
+          <pre><code class="language-python">def read_temperature(payload):
+    if not isinstance(payload, dict):
+        return {"ok": False, "reason": "invalid_payload"}
+
+    if "temperature" not in payload:
+        return {"ok": False, "reason": "missing_field"}
+
+    value = payload.get("temperature")
+    if value is None:
+        return {"ok": False, "reason": "null_value"}
+
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return {"ok": False, "reason": "invalid_type"}
+
+    return {"ok": True, "value": value}
+
+assert read_temperature({"temperature": 0})["ok"]
+assert read_temperature({})["reason"] == "missing_field"
+assert read_temperature({"temperature": None})["reason"] == "null_value"
+assert read_temperature({"temperature": "25"})["reason"] == "invalid_type"
+assert read_temperature([])["reason"] == "invalid_payload"</code></pre>
+          <p class="hint">這是缺值與型別檢查練習，不是完整 HTTP 服務。正式版還要確認有限數值、量測範圍、單位、權限和錯誤回應契約。<a href="https://docs.python.org/3/library/stdtypes.html#dict.get" target="_blank" rel="noopener">Python 文件</a></p>
+        </div></details>
+        <details><summary>2. 新機台要接入系統，你從哪裡開始？</summary><div>
+          <p><strong>先確認五件事：</strong>來源格式／協定、設備 ID、單位與時間、更新頻率、允許延遲。PLC、MES、OPC UA 等是否使用，需問對方，不要先當成已知。</p>
+          <div class="answer">「我會先拿一份實際樣本，確認欄位與時間定義，做小範圍唯讀接入。每筆事件保留設備 ID、來源時間和可去重的識別資訊；先測正常、缺值、重複和斷線，再與現場一起核對結果，最後整理上線與回復舊版的步驟。」</div>
+          <p>不要在沒確認時寫入或控制機台。分清楚資料查詢與設備控制，現場安全和授權優先。</p>
+        </div></details>
+        <details><summary>3. 查詢很慢，P50／P90 可以怎麼用？</summary><div>
+          <p><strong>先拆時間：</strong>資料庫查詢、外部 API、資料轉換、畫面呈現，哪一段佔最多？再確認是單人也慢，還是同時使用人數增加才慢。</p>
+          <div class="answer">「我會用相同請求 ID 串起各段耗時。P50 看典型延遲，P90 看較慢那一群，不代表它們能直接修好問題。先看查詢是否抓太多資料、是否缺索引或外部 API 等待太久，再做一項修改，量測前後差異。」</div>
+          <p>Timeout 是停止等待的界線，不是修復。Requests 的 timeout 也不是保證整個下載在固定總秒數內完成。若需重試，限制次數並確認操作不會重複寫入。<a href="https://requests.readthedocs.io/en/latest/user/quickstart/#timeouts" target="_blank" rel="noopener">Requests 文件</a></p>
+        </div></details>
+        <details><summary>4. SQL：每台設備最新一筆怎麼查？</summary><div>
+          <p><strong>先回憶：</strong><code>WHERE</code> 篩選列，<code>ORDER BY</code> 排序；要「每組一筆」時，不能只在整張表後加 <code>LIMIT 1</code>。</p>
+          <pre><code class="language-sql">SELECT device_id, measured_at, temperature
+FROM (
+    SELECT device_id, measured_at, temperature,
+           ROW_NUMBER() OVER (
+               PARTITION BY device_id
+               ORDER BY measured_at DESC NULLS LAST, id DESC
+           ) AS rn
+    FROM measurements
+) AS ranked
+WHERE rn = 1;</code></pre>
+          <p><code>PARTITION BY</code> 依設備分組；組內從新到舊編號，取第 1 筆。範例假設 <code>id</code> 是唯一值，同時間用它決定順序；正式資料需定義時間缺失與重複的處理方式。<a href="https://www.postgresql.org/docs/current/tutorial-window.html" target="_blank" rel="noopener">PostgreSQL 文件</a></p>
+        </div></details>
+        <p class="notice"><strong>卡住時：</strong>「這段我目前沒有實作過，我先確認輸入、預期輸出與限制，再用最小範例驗證。」先說推理，不要靠大量術語填空。</p>
+        <p><a href="./system-design.html">延伸：共用系統架構練習</a>（基礎四題熟了再看）</p>
+      </section>
+
+      <section id="ask">
+        <p class="eyebrow">你的選擇也重要</p><h2>反問工作內容與條件</h2>
+        <ol><li>新人前三個月會參與哪一種專案？誰帶領、如何驗收？</li><li>設備串接、程式開發、AI 問答與現場支援，各占多少？</li><li>目前的程式語言、資料庫、設備協定與部署環境是什麼？</li><li>是否輪班、夜間待命、假日支援或跨廠？頻率和補償如何？</li><li>上線前如何測試？是否有 code review、文件和回復機制？</li><li>固定月薪、年終、績效、試用期與加班費怎麼計算？</li></ol>
+        <details><summary>期望薪資怎麼開口</summary><div><p>先確認工作範圍，尤其是輪班與待命，再談固定月薪和全年總額。不要把未保證的獎金當成固定收入。</p><div class="answer">「我希望待遇能反映這份工作在系統整合和開發上的責任，也會一起考慮新人培訓、年終與工時。方便先請教這個職缺的核薪區間，以及固定薪和獎金的結構嗎？」</div><p class="hint">公司通知未提供薪資區間，這裡不把其他公司的待遇套用成欣興報價。</p></div></details>
+      </section>
+
+      <section id="plan">
+        <p class="eyebrow">今晚的安排</p><h2>先完成，再練熟</h2>
+        <ol class="route"><li><strong>第一步</strong><span>確認履歷與測驗完成，整理雙證件和報到位置；測驗時間以受測系統為準。</span></li><li><strong>20 分鐘</strong><span>自介錄音兩次，刪掉自己解釋不清楚的名詞。</span></li><li><strong>30 分鐘</strong><span>三分鐘論文說明；用白紙重畫資料流，練一個真實除錯案例。</span></li><li><strong>30 分鐘</strong><span>先讀 API 缺值與 Python 範例，再不看答案講一次處理順序。</span></li><li><strong>最後</strong><span>確認交通、服裝和檔案能開啟，保留休息時間。不要今晚重做整份簡報。</span></li></ol>
+      </section>
+
+      <section id="notes">
+        <h2>面試後速記</h2>
+        <label for="notes-input">工作比例、帶領方式、技術棧、工時、薪資與下一步</label>
+        <textarea id="notes-input" maxlength="10000"></textarea>
+        <p id="save-status" role="status">尚無紀錄</p>
+      </section>
+      <section class="sources">
+        <h2>依據與待確認事項</h2>
+        <p>查核日期：2026-09-06。面試時間、地址、文件與工作項目依 9/3 欣興正式通知及「線上履歷填寫說明」附件；私人郵件、受測帳密與身分資料不公開。</p>
+        <p>自介、情境題、練習時間與反問是準備建議，不是公司承諾或已公布考題。現場考試科目、簡報需求、技術棧、輪班及待遇仍待確認。</p>
+        <p><a href="https://www.unimicron.com/" target="_blank" rel="noopener">欣興官方網站</a> · <a href="https://job.taiwanjobs.gov.tw/Internet/jobwanted/company_desc2.aspx?BRANCH_ID=&amp;EMPLOYER_ID=150246" target="_blank" rel="noopener">台灣就業通公司介紹</a></p>
+      </section>
+    </main>
+    <footer><a class="return" href="./index.html">← 回到所有面試</a><p class="hint">2026-09-06 · 欣興專頁</p></footer>
+  </div>
+  <script>
+    const storageKey = 'interview-prep-unimicron-v1';
+    let saved = {};
+    let storageAvailable = true;
+    const status = document.getElementById('save-status');
+    try {
+      const value = JSON.parse(localStorage.getItem(storageKey) || '{}');
+      if (value && typeof value === 'object' && !Array.isArray(value)) saved = value;
+    } catch (_) { storageAvailable = false; }
+    const checks = [...document.querySelectorAll('.check input')];
+    const notes = document.getElementById('notes-input');
+    checks.forEach(input => { input.checked = saved[input.id] === true; });
+    notes.value = typeof saved.notes === 'string' ? saved.notes : '';
+    if (!storageAvailable) status.textContent = '無法讀取本機紀錄；本次仍可使用。';
+    else if (Object.keys(saved).length) status.textContent = '已載入此裝置的紀錄。';
+    function persist() {
+      const value = { notes: notes.value };
+      checks.forEach(input => { value[input.id] = input.checked; });
+      try { localStorage.setItem(storageKey, JSON.stringify(value)); status.textContent = '已儲存在此裝置。'; }
+      catch (_) { status.textContent = '此瀏覽器無法儲存；離開前請另行記錄。'; }
+    }
+    checks.forEach(input => input.addEventListener('change', persist));
+    notes.addEventListener('input', persist);
+
+    document.querySelectorAll('[data-copy]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const target = document.getElementById(button.dataset.copy);
+        const text = [...target.querySelectorAll('p')].map(p => p.textContent).join('\n\n');
+        const copyStatus = document.getElementById('copy-status');
+        try { await navigator.clipboard.writeText(text); copyStatus.textContent = '自介已複製。'; }
+        catch (_) { copyStatus.textContent = '無法使用剪貼簿，請選取自介文字複製。'; }
+      });
+    });
+
+    const mode = document.getElementById('timer-mode');
+    const timer = document.getElementById('timer');
+    const start = document.getElementById('timer-start');
+    const pause = document.getElementById('timer-pause');
+    let remaining = Number(mode.value) * 1000;
+    let endAt = null;
+    let interval = null;
+    function renderTimer() {
+      const seconds = Math.ceil(remaining / 1000);
+      timer.textContent = String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+      start.disabled = endAt !== null || remaining <= 0;
+      pause.disabled = endAt === null;
+    }
+    function stopTimer() { clearInterval(interval); interval = null; endAt = null; renderTimer(); }
+    function tick() {
+      if (endAt === null) return;
+      remaining = Math.max(0, endAt - Date.now());
+      if (remaining === 0) stopTimer();
+      else renderTimer();
+    }
+    start.addEventListener('click', () => {
+      if (endAt !== null || remaining <= 0) return;
+      endAt = Date.now() + remaining;
+      interval = setInterval(tick, 200);
+      renderTimer();
+    });
+    pause.addEventListener('click', () => { tick(); stopTimer(); });
+    function resetTimer() { remaining = Number(mode.value) * 1000; stopTimer(); }
+    document.getElementById('timer-reset').addEventListener('click', resetTimer);
+    mode.addEventListener('change', resetTimer);
+    document.addEventListener('visibilitychange', tick);
+    renderTimer();
+    if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

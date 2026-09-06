@@ -5,3 +5,9 @@ Static mobile interview-preparation pages published with GitHub Pages.
 - The site contains no credentials or local absolute paths.
 - Search-engine indexing is disabled with page metadata and `robots.txt`.
 - A service worker caches the interview pages after the first visit.
+
+## Current guide
+
+- [Unimicron: smart manufacturing engineer](./unimicron.html): the September 7 interview, required documents, introductions, project explanation, and beginner technical practice. Requirements are separated from preparation suggestions.
+- All company guides return to the [interview index](./index.html). Checklist and note data stay in the browser, not in this repository.
+- Button icons are from [Lucide](https://lucide.dev/), distributed under the ISC license in `assets/icons/LICENSE`.
