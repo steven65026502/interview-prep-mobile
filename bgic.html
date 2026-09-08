@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#276653">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="data:,">
+  <title>博鉅資訊｜產品 PM 面試準備</title>
+  <style>
+    :root{--ink:#202a2b;--muted:#5f6c70;--paper:#f5f7f6;--line:#d3ded9;--green:#276653;--soft:#eaf3ee;--wine:#783743;--blue:#285c80}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;color:var(--ink);font:16px/1.75 "Microsoft JhengHei","Noto Sans TC",Arial,sans-serif;letter-spacing:0}
+    h1,h2,h3,p{margin-top:0}h1{font-size:1.85rem;line-height:1.35;margin-bottom:5px}h2{font-size:1.3rem;line-height:1.4;margin-bottom:14px}h3{font-size:1rem;margin-bottom:5px}
+    a{color:var(--blue);text-underline-offset:4px;overflow-wrap:anywhere}button,select,textarea{font:inherit}:focus-visible{outline:3px solid var(--blue);outline-offset:4px}.shell{width:min(840px,100%);margin:auto}
+    .topbar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}.topbar .shell{display:flex;gap:18px;align-items:center;padding:calc(8px + env(safe-area-inset-top)) 18px 8px}.home{flex:0 0 auto;color:var(--green);font-size:.9rem;font-weight:700;text-decoration:none;padding:8px 0}.tabs{display:flex;min-width:0;overflow-x:auto;gap:17px}.tabs a{flex:0 0 auto;font-size:.85rem;padding:8px 0;text-decoration:none}
+    header{padding:24px 20px 20px;background:var(--soft);border-bottom:1px solid var(--line)}.eyebrow{color:var(--green);font-size:.8rem;font-weight:700;margin-bottom:5px}.event{display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:1px solid #b6cec2;padding-top:12px}.event small,.event strong{display:block}.event small,.hint{color:var(--muted);font-size:.87rem}.address{margin:12px 0 0;font-size:.9rem}
+    section{padding:25px 20px;scroll-margin-top:80px}section+section{border-top:1px solid var(--line)}ul,ol{padding-left:1.35rem;margin:8px 0 16px}li+li{margin-top:7px}.notice{border-left:3px solid var(--wine);padding:8px 0 8px 13px;margin:15px 0}.script{margin:0;border-left:3px solid var(--green);padding:10px 0 10px 15px}.script p:last-child{margin-bottom:0}
+    .actions,.timer-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:14px 0}.icon-button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex:0 0 44px;background:#fff;border:1px solid var(--line);border-radius:5px;cursor:pointer}.icon-button img{width:19px;height:19px}button:hover{background:var(--soft)}button:disabled{opacity:.45;cursor:default}select{min-height:44px;max-width:100%;background:#fff;border:1px solid var(--line);border-radius:5px;padding:5px 8px}.timer{font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums;min-width:72px}
+    details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}summary{cursor:pointer;padding:15px 0;font-weight:700}details>div{padding:0 0 16px}.answer{border-left:3px solid var(--green);padding:8px 0 8px 14px;margin:10px 0}
+    .flow{list-style:none;padding:0;margin:18px 0}.flow li{display:grid;grid-template-columns:35px minmax(0,1fr);gap:12px;margin:0;padding:13px 0;border-bottom:1px solid var(--line)}.flow b{color:var(--green);font-size:1.25rem}.flow strong,.flow small{display:block}.flow small{color:var(--muted)}
+    .check{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}.check input{width:20px;height:20px;accent-color:var(--green);margin-top:4px}.check strong,.check small{display:block}.check small{font-size:.85rem;color:var(--muted)}figure{margin:18px 0}figure img{display:block;width:min(100%,580px);height:auto;margin:auto}figcaption{font-size:.82rem;color:var(--muted);margin-top:8px}
+    .facts{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px 15px}.facts dt{font-weight:700;color:var(--green)}.facts dd{margin:0}textarea{display:block;width:100%;min-height:170px;padding:12px;border:1px solid var(--line);border-radius:5px;resize:vertical;background:#fff}.sources{font-size:.86rem}footer{padding:22px 20px calc(30px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}#copy-status,#save-status{min-height:1.75em;font-size:.86rem;color:var(--muted)}
+    @media(min-width:700px){section,header,footer{padding-left:34px;padding-right:34px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.topbar,.actions,.timer-controls,button{display:none}section,header{padding:15px 0}details>div{display:block}}
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="面試導覽"><div class="shell"><a class="home" href="./index.html">← 所有面試</a><div class="tabs"><a href="#today">今日重點</a><a href="#company">公司</a><a href="#intro">自介</a><a href="#project">作品</a><a href="#practice">問答</a><a href="#ask">反問／薪資</a><a href="#notes">速記</a></div></div></nav>
+  <div class="shell">
+    <header>
+      <p class="eyebrow">BGIC · 面試準備</p><h1>博鉅資訊</h1><p><strong>產品 PM｜系統整合產業</strong></p>
+      <div class="event"><div><small>已確認時間</small><strong>9/8（二）14:00</strong></div><div><small>面談安排</small><strong>公司介紹、工作說明</strong></div></div>
+      <p class="address">汐止遠雄 U-Town B 棟<br>新北市汐止區新台五路一段97號23樓<br><strong>先到 4 樓申請電梯卡，再上 23 樓。</strong></p>
+    </header>
+    <main>
+      <section id="today">
+        <p class="eyebrow">先看這一段</p><h2>不必臨時重做整份簡報</h2>
+        <p>對方在邀請中表示會介紹公司與職務；現場填表，<strong>不用另外準備紙本履歷，歡迎呈現作品</strong>。未指定正式簡報時長，也未提到筆試，不能據此保證完全沒有技術提問。</p>
+        <ol><li><strong>練熟 60–90 秒自介：</strong>資工與通訊背景、論文系統、為什麼想做技術與需求之間的工作。</li><li><strong>作品只講一個：</strong>論文系統，先用 3 分鐘說問題、取捨、驗證；被問細節再開圖。</li><li><strong>確認這份 PM 的實際內容：</strong>是否做需求與交付？有無個人業績？新人由誰帶？</li></ol>
+        <label class="check"><input id="check-files" type="checkbox"><span><strong>PPTX、PDF、作品集網址</strong><small>事先確認檔案可開啟，帶自己熟悉的版本即可。公司沒有要求你重做簡報。</small></span></label>
+        <label class="check"><input id="check-device" type="checkbox"><span><strong>筆電、充電器、筆及身分證件</strong><small>準備建議，不是公司列出的必備清單。證件僅供大樓核對，不交付保管。</small></span></label>
+        <label class="check"><input id="check-arrival" type="checkbox"><span><strong>預留電梯卡與填表時間</strong><small>建議 13:40–13:45 到大樓；14:00 為確認時間，行事曆預留到 16:00 不代表公司保證談兩小時。</small></span></label>
+        <p><a href="https://github.com/steven65026502" target="_blank" rel="noopener">開啟 GitHub 作品集</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%81%A0%E9%9B%84U-Town%20B%E6%A3%9F" target="_blank" rel="noopener">查看大樓位置</a></p>
+      </section>
+      <section id="company">
+        <p class="eyebrow">事實與判斷分開</p><h2>他們做什麼，你要確認什麼</h2>
+        <dl class="facts"><dt>官網資訊</dt><dd>服務涵蓋企業網路、資料中心及資安建置，不是只賣單一軟體。<a href="https://www.bgic.com.tw/" target="_blank" rel="noopener">公司官網</a></dd><dt>職缺內容</dt><dd>協助專案落地與市場研究；接受無工作經驗者。公司刊登有新人培訓與導師安排，實際帶領方式仍要問清楚。<a href="https://www.104.com.tw/company/ckltby8" target="_blank" rel="noopener">104 公司刊登的產品 PM</a></dd><dt>目前薪資</dt><dd>公開刊登為月薪 40,000 元以上，並非已向你報價。年終列為福利，但保證月數未確認。</dd><dt>合理推論</dt><dd>可能需要連接客戶需求、產品方案、工程與商務。不能因為職稱叫 PM，就假設有自有軟體的產品決策權或一定做 AI。</dd><dt>第一個問題</dt><dd>「這個職位比較偏產品規劃、客戶專案交付，還是產品推廣？新人主要會負責哪一段？」</dd></dl>
+        <p class="notice">今天不是要證明你已是資深 PM，而是讓對方看見：你能理解技術、釐清問題、整理依據，也願意學習客戶與商業面的判斷。</p>
+      </section>
+      <section id="intro">
+        <p class="eyebrow">先讓對方認識你</p><h2>自然地介紹自己</h2>
+        <h3>30 秒版本</h3><blockquote class="script" id="intro-short"><p>您好，我是謝向嶸，大學讀勤益科大資訊工程系，碩士畢業於國立臺灣海洋大學通訊與導航工程學系。我的論文是用 Python、資料庫和 API 建立海洋資料品質監測系統。我對把需求整理清楚、跟技術端確認可行性，再把成果做出來的工作很有興趣，所以想了解貴公司產品 PM 的培養方式。</p></blockquote>
+        <div class="actions"><button class="icon-button" data-copy="intro-short" title="複製 30 秒自介" aria-label="複製 30 秒自介"><img src="./assets/icons/copy.svg" alt=""></button></div>
+        <h3>60–90 秒版本</h3><blockquote class="script" id="intro-long"><p>您好，我是謝向嶸，大學就讀勤益科大資訊工程系，碩士畢業於國立臺灣海洋大學通訊與導航工程學系。</p><p>我的碩士研究是海洋資料品質監測系統。資料有不同格式、時間和位置，我需要先釐清怎麼比較才有意義，再用 Python 處理，透過 PostgreSQL 和 API 保存、查詢，最後在 QGIS 呈現。我也會回頭檢查結果，避免只是畫面有出來，就當作正確。</p><p>做這個專案時，我發現自己除了實作，也很喜歡把問題拆開、整理資料和說明結果。這也是我想了解 PM 工作的原因。我目前還沒有企業端的專案管理經驗，但有技術背景，也常用 AI 協助讀文件、整理比較和除錯，重要內容仍會查原始資料。</p><p>我想從小範圍的需求整理、進度追蹤和方案比較開始，逐步熟悉客戶與交付流程。今天也希望了解這個 PM 職位實際負責的產品，以及新人前三個月會怎麼安排。</p></blockquote>
+        <div class="actions"><button class="icon-button" data-copy="intro-long" title="複製完整自介" aria-label="複製完整自介"><img src="./assets/icons/copy.svg" alt=""></button></div><p id="copy-status" role="status"></p>
+        <div class="timer-controls"><label for="timer-mode">口說計時</label><select id="timer-mode"><option value="30">30 秒自介</option><option value="90" selected>90 秒自介</option><option value="180">3 分鐘作品</option></select><output class="timer" id="timer" aria-label="剩餘時間">01:30</output><button class="icon-button" id="timer-start" title="開始計時" aria-label="開始計時"><img src="./assets/icons/play.svg" alt=""></button><button class="icon-button" id="timer-pause" title="暫停計時" aria-label="暫停計時"><img src="./assets/icons/pause.svg" alt=""></button><button class="icon-button" id="timer-reset" title="重設計時" aria-label="重設計時"><img src="./assets/icons/rotate-ccw.svg" alt=""></button></div>
+      </section>
+      <section id="project">
+        <p class="eyebrow">作品不是技術名詞清單</p><h2>論文改用 PM 聽得懂的順序</h2>
+        <p>開場先問：「我有準備一個研究系統的作品，可以用三分鐘說明嗎？」不必直接開始完整口試報告。</p>
+        <ol class="flow"><li><b>01</b><span><strong>問題｜30 秒</strong><small>不同時間、位置、格式的資料，如何比較、保存，並回查被標示的原因？</small></span></li><li><b>02</b><span><strong>範圍與方案｜60 秒</strong><small>不是開發預報模型，而是品質監測。Python 計算；成果包保存完整場，資料庫保存摘要與關注點位；API 接 QGIS。</small></span></li><li><b>03</b><span><strong>判斷與取捨｜45 秒</strong><small>水位資料的基準不一定相同，因此保留有號比較與限制，不把所有差值都叫預報錯誤。</small></span></li><li><b>04</b><span><strong>驗證與交付｜45 秒</strong><small>42 個目標日、114 組資料重算核對一致，並加入 11 個浮標外部比對。這是研究範圍內的檢查，不等於商用效能保證。</small></span></li></ol>
+        <blockquote class="script"><p>這項研究讓我學到，先把需求和資料定義講清楚，後面的實作與驗收才不會各說各話。如果放到 PM 工作，我希望把這個習慣用在需求確認、風險紀錄和交付檢查。不過客戶談判、預算和企業專案排程是我還需要學習的部分。</p></blockquote>
+        <p class="hint">只展示自己講得清楚的架構與結果；不用把 RAG 小作品當成今天的主軸，也不要臨時加上自己沒有做過的多人管理或成本節省數字。</p>
+      </section>
+      <section id="practice">
+        <p class="eyebrow">準備情境，不是已知考題</p><h2>可能被問，怎麼回答</h2>
+        <p class="hint">本次未找到足以確認「同職缺、同主管」題目的公開面經。以下依工作內容設計，不是公司題庫。</p>
+        <details open><summary>為什麼從資工背景想做 PM？</summary><div><p class="answer">我不是因為不想碰技術才找 PM，而是發現自己對釐清問題、比較方案、整理成果也有興趣。技術背景能幫助我理解工程端的限制，但我知道 PM 還要顧客戶、時程、成本和協作。我想從有人帶領的初階工作開始，而不是一進來就假設自己能獨立帶大型專案。</p><p class="hint">不要說「寫程式贏不了 AI，所以轉 PM」。PM 同樣要查證、判斷與負責。</p></div></details>
+        <details><summary>沒有 PM 經驗，你能帶來什麼？</summary><div><p class="answer">我可以先協助把需求整理成可確認的項目、比較技術文件、追蹤待解問題，並跟工程師確認驗收方式。我的研究有資料處理和驗證經驗，但不能直接當作企業 PM 年資。客戶溝通和專案流程，我希望依團隊的方法學習，先把一小段工作可靠地完成。</p></div></details>
+        <details><summary>客戶說「系統很慢」，你先做什麼？</summary><div><ol><li>確認誰受影響、哪個功能、何時開始、影響營運到什麼程度。</li><li>把「很慢」改成可量測條件：一般／尖峰人數、回應時間、錯誤率；目標要與客戶和工程端確認。</li><li>收集時間點及請求識別，讓工程端分別看網路、API、資料庫與近期變更。</li><li>討論改善選項、成本、停機風險與回復方案；不要先承諾購買設備就能解決。</li><li>用相同條件比較改善前後，讓客戶確認是否達到驗收標準。</li></ol><p class="answer">我會先把問題定義清楚，再與工程師確認原因和可行方案。p50、p90 可以幫助描述延遲分布，但不能單靠它們判定資料為什麼不見。</p></div></details>
+        <details><summary>客戶臨時加需求，工程師說做不完？</summary><div><p class="answer">先問這個需求解決什麼問題、是否影響原本上線目標，再請工程端評估工作量、相依項目和風險。我會整理三種選項：延期完成全部、維持日期縮小範圍，或拆成兩階段。把影響寫清楚，請有決策權的人確認，不自行向客戶保證，也不直接要求工程師加班。</p></div></details>
+        <details><summary>怎麼做市場或競品分析？</summary><div><p class="answer">先定義目標客戶和使用情境，再挑能解決相同問題的方案。比較功能、相容性、授權與維運成本、導入時間、支援條件和限制，資料要有來源與日期。最後不是只列規格，而是說明哪個方案適合哪種客戶，以及哪些關鍵資料還要向原廠確認。</p><p class="hint">AI 可以先整理表格；報價、產品能力、授權限制不能只靠 AI 回答。</p></div></details>
+        <details><summary>你會怎麼把 AI 用在 PM 工作？</summary><div><p class="answer">我會用它協助把會議紀錄整理成需求、待辦、負責人和期限，也可整理產品文件或列出需求矛盾。整理後會回查原文，再交給相關人確認。客戶個資、合約和未公開報價不直接上傳外部模型；涉及對外承諾、報價或驗收，我不會讓 AI 自動決定。</p></div></details>
+        <details><summary>API 少了一個欄位，你怎麼處理？</summary><div><p class="answer">先確認是整個請求沒有回來，還是 HTTP 成功但某個欄位缺失，再對照 API 規格、原始回應與伺服器紀錄。必填欄位缺失應標記失敗並保留追查線索；選填欄位依規格處理。暫時性錯誤才考慮有限次重試，寫入操作還要避免重複執行。不能先加延遲或補成 0，把錯誤藏起來。</p><figure><img src="./assets/unimicron-data-flow.png" width="900" height="1150" loading="lazy" alt="資料流練習圖：來源資料、接收檢查、資料庫保存、API 查詢，各層逐一定位缺值；不合格資料先隔離，不直接補零"><figcaption>共用練習示意，不是博鉅的實際架構。PM 要能說清楚影響、驗收和追蹤，程式修正交由負責工程人員確認。</figcaption></figure></div></details>
+        <details><summary>遇到不懂的網路或資安產品，怎麼開始？</summary><div><p class="answer">我會先了解它保護或改善哪一個環節、客戶目前遇到什麼問題，再讀原廠概覽與部署條件，請教工程同仁。先畫出資料怎麼走、產品放在哪裡、誰維護，整理三到五個不確定問題再討論。我有通訊相關背景，但沒有企業網路設備部署經驗，不會直接承諾自己已熟悉。</p></div></details>
+        <details><summary>談一個挫折或需要修正的判斷</summary><div><p>選真實事件，用「原本以為什麼 → 發現哪裡不對 → 怎麼確認與修正 → 後來怎麼避免」回答。可以使用論文的基準定義或資料驗證案例，但不要杜撰客戶衝突、團隊人數或改善百分比。</p><p class="answer">我的研究需要比較不同來源資料，但數值能相減，不代表定義真的一致。我後來更重視先確認單位、時間與基準，並把結果能解讀到哪裡寫清楚。這讓我理解，遇到定義不清的需求，應先確認再做，不能只求趕快完成。</p></div></details>
+      </section>
+      <section id="basics">
+        <h2>網路與資安，只先記住用途</h2>
+        <dl class="facts"><dt>交換器</dt><dd>讓區域網路中的設備互相連接；進階設備也可能有路由功能。</dd><dt>路由器</dt><dd>將流量送往不同網路。</dd><dt>防火牆</dt><dd>依規則限制允許通過的網路流量。</dd><dt>WAF</dt><dd>檢查網站／Web API 的 HTTP 請求，處理應用層攻擊風險；不是所有資安問題的解法。</dd><dt>負載平衡</dt><dd>把請求分配到多台服務，配合健康檢查避開故障節點；不會自動修復資料邏輯錯誤。</dd></dl>
+        <p class="hint">概念參考：<a href="https://www.cisco.com/c/zh_tw/solutions/small-business/resource-center/networking/network-switch-what.html" target="_blank" rel="noopener">Cisco 網路設備說明</a>、<a href="https://www.cloudflare.com/zh-tw/application-services/products/" target="_blank" rel="noopener">Cloudflare 應用服務</a>。不是要求今天就背產品型號。</p>
+      </section>
+      <section id="ask">
+        <p class="eyebrow">你的選擇也重要</p><h2>今天至少問這五件事</h2>
+        <ol><li><strong>實際工作：</strong>「可以用一個最近的案子，說明 PM 從開始到結案各負責什麼嗎？」</li><li><strong>工作比例：</strong>「需求分析、專案追蹤、市場分析、產品推廣，各大約占多少？會有個人業績或陌生開發指標嗎？」</li><li><strong>新人帶領：</strong>「前三個月由誰帶？會交付什麼成果？多久能參與客戶需求與方案討論？」</li><li><strong>工作界線：</strong>「需要出差、夜間切換系統或假日待命嗎？PM 和工程師怎麼分工？」</li><li><strong>固定待遇：</strong>「核薪區間、保證年終月數、變動獎金，以及試用期後的評估方式分別是什麼？」</li></ol>
+        <details open><summary>被問期望薪資時</summary><div><p class="answer">我目前期望固定月薪約 56,000 元，也會一起看新人培訓、工作範圍和保證年終。想先了解公司對這個職位的固定薪資預算，以及獎金怎麼計算，再討論雙方能否配合。</p><p class="hint">56,000 元是依你先前設定的期望，不是市場保證行情，也不是公司已核定的待遇。對方若只談平均月薪，要拆開固定薪、保證年終和不保證獎金。</p><p>例：固定 48,000 × 保證 14 個月 = 年保證 672,000 元；除以 12 雖為 56,000 元，但<strong>每月固定入帳仍是 48,000 元</strong>。須確認年終條件、首年按比例及書面內容。</p></div></details>
+        <details><summary>什麼情況值得繼續談？</summary><div><ul><li>能參與需求、方案比較、驗收與客戶溝通，不只整理表單。</li><li>有具體帶領人、前三個月任務和半年後評估節點。</li><li>薪資與工時清楚，培訓不是沒有期限的口頭承諾。</li><li>若主要工作是銷售或行政，先確認自己是否願意，不因 PM 職稱直接答應。</li></ul><p>今天不必當場承諾入職，先取得完整工作與待遇資訊。</p></div></details>
+      </section>
+      <section id="notes"><h2>面談後留下具體答案</h2><label for="notes-input">產品／客戶、PM 工作比例、帶領人、前三個月、固定薪、年終、工時、下一步</label><textarea id="notes-input" maxlength="10000"></textarea><p id="save-status" role="status">尚無紀錄</p></section>
+      <section class="sources"><h2>依據與限制</h2><p>查核日期：2026-09-08。時間與到場安排已對照當日 Google Calendar 與留存的 8/27–8/29 公司邀請；未公開私人對話原文、帳號、電話或郵件連結。尚未重新登入 104 查詢是否有臨時變更，出發前仍應看最新通知。</p><p>公司業務依官網；職缺條件依公司自行刊登的 104 頁面。直接職缺頁本次未能由搜尋工具讀取，故以公司頁的同名「產品 PM」段落核對。自介、題目、回答與準備時長是建議，非公司公布題庫。未進行完整勞動違規、司法或財務盡職調查，不據此宣稱公司無風險。</p><p><a href="https://www.bgic.com.tw/" target="_blank" rel="noopener">博鉅官網</a> · <a href="https://www.104.com.tw/company/ckltby8" target="_blank" rel="noopener">104 公司職缺</a> · <a href="https://www.104.com.tw/job/93zta" target="_blank" rel="noopener">本次產品 PM 職缺</a></p></section>
+    </main>
+    <footer><a href="./index.html"><strong>← 回到所有面試</strong></a><p class="hint">2026-09-08 · 博鉅專頁</p></footer>
+  </div>
+  <script>
+    const storageKey='interview-prep-bgic-v1';
+    const status=document.getElementById('save-status');
+    const notes=document.getElementById('notes-input');
+    const checks=[...document.querySelectorAll('.check input')];
+    let saved={};
+    try{const value=JSON.parse(localStorage.getItem(storageKey)||'{}');if(value&&typeof value==='object'&&!Array.isArray(value))saved=value;}catch(_){status.textContent='無法讀取紀錄。';}
+    checks.forEach(input=>{input.checked=saved[input.id]===true;});notes.value=typeof saved.notes==='string'?saved.notes:'';
+    if(Object.keys(saved).length)status.textContent='已載入紀錄。';
+    function persist(){const value={notes:notes.value};checks.forEach(input=>{value[input.id]=input.checked;});try{localStorage.setItem(storageKey,JSON.stringify(value));status.textContent='已儲存。';}catch(_){status.textContent='無法儲存，離開前請另行記錄。';}}
+    checks.forEach(input=>input.addEventListener('change',persist));notes.addEventListener('input',persist);
+    document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copy);const text=[...target.querySelectorAll('p')].map(p=>p.textContent).join('\n\n');try{await navigator.clipboard.writeText(text);document.getElementById('copy-status').textContent='自介已複製。';}catch(_){document.getElementById('copy-status').textContent='無法使用剪貼簿，請選取文字複製。';}}));
+    const mode=document.getElementById('timer-mode'),timer=document.getElementById('timer'),start=document.getElementById('timer-start'),pause=document.getElementById('timer-pause');
+    let remaining=Number(mode.value)*1000,endAt=null,interval=null;
+    function renderTimer(){const seconds=Math.ceil(remaining/1000);timer.textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');start.disabled=endAt!==null||remaining<=0;pause.disabled=endAt===null;}
+    function stopTimer(){clearInterval(interval);interval=null;endAt=null;renderTimer();}
+    function tick(){if(endAt===null)return;remaining=Math.max(0,endAt-Date.now());if(remaining===0)stopTimer();else renderTimer();}
+    start.addEventListener('click',()=>{if(endAt!==null||remaining<=0)return;endAt=Date.now()+remaining;interval=setInterval(tick,200);renderTimer();});pause.addEventListener('click',()=>{tick();stopTimer();});
+    function resetTimer(){remaining=Number(mode.value)*1000;stopTimer();}document.getElementById('timer-reset').addEventListener('click',resetTimer);mode.addEventListener('change',resetTimer);document.addEventListener('visibilitychange',tick);renderTimer();
+    if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+  </script>
+</body>
+</html>
