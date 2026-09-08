@@ -1,8 +1,13 @@
-const CACHE_NAME = "interview-prep-v16";
+const CACHE_NAME = "interview-prep-v17";
 const FILES = [
   "./",
   "./index.html",
   "./bgic.html",
+  "./juten.html",
+  "./datadi.html",
+  "./youth.html",
+  "./assets/guide.css",
+  "./assets/guide.js",
   "./unimicron.html",
   "./assets/unimicron-data-flow.png",
   "./assets/icons/copy.svg",

@@ -494,23 +494,23 @@
     <a href="#intro">自介</a><a href="#thesis">專案</a><a href="#technical">技術</a><a href="#architecture">架構題</a>
     <a href="#qa">問答</a><a href="#ask">反問</a><a href="#day">當日</a>
   </nav><div class="shell"><header class="hero" id="top">
-      <p class="eyebrow">謝向嶸｜正式面試階段</p>
+      <p class="eyebrow">謝向嶸｜已取消，原準備資料備查</p>
       <h1>船舶暨海洋產業研發中心</h1>
       <p class="role">裝備開發組工程師｜筆試＋5–10 分鐘簡報＋面試</p>
       <div class="event-grid" role="group" aria-label="面談資訊">
-        <div class="event-item"><small>暫定時間</small><strong>9/10（四）09:00</strong></div>
+        <div class="event-item"><small>原時段（已取消）</small><strong>9/10（四）09:00</strong></div>
         <div class="event-item"><small>面試形式</small><strong>先筆試，再進行簡報與面談</strong></div>
         <div class="event-item"><small>暫定地點</small><strong>淡水中正東路辦公室；待最終通知</strong></div>
       </div>
       <div class="hero-actions"><a class="btn btn-primary" href="#script">先看準備清單</a><a class="btn btn-secondary" href="#day">查看面試流程</a></div>
-      <p class="countdown" id="countdown">你已回覆可配合 9/10 09:00，目前等待人資最終確認。</p>
-    </header><div class="phone-banner">已完成主管第一輪電話面談並進入正式面試階段。人資已確認面試包含筆試與 5–10 分鐘簡報，簡報檔需於面試前一天提供。</div><figure class="brand-visual">
+      <p class="countdown" id="countdown">9/7 已送出取消訊息，待對方回覆；不需依原安排出席或寄送簡報。</p>
+    </header><div class="phone-banner">已取消。以下保留當時職務、文件與練習作備查，不是目前待辦。原面試與寄件期限不再列為有效安排；如收到新邀請再重新確認。</div><figure class="brand-visual">
       <a href="https://www.soic.org.tw/" target="_blank" rel="noopener">
         <img src="https://www.soic.org.tw/wp-content/uploads/2018/10/logo-white.png" alt="船舶暨海洋產業研發中心標誌">
       </a>
       <figcaption>本次最值得爭取的是第二類職務：電子海圖資料解析、GIS 應用與智慧船舶測試。</figcaption>
     </figure><main>
-  <section class="section" id="script"><p class="kicker">Formal interview</p><h2>現在先完成四件事</h2>
+  <section class="section" id="script"><p class="kicker">Archived preparation</p><h2>原準備事項（已取消，無需執行）</h2>
     <div class="callout"><strong>正式面試主軸仍是電子海圖／GIS。</strong><p>筆試範圍尚未回覆，不猜題；先準備 Python、資料結構與邏輯、GIS／電子海圖基本概念、英文閱讀及論文系統說明。</p></div>
     <details open><summary>1. 整理並寄出六類應徵資料</summary><div class="detail-body"><div class="checklist" data-checklist="shipDocs"><label class="check"><input type="checkbox" value="form"><span>船舶中心制式履歷：含照片與自傳，保留原表選項</span></label><label class="check"><input type="checkbox" value="diplomas"><span>大學與碩士畢業證書影本</span></label><label class="check"><input type="checkbox" value="transcripts"><span>大學與碩士歷年成績單影本</span></label><label class="check"><input type="checkbox" value="workProof"><span>服務經歷證明；可提供勞保投保明細</span></label><label class="check"><input type="checkbox" value="certs"><span>Python、Prompt Engineering、JPT 等專業證照影本</span></label><label class="check"><input type="checkbox" value="privacy"><span>簽妥應徵人才個資蒐集同意書</span></label></div><p class="small subtle">目前本機已確認：船舶中心履歷、勤益成績單、海大碩士畢業證書、個資同意書與證照檔；勤益畢業證書及海大成績單仍需補齊或確認替代文件。</p></div></details>
     <details open><summary>2. 準備 5–10 分鐘簡報</summary><div class="detail-body"><ol><li>30 秒自我介紹與應徵動機。</li><li>問題：動態海洋資料難以跨時間、位置與版本回查。</li><li>架構：NetCDF／HDF5 → Python → PostgreSQL → Flask API → QGIS。</li><li>S-111：時空配對、方向角差、外部浮標比對。</li><li>S-104：雙鄰近格點、有號比較差值與使用風險候選。</li><li>114／114 重算一致與問題追查方法。</li><li>連回電子海圖、GIS、資料解析與現場測試職務。</li></ol><p><strong>期限：</strong>簡報檔最晚於正式面試前一天寄出；同時準備 PPTX 與 PDF。</p></div></details>
@@ -625,20 +625,7 @@
       };
 
       const countdown = document.getElementById('countdown');
-      const interviewTime = new Date('2026-09-10T09:00:00+08:00');
-      const renderCountdown = () => {
-        const diff = interviewTime - new Date();
-        if (diff <= 0) {
-          countdown.textContent = '暫定面試時間已到；請以人資最終通知為準。';
-          return;
-        }
-        const totalMinutes = Math.floor(diff / 60000);
-        const days = Math.floor(totalMinutes / 1440);
-        const hours = Math.floor((totalMinutes % 1440) / 60);
-        countdown.textContent = `距離暫定面試約 ${days} 天 ${hours} 小時；目前仍待人資最終確認。`;
-      };
-      renderCountdown();
-      setInterval(renderCountdown, 60000);
+      countdown.textContent = '9/7 已送出取消訊息，待對方回覆；原面試與寄件安排已停用。';
 
       document.querySelectorAll('.segment').forEach((button) => {
         button.addEventListener('click', () => {
