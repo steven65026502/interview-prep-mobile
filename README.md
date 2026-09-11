@@ -8,6 +8,8 @@ Static mobile interview-preparation pages published with GitHub Pages.
 
 ## Current guide
 
+- [September 18 NCKU semiconductor supplier fair](./semi-20260918.html): 25-company event-list screen, two primary discussions and four conditional stops, preparation and local-only notes. Checked September 11; not an exhaustive JD or employer due-diligence audit. Explicitly distinguishes supplier recruiting from TSMC employment and does not imply a confirmed personal registration. Included in offline cache v19.
+
 - [Cake September 12 career fair](./cake-20260912.html): all 152 screened entries, 31 detailed profiles, 12 priorities, eight extra floor-map entries, dated evidence, and local-only visit notes with JSON export. Job assessments retain the September 9 source date; the official floor map was checked September 11. This is a booth discussion guide, not a complete employer due-diligence verdict. Included in offline cache v18.
 
 - [GT Booster / Juten: software R&D](./juten.html): confirmed September 9 Teams interview, beginner Python/API practice, thesis explanation, and team/mentoring questions. Practice is not a claimed employer question bank.
