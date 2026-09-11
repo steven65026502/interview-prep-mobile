@@ -13,7 +13,10 @@
   function feedback(message) { $('feedback').textContent = message; clearTimeout(feedbackTimer); feedbackTimer = setTimeout(() => $('feedback').textContent = '', 3500); }
   function save() { try { localStorage.setItem(key, JSON.stringify(state)); } catch { feedback('瀏覽器無法保存；請先匯出紀錄。'); } }
   const profiles = new Map(data.profiles.map(p => [p['攤位'], p]));
-  const briefs = window.CAKE_BRIEFS || {};
+  const briefData = window.CAKE_BRIEFS || {};
+  const briefs = briefData.briefs || {};
+  const sourceFixes = briefData['來源修正'] || {};
+  const unchecked = new Set(briefData['未能覆查'] || []);
   const entries = data.companies.map(c => ({...c, profile:profiles.get(c['最新攤位']), brief:briefs[String(c['編號'])]}));
   const record = id => state.companies[id] || {};
   const link = (url, label) => /^https:\/\//.test(url || '') ? `<a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${escape(label)} ↗</a>` : '';
@@ -21,14 +24,15 @@
   function jobRow(job) {
     const tags = [job['年資'], job['型態'], job['地點']].filter(Boolean).join(' · ');
     const title = job['連結'] ? `<a href="${escape(job['連結'])}" target="_blank" rel="noopener noreferrer">${escape(job['職稱'])}</a>` : escape(job['職稱']);
-    return `<li class="${job['新人可投'] ? 'fresh' : ''}">${title}<span class="jobtags">${escape(tags)}${job['新人可投'] ? ' · <b>新人可投</b>' : ''}</span></li>`;
+    const mark = job['已下架'] ? ' · <b class="gone">9/11 覆查已下架</b>' : job['新人可投'] ? ' · <b>新人可投</b>' : '';
+    return `<li class="${job['已下架'] ? 'gone' : job['新人可投'] ? 'fresh' : ''}">${title}<span class="jobtags">${escape(tags)}${mark}</span></li>`;
   }
   function briefBlock(c) {
     const b = c.brief;
     if (!b) return '';
     const asks = b['開場問句'] || [];
     const jobs = b['職缺'] || [];
-    const counts = `公開清單 ${b['職缺總數'] || 0} 筆 · 年資 1 年內 ${b['新人可投'] || 0} 筆`;
+    const counts = `公開清單 ${b['職缺總數'] || 0} 筆 · 年資 1 年內 ${b['新人可投'] || 0} 筆` + (b['已下架'] ? ` · 9/11 覆查 ${b['已下架']} 筆已下架` : '');
     const business = b['做什麼'] ? `<h3>他們在做什麼</h3><p class="business">${escape(b['做什麼'])}</p>` : '';
     const ask = asks.length ? `<h3>開場就這樣問 <button type="button" class="copy" data-copy-company="${c['編號']}">複製</button></h3><div class="questions asks">${asks.map(q => `<p>${escape(q)}</p>`).join('')}</div>` : '';
     const list = jobs.length
@@ -97,7 +101,14 @@
     const a = document.createElement('a'); a.href = url; a.download = 'Cake_20260912_交流紀錄.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 2000); feedback('交流紀錄已匯出');
   });
   $('extras').innerHTML = data.extras.map(c => `<article><h3>${escape(c['攤位'])} · ${escape(c['項目'])}</h3><p>${escape(c['判斷'])}</p><p>${escape(c['原因'])}</p>${link(c['來源'], '資料來源')}</article>`).join('');
-  $('risks').innerHTML = data.risks.map(r => `<details><summary>${escape(r['公司'])} · ${escape(r['證據類型'])}</summary><p class="muted">${escape(r['資料日期'])} · 整理於 9/9</p><p>${escape(r['結論與限制'])}</p><p><strong>待確認：</strong>${escape(r['現場追問'])}</p>${link(r['來源'], '原始來源')}</details>`).join('');
+  $('risks').innerHTML = data.risks.map(r => {
+    const fix = sourceFixes[r['來源']];
+    const source = fix
+      ? `<p class="notice">原始連結已失效：${escape(fix['說明'])}</p><div class="sources">${(fix['替代'] || []).map(([label, url]) => link(url, label)).join('')}</div>`
+      : `<div class="sources">${link(r['來源'], '原始來源')}</div>` +
+        (unchecked.has(r['來源']) ? '<p class="muted">9/11 覆查時這個站台沒有回應（可能擋外部檢查），連結未必失效，開不起來就當沒有這條線索。</p>' : '');
+    return `<details><summary>${escape(r['公司'])} · ${escape(r['證據類型'])}</summary><p class="muted">${escape(r['資料日期'])} · 整理於 9/9</p><p>${escape(r['結論與限制'])}</p><p><strong>待確認：</strong>${escape(r['現場追問'])}</p>${source}</details>`;
+  }).join('');
   render();
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(() => {});
 })();
