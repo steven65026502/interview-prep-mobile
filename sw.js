@@ -1,7 +1,12 @@
-const CACHE_NAME = "interview-prep-v17";
+const CACHE_NAME = "interview-prep-v18";
 const FILES = [
   "./",
   "./index.html",
+  "./cake-20260912.html",
+  "./assets/cake-data.js",
+  "./assets/cake-guide.js",
+  "./assets/cake-guide.css",
+  "./assets/cake-floor-20260911.png",
   "./bgic.html",
   "./juten.html",
   "./datadi.html",
