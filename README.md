@@ -8,7 +8,7 @@ Static mobile interview-preparation pages published with GitHub Pages.
 
 ## Current guide
 
-- [September 18 NCKU semiconductor supplier fair](./semi-20260918.html): 25-company screen, two primary discussions and four conditional stops. Refreshed September 16 with a Shihlin ERP/PLM referral question, dated job and pay evidence, print-material checklist and a three-minute conversation outline. Employer-facing resumes remain private local files, not repository assets. This is not an exhaustive employer audit or a registration confirmation. Included in offline cache v23; existing local notes and checkbox IDs are preserved.
+- [September 18 NCKU semiconductor supplier fair](./semi-20260918.html): 25-company screen, two primary discussions and four conditional stops. September 17 adds resume-to-role talking points for six companies, with project evidence, AI-assisted development and control-course background separated from unverified industrial skills. Job/pay sources retain their individual dates. Includes a Shihlin ERP/PLM referral question, print-material checklist and a three-minute conversation outline. Employer-facing resumes remain private local files, not repository assets. This is not an exhaustive employer audit or a registration confirmation. Included in offline cache v24; existing local notes and checkbox IDs are preserved.
 
 - [Cake September 12 career fair](./cake-20260912.html): all 152 screened entries, 31 detailed profiles, 12 priorities, eight extra floor-map entries, dated evidence, and local-only visit notes with JSON export. Job assessments retain the September 9 source date; the official floor map was checked September 11. This is a booth discussion guide, not a complete employer due-diligence verdict. Included in offline cache v18.
 
