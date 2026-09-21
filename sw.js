@@ -1,7 +1,8 @@
-const CACHE_NAME = "interview-prep-v26";
+const CACHE_NAME = "interview-prep-v27";
 const FILES = [
   "./",
   "./index.html",
+  "./advantech.html",
   "./semi-20260918.html",
   "./assets/semi-guide.js",
   "./assets/semi-20260918-official.png",

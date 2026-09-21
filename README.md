@@ -8,6 +8,8 @@ Static mobile interview-preparation pages published with GitHub Pages.
 
 ## Current guide
 
+- [Advantech: CAE automation software engineer](./advantech.html): September 22 in-person interview, questionnaire completion check, PCB workflow role boundaries, introductions, Python/API practice, and mentoring/pay-structure questions. Exercises are not a verified employer question bank. Personal questionnaire responses and offer amounts remain private. Added to index and offline cache v27.
+
 - September 18 evidence review: six priority employers now have dated job/pay evidence, official labor notices, role-specific public review limitations and financial-disclosure coverage. CICA's northern opening and a Shihlin IT referral are the first information checks; MIC is conditional, UIS needs a specific junior JD, and Kao Hsin / Solar are deprioritized for role or experience mismatch. These are not proven upgrades over an existing offer. Private offer terms remain outside this repository. Offline cache v26 preserves existing notes.
 
 - [September 18 NCKU semiconductor supplier fair](./semi-20260918.html): all 25 event companies screened, six reviewed in greater depth and 19 kept at role-screening level. Includes evidence-backed priority changes, offer-comparison gates, resume-to-role talking points, print checklist and conversation outline. Financial-report availability is not a solvency analysis; judicial/procurement and all forum coverage are incomplete. Government records, anonymous experiences and inferences are distinguished. Employer-facing resumes and individual offer terms remain private local files. Existing storage keys and checkbox IDs are unchanged.
